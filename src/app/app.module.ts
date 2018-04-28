@@ -13,6 +13,8 @@ import { RealestateService } from './realestate.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 
+import {SlideshowModule} from 'ng-simple-slideshow';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,9 @@ import { InMemoryDataService } from './in-memory-data.service';
     // Remove it when a real server is ready to receive requests.
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
-    )
+    ),
+
+    SlideshowModule
   ],
   providers: [RealestateService],
   bootstrap: [AppComponent]

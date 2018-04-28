@@ -1,4 +1,7 @@
-<p>
-  {{realestate.name}}
-</p>
-<img *ngFor='let url of realestate.imageUrls' src={{url}}>
+<div *ngIf="realestate">
+  <div>
+    {{realestate.name}}
+  </div>
+  <slideshow [imageUrls]="realestate.imageUrls" [minHeight]="'500px'" [autoPlay]="true"></slideshow>
+</div>
+
