@@ -28,7 +28,7 @@ export class InMemoryDataService implements InMemoryDbService {
           '学区房',
           '安全，交通便利'
         ],
-        pictures: [
+        imageUrls: [
           'assets/0.0.jpg',
           'assets/0.1.jpg'
         ],

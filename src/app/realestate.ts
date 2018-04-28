@@ -7,7 +7,7 @@ export class Realestate {
   price: number;
   customerComments: CustomerComment[];
   description: string[];
-  pictures: string[];
+  imageUrls: string[];
   relatedRealestates: number[];
   developer: string;
   investor: string;
