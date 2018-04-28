@@ -25,8 +25,8 @@ export class RealestateService {
   getRealestate(id: number): Observable<Realestate> {
     const url = `${this.realesateUrl}/${id}`;
     return this.http.get<Realestate>(url).pipe(
-    tap(_ => console.log(`fetched realestate id=${id}`)),
-    catchError(this.handleError<Realestate>(`getRealestate id=${id}`))
+      tap(_ => console.log(`fetched realestate id=${id}`)),
+      catchError(this.handleError<Realestate>(`getRealestate id=${id}`))
     );
   }
 
