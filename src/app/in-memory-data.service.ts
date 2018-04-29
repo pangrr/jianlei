@@ -6,6 +6,7 @@ export class InMemoryDataService implements InMemoryDbService {
       {
         id: 0,
         name: '红育坡一号',
+        alias: '外语学校',
         location: '重庆市九龙坡区石桥铺红育坡一号',
         price: 1,
         customerComments: [
