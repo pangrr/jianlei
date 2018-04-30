@@ -15,14 +15,14 @@ const httpOptions = {
 @Injectable()
 export class RealestateService {
 
-  private realesateUrl = 'api/realestate';  // URL to web api
+  private realesateUrl = 'http://localhost:3000/api/realestate';  // URL to web api
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) {}
 
   /** GET realestate by id. Will 404 if id not found */
-  getRealestate(id: number): Observable<Realestate> {
+  getRealestate(id: string): Observable<Realestate> {
     const url = `${this.realesateUrl}/${id}`;
     return this.http.get<Realestate>(url).pipe(
       tap(_ => console.log(`fetched realestate id=${id}`)),

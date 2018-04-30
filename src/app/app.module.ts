@@ -10,9 +10,6 @@ import { SearchComponent } from './search/search.component';
 import { UploadComponent } from './upload/upload.component';
 import { RealestateService } from './realestate.service';
 
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
-
 import {SlideshowModule} from 'ng-simple-slideshow';
 
 @NgModule({
@@ -27,14 +24,6 @@ import {SlideshowModule} from 'ng-simple-slideshow';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-
-    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-    // and returns simulated server responses.
-    // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
-
     SlideshowModule
   ],
   providers: [RealestateService],

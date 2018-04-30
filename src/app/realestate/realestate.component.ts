@@ -22,7 +22,7 @@ export class RealestateComponent implements OnInit {
   }
 
   getRealestate(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id: string = this.route.snapshot.paramMap.get('id');
     this.realestateService.getRealestate(id)
       .subscribe(realestate => this.realestate = realestate);
   }
