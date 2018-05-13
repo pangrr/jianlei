@@ -1,5 +1,7 @@
 {
-  "name": "jianlei-client",
+  "name": "realestate-frontend",
+  "author": "Ran Pang",
+  "description": "works with realestate-backend",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
