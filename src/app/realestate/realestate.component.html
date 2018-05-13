@@ -1,5 +1,8 @@
 <div *ngIf="realestate">
   <div>
+      {{realestate._id}}
+  </div>
+  <div>
     {{realestate.name}}
   </div>
   <slideshow [imageUrls]="realestate.imageUrls" [minHeight]="'300px'" [autoPlay]="true" [showDots]="true" [arrowSize]="'20px'"></slideshow>
