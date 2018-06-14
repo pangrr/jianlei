@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('jianlei-client App', () => {
+describe('realestate App', () => {
   let page: AppPage;
 
   beforeEach(() => {
