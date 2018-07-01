@@ -12,10 +12,16 @@ export class UploadComponent implements OnInit {
 
   ngOnInit() {
     this.afuConfig = {
-      uploadAPI: {
-        url: 'http://localhost:3000/realestate/images'
-      }
+      formatsAllowed: '.jpg,.png',
+      uploadAPI: { url: 'http://localhost:3000/realestate/images' },
+      maxSize: 3,
+      multiple: true,
+      theme: 'dragNDrop'
     };
+  }
+
+  handleUploadImagesResponse(event): void {
+    console.log(event.response);
   }
 
 }
