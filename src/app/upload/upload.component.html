@@ -1,1 +1,29 @@
-<angular-file-uploader [config]="afuConfig" (ApiResponse)="handleUploadImagesResponse($event)"></angular-file-uploader>
+<angular-file-uploader [config]="afuConfig" (ApiResponse)="onImagesUploaded($event)"></angular-file-uploader>
+
+<form (ngSubmit)="onSubmit()" #realestateForm="ngForm" style="margin:30px">
+  <div class="form-group">
+    <label for="name">名称</label>
+    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="realestate.name" required>
+  </div>
+
+  <div class="form-group">
+    <label for="address">地址</label>
+    <input type="text" class="form-control" id="address" name="address" [(ngModel)]="realestate.address" required>
+  </div>
+
+  <div class="form-group">
+    <label for="price">价格</label>
+    <input type="number" min="0" class="form-control" id="price" name="price" [(ngModel)]="realestate.price" required>
+  </div>
+
+  <div class="form-group">
+    <label for="description">详情</label>
+    <input type="text" class="form-control" id="description" name="description" [(ngModel)]="realestate.description" required>
+  </div>
+
+  <button type="submit" [disabled]="!realestateForm.form.valid" class="btn btn-success">提交</button>
+</form>
+
+<span *ngIf="realestate._id">已保存房产 {{realestate._id}}</span>
+
+

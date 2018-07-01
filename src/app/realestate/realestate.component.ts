@@ -15,7 +15,7 @@ export class RealestateComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private realestateService: RealestateService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getRealestate();

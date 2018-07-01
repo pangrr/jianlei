@@ -22,9 +22,16 @@ export class RealestateService {
   getRealestate(id: string): Observable<Realestate> {
     const url = `${this.realesateUrl}/${id}`;
     return this.http.get<Realestate>(url).pipe(
-      tap(_ => console.log(`fetched realestate id=${id}`)),
       catchError(this.handleError<Realestate>(`getRealestate id=${id}`))
     );
+  }
+
+  /** POST: add a new hero to the database */
+  addRealestate (realestate: Realestate): Observable<Realestate> {
+    return this.http.post<Realestate>(this.realesateUrl, realestate, httpOptions)
+      .pipe(
+        catchError(this.handleError<Realestate>('addRealestate', realestate))
+      );
   }
 
   /**
@@ -33,7 +40,7 @@ export class RealestateService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T> (operation: string, result?: T) {
     return (error: any): Observable<T> => {
       console.log(`${operation} failed: ${error.message}`);
 
