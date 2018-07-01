@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-upload',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./upload.component.css']
 })
 export class UploadComponent implements OnInit {
+  @Input() afuConfig;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+    this.afuConfig = {
+      uploadAPI: {
+        url: 'http://localhost:3000/realestate/images'
+      }
+    };
   }
 
 }
