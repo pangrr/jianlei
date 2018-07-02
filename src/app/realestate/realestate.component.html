@@ -3,6 +3,6 @@
   {{realestate.address}}
   {{realestate.price}}
   {{realestate.description}}
-  <slideshow *ngIf="realestate.imageUrls.length > 0" [imageUrls]="realestate.imageUrls" [minHeight]="'300px'" [autoPlay]="true" [showDots]="true" [arrowSize]="'20px'"></slideshow>
+  <slideshow *ngIf="imageUrls" [imageUrls]="imageUrls" [minHeight]="'300px'" [autoPlay]="true" [showDots]="true" [arrowSize]="'20px'"></slideshow>
 </div>
 

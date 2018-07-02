@@ -11,6 +11,7 @@ import { RealestateService } from '../realestate.service';
 })
 export class RealestateComponent implements OnInit {
   @Input() realestate: Realestate;
+  imageUrls: string[];
 
   constructor(
     private route: ActivatedRoute,
@@ -24,6 +25,9 @@ export class RealestateComponent implements OnInit {
   getRealestate(): void {
     const id: string = this.route.snapshot.paramMap.get('id');
     this.realestateService.getRealestate(id)
-      .subscribe(realestate => this.realestate = realestate);
+      .subscribe(realestate => {
+        this.imageUrls = realestate.images.map(i => `http://localhost:3000/realestate/image/${i}`);
+        this.realestate = realestate;
+      });
   }
 }

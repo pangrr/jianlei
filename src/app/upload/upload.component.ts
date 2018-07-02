@@ -17,11 +17,11 @@ export class UploadComponent {
 
   realestate: Realestate = {
     _id: undefined,
-    name: undefined,
-    address: undefined,
-    price: undefined,
-    description: undefined,
-    imageUrls: []
+    name: '红育坡一号',
+    address: '石桥铺',
+    price: 9999,
+    description: '外语校',
+    images: ['1530572349916.jpg', '1530572349917.jpg']
   };
 
   constructor(
@@ -29,8 +29,7 @@ export class UploadComponent {
   ) {}
 
   onImagesUploaded(event): void {
-    this.realestate.imageUrls = event.response;
-
+    this.realestate.images = event.response;
   }
 
   onSubmit(): void {

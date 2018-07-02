@@ -24,6 +24,6 @@
   <button type="submit" [disabled]="!realestateForm.form.valid" class="btn btn-success">提交</button>
 </form>
 
-<span *ngIf="realestate._id">已保存房产 {{realestate._id}}</span>
+<a href="http://localhost:4200/realestate/{{realestate._id}}" *ngIf="realestate._id">已保存房产 {{realestate._id}}</a>
 
 
