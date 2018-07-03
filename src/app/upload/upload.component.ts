@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Realestate } from '../realestate';
 import { RealestateService } from '../realestate.service';
 
+
 @Component({
   selector: 'app-upload',
   templateUrl: './upload.component.html',
@@ -17,11 +18,11 @@ export class UploadComponent {
 
   realestate: Realestate = {
     _id: undefined,
-    name: '红育坡一号',
-    address: '石桥铺',
-    price: 9999,
-    description: '外语校',
-    images: ['1530572349916.jpg', '1530572349917.jpg']
+    name: '',
+    address: '',
+    price: undefined,
+    description: '',
+    images: []
   };
 
   constructor(
@@ -29,7 +30,7 @@ export class UploadComponent {
   ) {}
 
   onImagesUploaded(event): void {
-    this.realestate.images = event.response;
+    this.realestate.images = JSON.parse(event.response);
   }
 
   onSubmit(): void {
