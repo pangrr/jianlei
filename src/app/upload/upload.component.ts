@@ -18,11 +18,11 @@ export class UploadComponent {
 
   realestate: Realestate = {
     _id: undefined,
-    name: '',
-    address: '',
+    name: undefined,
+    address: undefined,
     price: undefined,
-    description: '',
-    images: []
+    description: undefined,
+    images: undefined
   };
 
   constructor(

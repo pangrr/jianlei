@@ -1,13 +1,13 @@
 <mat-card *ngIf="realestate">
   <mat-card-header>
     <mat-card-title>{{realestate.name}}</mat-card-title>
-    <mat-card-subtitle>地址：{{realestate.address}}</mat-card-subtitle>
-    <mat-card-subtitle>价格：{{realestate.price}}</mat-card-subtitle>
+    <mat-card-subtitle>均价：<span class="red">{{realestate.price}}</span>元/平米</mat-card-subtitle>
   </mat-card-header>
-  <slideshow *ngIf="imageUrls" [imageUrls]="imageUrls" [minHeight]="'300px'" [autoPlay]="true" [showDots]="true" [arrowSize]="'20px'"></slideshow>
+  <slideshow mat-card-image *ngIf="imageUrls" [imageUrls]="imageUrls" [minHeight]="'300px'" [autoPlay]="true" [showDots]="true" [arrowSize]="'20px'"></slideshow>
   <mat-card-content>
-    <p>
-      {{realestate.description}}
+    <mat-card-subtitle>地址：<span class="black">{{realestate.address}}</span></mat-card-subtitle>
+    <p *ngFor="let paragraph of description">
+      {{paragraph}}
     </p>
   </mat-card-content>
   <mat-card-actions>

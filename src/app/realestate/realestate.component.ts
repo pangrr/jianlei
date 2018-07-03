@@ -10,8 +10,9 @@ import { RealestateService } from '../realestate.service';
   styleUrls: ['./realestate.component.css']
 })
 export class RealestateComponent implements OnInit {
-  @Input() realestate: Realestate;
+  realestate: Realestate;
   imageUrls: string[];
+  description: string[];
 
   constructor(
     private route: ActivatedRoute,
@@ -27,6 +28,7 @@ export class RealestateComponent implements OnInit {
     this.realestateService.getRealestate(id)
       .subscribe(realestate => {
         this.imageUrls = realestate.images.map(i => `http://localhost:3000/realestate/image/${i}`);
+        this.description = realestate.description.split('\n');
         this.realestate = realestate;
       });
   }

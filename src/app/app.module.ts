@@ -7,10 +7,13 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MapComponent } from './map/map.component';
 import { MatInputModule } from '@angular/material';
+
+// marterial
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
 
 // 3rd party
 import { SlideshowModule } from 'ng-simple-slideshow';
@@ -38,11 +41,14 @@ import { RealestateService } from './realestate.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+
+    // material
     BrowserAnimationsModule,
     MatInputModule,
     MatFormFieldModule,
     MatCardModule,
     MatButtonModule,
+    MatDividerModule,
 
     SlideshowModule,
     AngularFileUploaderModule
