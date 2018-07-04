@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 // 3rd party
 import { SlideshowModule } from 'ng-simple-slideshow';
@@ -49,6 +50,7 @@ import { RealestateService } from './realestate.service';
     MatCardModule,
     MatButtonModule,
     MatDividerModule,
+    MatToolbarModule,
 
     SlideshowModule,
     AngularFileUploaderModule

@@ -3,6 +3,14 @@ export class Realestate {
   name: string;
   address: string;
   price: number;
+  groupPrice: number;
+  phoneNumber: PhoneNumber;
   description: string;
   images: string[];
+}
+
+export class PhoneNumber {
+  area: number;
+  exchange: number;
+  subscriber: number;
 }

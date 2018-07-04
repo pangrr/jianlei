@@ -1,12 +1,48 @@
+mat-toolbar {
+}
+
 mat-card {
   max-width: 600px;
   margin: 30px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+mat-card-header {
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+mat-card-content {
+  margin: 24px 16px 24px 16px;
+}
+
+mat-card-actions {
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+.groupon {
+  color: white;
+  background-color: rgb(228, 0, 0);
+  margin-left: 0;
+  margin-right: 0;
+  padding: 16px;
+}
+
+.group-price {
+  font-size: 20px;
+  color: white;
 }
 
 .red {
-  color: red
+  color: red;
 }
 
 .black {
-  color: black
+  color: black;
+}
+
+.white {
+  color: white;
 }

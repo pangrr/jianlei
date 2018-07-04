@@ -16,14 +16,7 @@ export class UploadComponent {
     theme: 'dragNDrop'
   };
 
-  realestate: Realestate = {
-    _id: undefined,
-    name: undefined,
-    address: undefined,
-    price: undefined,
-    description: undefined,
-    images: undefined
-  };
+  realestate = {} as Realestate;
 
   constructor(
     private realestateService: RealestateService

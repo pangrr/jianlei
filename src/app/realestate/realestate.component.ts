@@ -28,7 +28,7 @@ export class RealestateComponent implements OnInit {
     this.realestateService.getRealestate(id)
       .subscribe(realestate => {
         this.imageUrls = realestate.images.map(i => `http://localhost:3000/realestate/image/${i}`);
-        this.description = realestate.description.split('\n');
+        this.description = realestate.description.split(/\r?\n/);
         this.realestate = realestate;
       });
   }
