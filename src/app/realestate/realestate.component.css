@@ -1,9 +1,15 @@
 mat-toolbar {
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+  margin-bottom: 20px;
+  min-height: 45px;
+  max-height: 45px;
 }
 
 mat-card {
-  max-width: 600px;
-  margin: 30px;
+  top: 60px;
+  max-width: 650px;
   padding-left: 0;
   padding-right: 0;
 }
@@ -22,27 +28,49 @@ mat-card-actions {
   margin-right: 24px;
 }
 
-.groupon {
+.mat-warn {
+  background: rgb(228, 0, 0);
   color: white;
-  background-color: rgb(228, 0, 0);
+}
+
+.horizontal-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.full-width {
   margin-left: 0;
   margin-right: 0;
-  padding: 16px;
 }
 
-.group-price {
-  font-size: 20px;
-  color: white;
+.padding {
+  padding: 15px;
 }
 
-.red {
+.font-big {
+  font-size: 25px;
+}
+
+.color-red {
   color: red;
 }
 
-.black {
+.color-black {
   color: black;
 }
 
-.white {
+.color-white {
   color: white;
+}
+
+.color-grey {
+  color: rgba(0,0,0,.54)
+}
+
+.background-green {
+  background: limegreen;
+}
+
+.margin-right {
+  margin-right: 30px;
 }

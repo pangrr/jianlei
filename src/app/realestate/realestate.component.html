@@ -1,31 +1,39 @@
 <mat-toolbar color="warn">
   <mat-toolbar-row>
-    <span>{{realestate.name}}</span>
+    <span class="horizontal-center">{{realestate.name}}</span>
   </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-card *ngIf="realestate">
+<mat-card class="horizontal-center" *ngIf="realestate">
+
   <mat-card-header>
-    <mat-card-title>{{realestate.name}}</mat-card-title>
-    <mat-card-subtitle>均价：<span class="red">{{realestate.price}}</span>元/平米</mat-card-subtitle>
+    <mat-card-subtitle>地址：<span class="color-black">{{realestate.address}}</span></mat-card-subtitle>
+    <mat-card-subtitle>均价：<span class="color-red">{{realestate.price}}</span>元/平米</mat-card-subtitle>
+    <mat-card-subtitle>售楼电话：<span class="color-black">{{realestate.phoneNumber.area}}-{{realestate.phoneNumber.exchange}}-{{realestate.phoneNumber.subscriber}}</span></mat-card-subtitle>
   </mat-card-header>
+
   <slideshow *ngIf="imageUrls" [imageUrls]="imageUrls" [minHeight]="'300px'" [autoPlay]="true" [showDots]="true" [arrowSize]="'20px'"></slideshow>
+  
   <mat-card-content>
-    <mat-card-subtitle>地址：<span class="black">{{realestate.address}}</span></mat-card-subtitle>
-    <mat-card-subtitle>售楼电话：<span class="black">{{realestate.phoneNumber.area}}-{{realestate.phoneNumber.exchange}}-{{realestate.phoneNumber.subscriber}}</span></mat-card-subtitle>
+    <span class="color-grey margin-right">置业顾问：<span class="color-black">吴经理</span></span>
+    <button class="color-white background-green" mat-button>加微信</button>
+    <button mat-button>打电话</button>
   </mat-card-content>
-  <mat-card-content class="groupon">
-    <mat-card-subtitle>￥ <span class="group-price">{{realestate.groupPrice}}</span> 团购价</mat-card-subtitle>
-    <button mat-button>预约团购看房</button>
+
+  <mat-card-content class="full-width padding mat-warn">
+    <mat-card-subtitle class="color-white">￥<span class="font-big">{{realestate.groupPrice}}</span> 团购价</mat-card-subtitle>
+    <button matBadge="88" matBadgePosition="after" matBadgeColor="warn" mat-button>预约团购看房</button>
   </mat-card-content>
+
   <mat-card-content>
     <p *ngFor="let paragraph of description">
       {{paragraph}}
     </p>
   </mat-card-content>
+
   <mat-card-actions>
     <button mat-button>看房</button>
     <button mat-button color="warn">抢红包</button>
   </mat-card-actions>
-</mat-card>
 
+</mat-card>

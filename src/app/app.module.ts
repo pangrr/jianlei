@@ -15,6 +15,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatBadgeModule } from '@angular/material/badge';
 
 // 3rd party
 import { SlideshowModule } from 'ng-simple-slideshow';
@@ -51,6 +52,7 @@ import { RealestateService } from './realestate.service';
     MatButtonModule,
     MatDividerModule,
     MatToolbarModule,
+    MatBadgeModule,
 
     SlideshowModule,
     AngularFileUploaderModule
