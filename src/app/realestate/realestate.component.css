@@ -2,9 +2,9 @@ mat-toolbar {
   position: fixed;
   top: 0;
   z-index: 9999;
-  margin-bottom: 20px;
   min-height: 45px;
   max-height: 45px;
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
 }
 
 mat-card {
@@ -26,6 +26,11 @@ mat-card-content {
 mat-card-actions {
   margin-left: 24px;
   margin-right: 24px;
+}
+
+mat-icon {
+  vertical-align: bottom;
+  margin-right: 5px;
 }
 
 .mat-warn {
@@ -51,6 +56,10 @@ mat-card-actions {
   font-size: 25px;
 }
 
+.font-light {
+  font-weight: initial;
+}
+
 .color-red {
   color: red;
 }
@@ -67,8 +76,8 @@ mat-card-actions {
   color: rgba(0,0,0,.54)
 }
 
-.background-green {
-  background: limegreen;
+.color-green {
+  color: limegreen;
 }
 
 .margin-right {

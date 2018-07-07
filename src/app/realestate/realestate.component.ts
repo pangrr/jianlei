@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material';
 
 import { Realestate } from '../realestate';
 import { RealestateService } from '../realestate.service';
@@ -16,8 +18,17 @@ export class RealestateComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private realestateService: RealestateService
-  ) {}
+    private realestateService: RealestateService,
+    iconRegistry: MatIconRegistry,
+    sanitizer: DomSanitizer
+  ) {
+    iconRegistry.addSvgIcon(
+      'phone',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/phone.svg'));
+    iconRegistry.addSvgIcon(
+      'wechat',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/wechat.svg'));
+  }
 
   ngOnInit(): void {
     this.getRealestate();

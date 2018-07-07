@@ -1,4 +1,4 @@
-<mat-toolbar color="warn">
+<mat-toolbar class="font-light" color="warn" *ngIf="realestate">
   <mat-toolbar-row>
     <span class="horizontal-center">{{realestate.name}}</span>
   </mat-toolbar-row>
@@ -15,11 +15,12 @@
   <slideshow *ngIf="imageUrls" [imageUrls]="imageUrls" [minHeight]="'300px'" [autoPlay]="true" [showDots]="true" [arrowSize]="'20px'"></slideshow>
   
   <mat-card-content>
-    <span class="color-grey margin-right">置业顾问：<span class="color-black">吴经理 1652536666</span></span>
-    <button class="color-white background-green" mat-button>加微信</button>
+    <span class="color-grey margin-right">置业顾问：<span class="color-black">吴经理</span></span>
+    <mat-icon svgIcon="phone"></mat-icon>
+    <mat-icon svgIcon="wechat"></mat-icon>
   </mat-card-content>
 
-  <mat-card-content class="full-width padding mat-warn">
+  <mat-card-content class="full-width padding mat-warn font-light">
     <mat-card-subtitle class="color-white">￥<span class="font-big">{{realestate.groupPrice}}</span> 团购价</mat-card-subtitle>
     <button matBadge="88" matBadgePosition="after" matBadgeColor="warn" mat-button>预约团购看房</button>
   </mat-card-content>
