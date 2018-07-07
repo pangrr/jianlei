@@ -1,3 +1,7 @@
+p {
+  text-indent: 2em;
+}
+
 mat-toolbar {
   position: fixed;
   top: 0;
@@ -30,7 +34,8 @@ mat-card-actions {
 
 mat-icon {
   vertical-align: bottom;
-  margin-right: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .mat-warn {
@@ -53,7 +58,7 @@ mat-icon {
 }
 
 .font-big {
-  font-size: 25px;
+  font-size: 2em;
 }
 
 .font-light {
@@ -78,8 +83,4 @@ mat-icon {
 
 .color-green {
   color: limegreen;
-}
-
-.margin-right {
-  margin-right: 30px;
 }
