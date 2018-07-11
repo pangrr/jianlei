@@ -4,23 +4,28 @@ p {
 
 mat-toolbar {
   position: fixed;
-  top: 0;
   z-index: 9999;
   min-height: 45px;
   max-height: 45px;
   box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
 }
 
+.top-toolbar {
+  top: 0;
+}
+
+.bottom-toolbar {
+  bottom: 0;
+}
+
 mat-card {
   top: 60px;
   max-width: 650px;
-  padding-left: 0;
-  padding-right: 0;
+  padding: 0;
 }
 
 mat-card-header {
-  margin-left: 24px;
-  margin-right: 24px;
+  margin: 24px;
 }
 
 mat-card-content {
@@ -58,29 +63,47 @@ mat-icon {
 }
 
 .font-big {
-  font-size: 2em;
+  font-size: 1.5em;
+}
+
+.font-small {
+  font-size: 0.8em;
 }
 
 .font-light {
+  font-weight: lighter;
+}
+
+.font-normal {
   font-weight: initial;
 }
 
-.color-red {
+.red {
   color: red;
 }
 
-.color-black {
+.black {
   color: black;
 }
 
-.color-white {
+.white {
   color: white;
 }
 
-.color-grey {
+.grey {
   color: rgba(0,0,0,.54)
 }
 
 .color-green {
   color: limegreen;
+}
+
+.redpocket {
+  width: 120px;
+  margin: 10px;
+}
+
+.groupon {
+  background-color: rgb(228, 0, 0);
+  color: white;
 }
