@@ -1,8 +1,8 @@
-<mat-toolbar color="warn" class="top-toolbar font-normal" *ngIf="realestate">
-  <mat-toolbar-row>
-    <span class="font-small ">返回</span>
-    <span class="horizontal-center">{{realestate.name}}</span>
-    <span class="font-small">地图找房</span>
+<mat-toolbar color="warn" class="fixed top font-normal" *ngIf="realestate">
+  <mat-toolbar-row class="top-toolbar-row">
+    <button mat-button>返回</button>
+    <span>{{realestate.name}}</span>
+    <button mat-button>地图找房</button>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -84,10 +84,15 @@
 
 </mat-card>
 
-<mat-toolbar color="warn" class="font-normal bottom-toolbar" *ngIf="realestate">
-  <mat-toolbar-row>
-    <span class="font-small ">返回</span>
-    <span class="horizontal-center">{{realestate.name}}</span>
-    <span class="font-small">地图找房</span>
+<mat-toolbar class="fixed bottom font-small" *ngIf="realestate">
+  <mat-toolbar-row class="bottom-toolbar-row">
+    <span>{{realestate.name}}</span>
+    <mat-form-field>
+      <input matInput placeholder="联系电话">
+    </mat-form-field>
+    <button mat-button>预约班车看房</button>
+    <button mat-button>地图找房</button>
+    <button mat-button>团购看房</button>
+    <button mat-button>售楼热线</button>
   </mat-toolbar-row>
 </mat-toolbar>
