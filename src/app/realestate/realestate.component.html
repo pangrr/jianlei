@@ -51,7 +51,7 @@
 
   <mat-card-content>
     <mat-card-subtitle class="black">袁经理：直接找我，买房更便宜</mat-card-subtitle>
-    <mat-card-subtitle>置业顾问：138-8888-8888<mat-icon svgIcon="phone"></mat-icon></mat-card-subtitle>
+    <mat-card-subtitle>置业顾问：138-8888-8888<mat-icon class="black" svgIcon="phone"></mat-icon></mat-card-subtitle>
     <mat-card-subtitle>用专业知识让大家买到放心的房子</mat-card-subtitle>
   </mat-card-content>
     
@@ -92,12 +92,7 @@
 
 <mat-toolbar class="fixed bottom" *ngIf="realestate">
   <mat-toolbar-row>
-    <mat-form-field class="font-small">
-      <input matInput placeholder="联系电话">
-    </mat-form-field>
-    <button color="primary" mat-button>预约班车看房</button>
-  </mat-toolbar-row>
-  <mat-toolbar-row>
+    <button color="primary" mat-button>预约看房</button>
     <button color="primary" mat-button>地图找房</button>
     <button color="primary" mat-button>团购看房</button>
     <button color="primary" mat-button>售楼热线</button>
