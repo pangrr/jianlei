@@ -26,8 +26,8 @@ export class RealestateComponent implements OnInit {
       'phone',
       sanitizer.bypassSecurityTrustResourceUrl('assets/phone.svg'));
     iconRegistry.addSvgIcon(
-      'wechat',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/wechat.svg'));
+      'account',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/account.svg'));
   }
 
   ngOnInit(): void {

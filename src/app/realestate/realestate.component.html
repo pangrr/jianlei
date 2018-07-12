@@ -31,7 +31,7 @@
     <mat-grid-tile>
       <mat-card-content>
         <mat-card-subtitle class="white">￥<span class="font-big">{{realestate.groupPrice}}</span> 团购价</mat-card-subtitle>
-        <button mat-button>预约团购看房</button>
+        <button class="background-white" mat-button>预约团购看房</button>
       </mat-card-content>
     </mat-grid-tile>
     <mat-grid-tile>
@@ -45,13 +45,13 @@
 
 
   <mat-card-content>
-    <mat-card-subtitle class="black">{{realestate.name}}售楼处：400-100-1111</mat-card-subtitle>
+    <mat-card-subtitle class="black">{{realestate.name}}售楼处：400-100-1111<mat-icon svgIcon="phone"></mat-icon></mat-card-subtitle>
     <mat-card-subtitle>最新政策，更多优惠详情，请致电售楼处[120人拨打]</mat-card-subtitle>
   </mat-card-content>
 
   <mat-card-content>
     <mat-card-subtitle class="black">袁经理：直接找我，买房更便宜</mat-card-subtitle>
-    <mat-card-subtitle>置业顾问：138-8888-8888</mat-card-subtitle>
+    <mat-card-subtitle>置业顾问：138-8888-8888<mat-icon svgIcon="phone"></mat-icon></mat-card-subtitle>
     <mat-card-subtitle>用专业知识让大家买到放心的房子</mat-card-subtitle>
   </mat-card-content>
     
@@ -64,8 +64,8 @@
 
   <mat-card-content>
     <mat-card-subtitle>楼盘服务</mat-card-subtitle>
-    <mat-card-subtitle class="black">免费班车 随时看房 一对一小车服务<button mat-raised-button>预约班车看房</button></mat-card-subtitle>
-    <mat-card-subtitle class="black">自驾报销 随时看房 来回无忧<button mat-raised-button>预约自驾报销</button></mat-card-subtitle>
+    <mat-card-subtitle class="black">免费班车 随时看房 一对一小车服务<button class="margin-left" color="primary" mat-button>预约班车看房</button></mat-card-subtitle>
+    <mat-card-subtitle class="black">自驾报销 随时看房 来回无忧<button class="margin-left" color="primary" mat-button>预约自驾报销</button></mat-card-subtitle>
   </mat-card-content>
 
   <mat-card-content>
@@ -74,6 +74,11 @@
 
   <mat-card-content>
     <mat-card-subtitle>用户点评(232)</mat-card-subtitle>
+  </mat-card-content>
+
+  <mat-card-content>
+    <mat-card-subtitle class="black"><mat-icon svgIcon="account"></mat-icon><span class="blue">12332123</span></mat-card-subtitle>
+    <p class="comment">随便看看而已，还行，经理可靠，价格公道随便看看而已，还行，经理可靠，价格公道随便看看而已，还行，经理可靠，价格公道随便看看而已，还行，经理可靠，价格公道</p>
   </mat-card-content>
 
   <mat-card-content>
@@ -90,11 +95,11 @@
     <mat-form-field class="font-small">
       <input matInput placeholder="联系电话">
     </mat-form-field>
-    <button mat-button>预约班车看房</button>
+    <button color="primary" mat-button>预约班车看房</button>
   </mat-toolbar-row>
   <mat-toolbar-row>
-    <button mat-button>地图找房</button>
-    <button mat-button>团购看房</button>
-    <button mat-button>售楼热线</button>
+    <button color="primary" mat-button>地图找房</button>
+    <button color="primary" mat-button>团购看房</button>
+    <button color="primary" mat-button>售楼热线</button>
   </mat-toolbar-row>
 </mat-toolbar>

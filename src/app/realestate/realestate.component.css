@@ -10,7 +10,7 @@ mat-toolbar.fixed {
 mat-toolbar-row {
   padding: 0;
   justify-content: space-between;
-  height: 35px;
+  height: 36px;
 }
 
 .mat-toolbar-multiple-rows {
@@ -104,6 +104,10 @@ mat-icon {
   color: rgba(0,0,0,.54)
 }
 
+.blue {
+  color: rgb(29, 116, 230)
+}
+
 .color-green {
   color: limegreen;
 }
@@ -118,6 +122,19 @@ mat-icon {
   color: white;
 }
 
+.background-white {
+  background-color: white;
+  color: black;
+}
+
 .text-center {
   text-align: center;
+}
+
+p.comment {
+  margin-left: 12px;
+}
+
+button.margin-left {
+  margin-left: 0px;
 }
