@@ -54,8 +54,7 @@ mat-icon {
 }
 
 .mat-warn {
-  background: rgb(228, 0, 0);
-  color: white;
+
 }
 
 .horizontal-center {
@@ -131,7 +130,7 @@ mat-icon {
   text-align: center;
 }
 
-p.comment {
+p.comment, mat-card-subtitle.comment {
   margin-left: 12px;
 }
 

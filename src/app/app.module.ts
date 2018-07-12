@@ -19,6 +19,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatListModule } from '@angular/material/list';
 
 // 3rd party
 import { SlideshowModule } from 'ng-simple-slideshow';
@@ -59,6 +60,7 @@ import { RealestateService } from './realestate.service';
     MatIconModule,
     MatDialogModule,
     MatGridListModule,
+    MatListModule,
 
     // 3rd party
     SlideshowModule,
