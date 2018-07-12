@@ -9,6 +9,8 @@ mat-toolbar.fixed {
 
 mat-toolbar-row {
   padding: 0;
+  justify-content: space-between;
+  height: 35px;
 }
 
 .mat-toolbar-multiple-rows {
@@ -20,23 +22,16 @@ mat-toolbar.top {
   box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
 }
 
-.top-toolbar-row {
-  height: 35px;
-}
-
 mat-toolbar.bottom {
   bottom: 0;
   box-shadow: 0 -3px 5px -1px rgba(0,0,0,.2), 0 -6px 10px 0 rgba(0,0,0,.14), 0 -1px 18px 0 rgba(0,0,0,.12);
 }
 
-.bottom-toolbar-row {
-  height: 60px;
-}
-
 mat-card {
-  top: 60px;
+  top: 37px;
   max-width: 650px;
   padding: 0;
+  bottom: 37px;
 }
 
 mat-card-header {
@@ -56,10 +51,6 @@ mat-icon {
   vertical-align: bottom;
   margin-left: 10px;
   margin-right: 10px;
-}
-
-mat-toolbar-row {
-  justify-content: space-between;
 }
 
 .mat-warn {
@@ -122,7 +113,11 @@ mat-toolbar-row {
   margin: 10px;
 }
 
-.groupon {
+.background-red {
   background-color: rgb(228, 0, 0);
   color: white;
+}
+
+.text-center {
+  text-align: center;
 }

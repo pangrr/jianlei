@@ -1,45 +1,43 @@
 <mat-toolbar color="warn" class="fixed top font-normal" *ngIf="realestate">
-  <mat-toolbar-row class="top-toolbar-row">
+  <mat-toolbar-row>
     <button mat-button>返回</button>
     <span>{{realestate.name}}</span>
     <button mat-button>地图找房</button>
   </mat-toolbar-row>
 </mat-toolbar>
 
-
 <mat-card class="horizontal-center" *ngIf="realestate">
   <slideshow *ngIf="imageUrls" [imageUrls]="imageUrls" [minHeight]="'300px'" [autoPlay]="true" [showDots]="true" [arrowSize]="'20px'"></slideshow>
 
   <mat-grid-list cols="2" rowHeight="200px">
     <mat-grid-tile>
-      <mat-card-header>
-        <mat-card-title class="font-big">{{realestate.name}}</mat-card-title>
+      <mat-card-content>
+        <mat-card-subtitle class="black">{{realestate.name}}</mat-card-subtitle>
         <mat-card-subtitle>均价：<span class="red">{{realestate.price}}</span>元/平米</mat-card-subtitle>
         <mat-card-subtitle>开盘：<span class="black">在售中</span></mat-card-subtitle>
         <mat-card-subtitle>优惠折扣：<span class="black">新房红包</span></mat-card-subtitle>
         <mat-card-subtitle>地址：<span class="black">{{realestate.address}}</span></mat-card-subtitle>
-      </mat-card-header>
+      </mat-card-content>
     </mat-grid-tile>
     <mat-grid-tile>
       <mat-card-content>
         <img src="assets/redpocket.png" class="redpocket">
-        <mat-card-subtitle>￥<span class="red">12000</span></mat-card-subtitle>
-        <mat-card-subtitle>有效期：2017.10.1 - 2018.10.1</mat-card-subtitle>
+        <mat-card-subtitle>￥<span class="red">12000</span><span class="font-small">有效期：2017.10.1 - 2018.10.1</span></mat-card-subtitle>
       </mat-card-content>
     </mat-grid-tile>
   </mat-grid-list>
 
-  <mat-grid-list class="groupon" cols="2" rowHeight="200px">
+  <mat-grid-list class="background-red" cols="2" rowHeight="100px">
     <mat-grid-tile>
       <mat-card-content>
         <mat-card-subtitle class="white">￥<span class="font-big">{{realestate.groupPrice}}</span> 团购价</mat-card-subtitle>
-        <button mat-raised-button>预约团购看房</button>
+        <button mat-button>预约团购看房</button>
       </mat-card-content>
     </mat-grid-tile>
     <mat-grid-tile>
       <mat-card-content>
         <mat-card-subtitle class="white">团购看房前参加有效</mat-card-subtitle>
-        <mat-card-subtitle class="white">10天 12时 12分 10秒</mat-card-subtitle>
+        <mat-card-subtitle class="white">10天 12时 12分</mat-card-subtitle>
         <mat-card-subtitle class="white">120人参加</mat-card-subtitle>
       </mat-card-content>
     </mat-grid-tile>
@@ -47,50 +45,54 @@
 
 
   <mat-card-content>
-    <mat-card-title>{{realestate.name}}售楼处：400-100-1111</mat-card-title>
+    <mat-card-subtitle class="black">{{realestate.name}}售楼处：400-100-1111</mat-card-subtitle>
     <mat-card-subtitle>最新政策，更多优惠详情，请致电售楼处[120人拨打]</mat-card-subtitle>
   </mat-card-content>
 
   <mat-card-content>
-    <mat-card-title>袁经理：直接找我，买房更便宜</mat-card-title>
+    <mat-card-subtitle class="black">袁经理：直接找我，买房更便宜</mat-card-subtitle>
     <mat-card-subtitle>置业顾问：138-8888-8888</mat-card-subtitle>
     <mat-card-subtitle>用专业知识让大家买到放心的房子</mat-card-subtitle>
   </mat-card-content>
     
   <mat-card-content>
-    <mat-card-title class="grey">楼盘信息</mat-card-title>
+    <mat-card-subtitle>楼盘信息</mat-card-subtitle>
     <p class="indent" *ngFor="let paragraph of description">
       {{paragraph}}
     </p>
   </mat-card-content>
 
   <mat-card-content>
-    <mat-card-title class="grey">楼盘服务</mat-card-title>
-    <mat-card-subtitle>免费班车 随时看房 一对一小车服务<button mat-raised-button>预约班车看房</button></mat-card-subtitle>
-    <mat-card-subtitle>自驾报销 随时看房 来回无忧<button mat-raised-button>预约自驾报销</button></mat-card-subtitle>
+    <mat-card-subtitle>楼盘服务</mat-card-subtitle>
+    <mat-card-subtitle class="black">免费班车 随时看房 一对一小车服务<button mat-raised-button>预约班车看房</button></mat-card-subtitle>
+    <mat-card-subtitle class="black">自驾报销 随时看房 来回无忧<button mat-raised-button>预约自驾报销</button></mat-card-subtitle>
   </mat-card-content>
 
   <mat-card-content>
-    <mat-card-title class="grey">卫星地图</mat-card-title>
+    <mat-card-subtitle>卫星地图</mat-card-subtitle>
   </mat-card-content>
 
   <mat-card-content>
-    <mat-card-title class="grey">用户点评(232)</mat-card-title>
+    <mat-card-subtitle>用户点评(232)</mat-card-subtitle>
   </mat-card-content>
 
   <mat-card-content>
-    <mat-card-title class="grey">关注此楼盘的人还关注</mat-card-title>
+    <mat-card-subtitle>关注此楼盘的人还关注</mat-card-subtitle>
   </mat-card-content>
 
+  <mat-toolbar-row></mat-toolbar-row>
+  <mat-toolbar-row></mat-toolbar-row>
 </mat-card>
 
-<mat-toolbar class="fixed bottom font-small" *ngIf="realestate">
-  <mat-toolbar-row class="bottom-toolbar-row">
-    <span>{{realestate.name}}</span>
-    <mat-form-field>
+
+<mat-toolbar class="fixed bottom" *ngIf="realestate">
+  <mat-toolbar-row>
+    <mat-form-field class="font-small">
       <input matInput placeholder="联系电话">
     </mat-form-field>
     <button mat-button>预约班车看房</button>
+  </mat-toolbar-row>
+  <mat-toolbar-row>
     <button mat-button>地图找房</button>
     <button mat-button>团购看房</button>
     <button mat-button>售楼热线</button>
