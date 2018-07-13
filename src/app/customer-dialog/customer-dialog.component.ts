@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
-export interface CustomerInfo {
+export interface Customer {
   phone: string;
   action: string;
 }
@@ -11,12 +11,12 @@ export interface CustomerInfo {
   templateUrl: './customer-info-dialog.html',
   styleUrls: ['./customer-info-dialog.css']
 })
-export class CustomerInfoDialogComponent {
+export class CustomerDialogComponent {
 
   constructor(
-    public dialogRef: MatDialogRef<CustomerInfoDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public customerInfo: CustomerInfo) {
-      console.log(this.customerInfo);
+    public dialogRef: MatDialogRef<CustomerDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public customer: Customer) {
+      console.log(this.customer);
     }
 
   onNoClick(): void {

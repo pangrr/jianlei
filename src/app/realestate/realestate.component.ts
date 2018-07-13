@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material';
 
 import { Realestate } from '../realestate';
 import { RealestateService } from '../realestate.service';
-import { CustomerInfoDialogComponent } from '../customer-info-dialog/customer-info-dialog.component';
+import { CustomerDialogComponent } from '../customer-info-dialog/customer-info-dialog.component';
 
 @Component({
   selector: 'app-realestate',
@@ -60,7 +60,7 @@ export class RealestateComponent implements OnInit {
   }
 
   openDialog(action: string): void {
-    this.dialog.open(CustomerInfoDialogComponent, {
+    this.dialog.open(CustomerDialogComponent, {
       width: '250px',
       data: { phone: '', action }
     });

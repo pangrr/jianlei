@@ -30,7 +30,7 @@ import { RealestateComponent } from './realestate/realestate.component';
 import { SearchComponent } from './search/search.component';
 import { UploadComponent } from './upload/upload.component';
 import { RealestateService } from './realestate.service';
-import { CustomerInfoDialogComponent } from './customer-info-dialog/customer-info-dialog.component';
+import { CustomerDialogComponent } from './customer-info-dialog/customer-info-dialog.component';
 
 
 @NgModule({
@@ -41,10 +41,10 @@ import { CustomerInfoDialogComponent } from './customer-info-dialog/customer-inf
     RealestateComponent,
     SearchComponent,
     UploadComponent,
-    CustomerInfoDialogComponent
+    CustomerDialogComponent
   ],
   entryComponents: [
-    CustomerInfoDialogComponent
+    CustomerDialogComponent
   ],
   imports: [
     BrowserModule,
