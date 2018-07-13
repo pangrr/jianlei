@@ -53,10 +53,6 @@ mat-icon {
   margin-right: 10px;
 }
 
-.mat-warn {
-
-}
-
 .horizontal-center {
   margin-left: auto;
   margin-right: auto;
@@ -72,7 +68,7 @@ mat-icon {
 }
 
 .font-big {
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
 .font-small {
@@ -136,4 +132,8 @@ p.comment, mat-card-subtitle.comment {
 
 button.margin-left {
   margin-left: 0px;
+}
+
+mat-grid-list.related-realestate {
+  margin: 26px;
 }

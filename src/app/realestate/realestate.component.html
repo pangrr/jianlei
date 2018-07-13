@@ -56,24 +56,24 @@
   </mat-card-content>
     
   <mat-card-content>
-    <mat-card-subtitle>楼盘信息</mat-card-subtitle>
+    <mat-card-subtitle class="font-big">楼盘信息</mat-card-subtitle>
     <p class="indent" *ngFor="let paragraph of description">
       {{paragraph}}
     </p>
   </mat-card-content>
 
   <mat-card-content>
-    <mat-card-subtitle>楼盘服务</mat-card-subtitle>
+    <mat-card-subtitle class="font-big">楼盘服务</mat-card-subtitle>
     <mat-card-subtitle class="black">免费班车 随时看房 一对一小车服务<button class="margin-left" color="warn" mat-button>预约班车看房</button></mat-card-subtitle>
     <mat-card-subtitle class="black">自驾报销 随时看房 来回无忧<button class="margin-left" color="warn" mat-button>预约自驾报销</button></mat-card-subtitle>
   </mat-card-content>
 
   <mat-card-content>
-    <mat-card-subtitle>卫星地图</mat-card-subtitle>
+    <mat-card-subtitle class="font-big">卫星地图</mat-card-subtitle>
   </mat-card-content>
 
   <mat-card-content>
-    <mat-card-subtitle>用户点评(232)</mat-card-subtitle>
+    <mat-card-subtitle class="font-big">用户点评(232)</mat-card-subtitle>
   </mat-card-content>
 
   <mat-card-content>
@@ -83,14 +83,12 @@
   </mat-card-content>
 
   <mat-card-content>
-    <mat-card-subtitle>周边楼盘</mat-card-subtitle>
+    <mat-card-subtitle class="font-big">周边楼盘</mat-card-subtitle>
   </mat-card-content>
 
-  <mat-grid-list cols="2" rowHeight="100px">
+  <mat-grid-list class="related-realestate" cols="2" rowHeight="100px">
     <mat-grid-tile>
-      <mat-card-content>
-        <img [src]="imageUrls[0]">
-      </mat-card-content>
+      <img [src]="imageUrls[0]">
     </mat-grid-tile>
     <mat-grid-tile>
       <mat-card-content>
@@ -101,11 +99,9 @@
     </mat-grid-tile>
   </mat-grid-list>
 
-  <mat-grid-list cols="2" rowHeight="100px">
+  <mat-grid-list class="related-realestate" cols="2" rowHeight="100px">
     <mat-grid-tile>
-      <mat-card-content>
-        <img [src]="imageUrls[0]">
-      </mat-card-content>
+      <img [src]="imageUrls[0]">
     </mat-grid-tile>
     <mat-grid-tile>
       <mat-card-content>
@@ -117,7 +113,6 @@
   </mat-grid-list>
 
 
-  <mat-toolbar-row></mat-toolbar-row>
   <mat-toolbar-row></mat-toolbar-row>
 </mat-card>
 
