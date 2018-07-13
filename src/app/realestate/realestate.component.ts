@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { MatDialog } from '@angular/material';
@@ -14,16 +14,19 @@ import { CustomerInfoDialogComponent } from '../customer-info-dialog/customer-in
   styleUrls: ['./realestate.component.css']
 })
 export class RealestateComponent implements OnInit {
+  private imagesDir = 'http://localhost:3000/realestate/image/';
+
   realestate: Realestate;
-  imageUrls: string[];
   description: string[];
+  relatedRealestates: Realestate[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private realestateService: RealestateService,
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) {
     iconRegistry.addSvgIcon(
       'phone',
@@ -41,8 +44,17 @@ export class RealestateComponent implements OnInit {
     const id: string = this.route.snapshot.paramMap.get('id');
     this.realestateService.getRealestate(id)
       .subscribe(realestate => {
-        this.imageUrls = realestate.images.map(i => `http://localhost:3000/realestate/image/${i}`);
+        realestate.images = realestate.images.map(i => `${this.imagesDir}${i}`);
+
         this.description = realestate.description.split(/\r?\n/);
+
+        realestate.relatedRealestateIds.forEach(_id => {
+          this.realestateService.getRealestate(_id).subscribe(r => {
+            r.images = r.images.map(_i => `${this.imagesDir}${_i}`);
+            this.relatedRealestates.push(r);
+          });
+        });
+
         this.realestate = realestate;
       });
   }
@@ -52,6 +64,10 @@ export class RealestateComponent implements OnInit {
       width: '250px',
       data: { phone: '', action }
     });
+  }
+
+  gotoRealestate(id: string): void {
+    this.router.navigateByUrl(`/realestate/${id}`);
   }
 
 }

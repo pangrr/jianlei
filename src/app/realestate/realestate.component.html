@@ -1,4 +1,4 @@
-<mat-toolbar color="warn" class="fixed top font-normal" *ngIf="realestate">
+<mat-toolbar color="primary" class="fixed top font-normal" *ngIf="realestate">
   <mat-toolbar-row>
     <button mat-button>返回</button>
     <span>{{realestate.name}}</span>
@@ -7,9 +7,9 @@
 </mat-toolbar>
 
 <mat-card class="horizontal-center" *ngIf="realestate">
-  <slideshow *ngIf="imageUrls" [imageUrls]="imageUrls" [minHeight]="'300px'" [autoPlay]="true" [showDots]="true" [arrowSize]="'20px'"></slideshow>
+  <slideshow [imageUrls]="realestate.images" [minHeight]="'300px'" [autoPlay]="true" [showDots]="true" [arrowSize]="'20px'"></slideshow>
 
-  <mat-grid-list cols="2" rowHeight="200px">
+  <mat-grid-list *ngIf="realestate.redpocket; let redpocket" cols="2" rowHeight="200px">
     <mat-grid-tile>
       <mat-card-content>
         <mat-card-subtitle class="black">{{realestate.name}}</mat-card-subtitle>
@@ -21,8 +21,8 @@
     </mat-grid-tile>
     <mat-grid-tile>
       <mat-card-content>
-        <img (click)="openDialog('领取红包')" src="assets/redpocket.png" class="redpocket">
-        <mat-card-subtitle>￥<span class="red">12000</span><span class="font-small">有效期：2017.10.1 - 2018.10.1</span></mat-card-subtitle>
+        <img (click)="openDialog('领取红包')" src="assets/redpocket.png" class="redpocket clickable">
+        <mat-card-subtitle>￥<span class="red">{{redpocket.amount}}</span><span class="font-small">有效期：{{redpocket.startDate}} - {{redpocket.endDate}}</span></mat-card-subtitle>
       </mat-card-content>
     </mat-grid-tile>
   </mat-grid-list>
@@ -45,14 +45,14 @@
 
 
   <mat-card-content>
-    <mat-card-subtitle class="black">{{realestate.name}}售楼处：400-100-1111<mat-icon svgIcon="phone"></mat-icon></mat-card-subtitle>
+    <mat-card-subtitle class="black">{{realestate.name}}售楼处：{{realestate.phone}}<mat-icon svgIcon="phone"></mat-icon></mat-card-subtitle>
     <mat-card-subtitle>最新政策，更多优惠详情，请致电售楼处[120人拨打]</mat-card-subtitle>
   </mat-card-content>
 
-  <mat-card-content>
-    <mat-card-subtitle class="black">袁经理：直接找我，买房更便宜</mat-card-subtitle>
-    <mat-card-subtitle>置业顾问：138-8888-8888<mat-icon class="black" svgIcon="phone"></mat-icon></mat-card-subtitle>
-    <mat-card-subtitle>用专业知识让大家买到放心的房子</mat-card-subtitle>
+  <mat-card-content *ngIf="realestate.consultant; let consultant">
+    <mat-card-subtitle class="font-big">置业顾问</mat-card-subtitle>
+    <mat-card-subtitle class="black">{{consultant.title}}：{{consultant.phone}}<mat-icon class="black" svgIcon="phone"></mat-icon></mat-card-subtitle>
+    <mat-card-subtitle>{{consultant.description}}</mat-card-subtitle>
   </mat-card-content>
     
   <mat-card-content>
@@ -64,8 +64,7 @@
 
   <mat-card-content>
     <mat-card-subtitle class="font-big">楼盘服务</mat-card-subtitle>
-    <mat-card-subtitle class="black">免费班车 随时看房 一对一小车服务<button class="margin-left" color="warn" (click)="openDialog('预约班车看房')" mat-button>预约班车看房</button></mat-card-subtitle>
-    <mat-card-subtitle class="black">自驾报销 随时看房 来回无忧<button class="margin-left" color="warn" (click)="openDialog('预约自驾报销')" mat-button>预约自驾报销</button></mat-card-subtitle>
+    <mat-card-subtitle *ngFor="let service of realestate.visitServices" class="black"><button color="primary" (click)="openDialog(service.name)" mat-button>{{service.name}}</button>{{service.description}}</mat-card-subtitle>
   </mat-card-content>
 
   <mat-card-content>
@@ -76,42 +75,28 @@
     <mat-card-subtitle class="font-big">用户点评(232)</mat-card-subtitle>
   </mat-card-content>
 
-  <mat-card-content>
-    <mat-card-subtitle class="black"><mat-icon svgIcon="account"></mat-icon><span class="blue">12332123</span></mat-card-subtitle>
-    <p class="comment">随便看看而已，还行，经理可靠，价格公道随便看看而已，还行，经理可靠，价格公道随便看看而已，还行，经理可靠，价格公道随便看看而已，还行，经理可靠，价格公道</p>
-    <mat-card-subtitle class="comment">2018-06-12 12:33</mat-card-subtitle>
+  <mat-card-content *ngFor="let comment of realestate.comments">
+    <mat-card-subtitle class="black"><mat-icon svgIcon="account"></mat-icon><span class="blue">{{comment.account}}</span></mat-card-subtitle>
+    <p class="comment">{{comment.text}}</p>
+    <mat-card-subtitle class="comment">{{comment.date}}</mat-card-subtitle>
   </mat-card-content>
 
   <mat-card-content>
     <mat-card-subtitle class="font-big">周边楼盘</mat-card-subtitle>
   </mat-card-content>
 
-  <mat-grid-list class="related-realestate" cols="2" rowHeight="100px">
+  <mat-grid-list *ngFor="let r of relatedRealestates" (click)="gotoRealestate(r._id)" class="related-realestate clickable" cols="2" rowHeight="100px">
     <mat-grid-tile>
-      <img [src]="imageUrls[0]">
+      <img [src]="r.images[0]">
     </mat-grid-tile>
     <mat-grid-tile>
       <mat-card-content>
-        <mat-card-subtitle class="black">{{realestate.name}}</mat-card-subtitle>
-        <mat-card-subtitle>{{realestate.address}}</mat-card-subtitle>
-        <mat-card-subtitle class="red">均价{{realestate.price}}元/平米</mat-card-subtitle>
+        <mat-card-subtitle class="black">{{r.name}}</mat-card-subtitle>
+        <mat-card-subtitle>{{r.address}}</mat-card-subtitle>
+        <mat-card-subtitle class="red">均价{{r.price}}元/平米</mat-card-subtitle>
       </mat-card-content>
     </mat-grid-tile>
   </mat-grid-list>
-
-  <mat-grid-list class="related-realestate" cols="2" rowHeight="100px">
-    <mat-grid-tile>
-      <img [src]="imageUrls[0]">
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <mat-card-content>
-        <mat-card-subtitle class="black">{{realestate.name}}</mat-card-subtitle>
-        <mat-card-subtitle>{{realestate.address}}</mat-card-subtitle>
-        <mat-card-subtitle class="red">均价{{realestate.price}}元/平米</mat-card-subtitle>
-      </mat-card-content>
-    </mat-grid-tile>
-  </mat-grid-list>
-
 
   <mat-toolbar-row></mat-toolbar-row>
 </mat-card>
@@ -119,9 +104,9 @@
 
 <mat-toolbar class="fixed bottom" *ngIf="realestate">
   <mat-toolbar-row>
-    <button color="warn" mat-button (click)="openDialog('预约看房')">预约看房</button>
-    <button color="warn" mat-button (click)="openDialog('领取红包')">新房红包</button>
-    <button color="warn" mat-button (click)="openDialog('预约团购看房')">团购看房</button>
-    <button color="warn" mat-button>售楼热线</button>
+    <button color="primary" mat-button (click)="openDialog('预约看房')">预约看房</button>
+    <button color="primary" mat-button (click)="openDialog('领取红包')">新房红包</button>
+    <button color="primary" mat-button (click)="openDialog('预约团购看房')">团购看房</button>
+    <button color="primary" mat-button>售楼热线</button>
   </mat-toolbar-row>
 </mat-toolbar>

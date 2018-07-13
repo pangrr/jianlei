@@ -110,7 +110,6 @@ mat-icon {
 .redpocket {
   width: 120px;
   margin: 10px;
-  cursor: pointer;
 }
 
 .background-red {
@@ -137,4 +136,8 @@ button.margin-left {
 
 mat-grid-list.related-realestate {
   margin: 26px;
+}
+
+.clickable {
+  cursor: pointer;
 }
