@@ -110,6 +110,7 @@ mat-icon {
 .redpocket {
   width: 120px;
   margin: 10px;
+  cursor: pointer;
 }
 
 .background-red {

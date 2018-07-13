@@ -21,7 +21,7 @@
     </mat-grid-tile>
     <mat-grid-tile>
       <mat-card-content>
-        <img src="assets/redpocket.png" class="redpocket">
+        <img (click)="openDialog('抢红包')" src="assets/redpocket.png" class="redpocket">
         <mat-card-subtitle>￥<span class="red">12000</span><span class="font-small">有效期：2017.10.1 - 2018.10.1</span></mat-card-subtitle>
       </mat-card-content>
     </mat-grid-tile>
@@ -31,7 +31,7 @@
     <mat-grid-tile>
       <mat-card-content>
         <mat-card-subtitle class="white">￥<span class="font-big">{{realestate.groupPrice}}</span> 团购价</mat-card-subtitle>
-        <button class="background-white" mat-button>预约团购看房</button>
+        <button class="background-white" mat-button (click)="openDialog('团购看房')">预约团购看房</button>
       </mat-card-content>
     </mat-grid-tile>
     <mat-grid-tile>
@@ -119,9 +119,9 @@
 
 <mat-toolbar class="fixed bottom" *ngIf="realestate">
   <mat-toolbar-row>
-    <button color="warn" mat-button>预约看房</button>
-    <button color="warn" mat-button>新房红包</button>
-    <button color="warn" mat-button>团购看房</button>
+    <button color="warn" mat-button (click)="openDialog('预约看房')">预约看房</button>
+    <button color="warn" mat-button (click)="openDialog('抢红包')">新房红包</button>
+    <button color="warn" mat-button (click)="openDialog('团购看房')">团购看房</button>
     <button color="warn" mat-button>售楼热线</button>
   </mat-toolbar-row>
 </mat-toolbar>
