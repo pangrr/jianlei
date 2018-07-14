@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Realestate } from '../realestate';
+import { Realestate, Redpocket, VisitingServices, Consultant } from '../realestate';
 import { RealestateService } from '../realestate.service';
 
 
@@ -22,7 +22,11 @@ export class EditComponent implements OnInit {
   constructor(
     private realestateService: RealestateService,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    this.realestate.redpocket = {} as Redpocket;
+    this.realestate.visitServices = {} as VisitingServices;
+    this.realestate.consultant = {} as Consultant;
+  }
 
   ngOnInit(): void {
     const id: string = this.route.snapshot.paramMap.get('id');
@@ -41,7 +45,11 @@ export class EditComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.realestateService.addRealestate(this.realestate)
-      .subscribe(savedRealestate => this.realestate._id = savedRealestate._id);
+    if (!this.realestate._id) {
+      this.realestateService.addRealestate(this.realestate)
+        .subscribe(savedRealestate => this.realestate._id = savedRealestate._id);
+    } else {
+      this.realestateService.updateRealestate(this.realestate, this.realestate._id);
+    }
   }
 }

@@ -17,28 +17,28 @@ export class RealestateService {
     private http: HttpClient
   ) {}
 
-  /** GET realestate by id. Will 404 if id not found */
   getRealestate(id: string): Observable<Realestate> {
-    const url = `${this.url}/${id}`;
-    return this.http.get<Realestate>(url).pipe(
+    return this.http.get<Realestate>(`${this.url}/${id}`).pipe(
       catchError(this.handleError<Realestate>(`getRealestate id=${id}`))
     );
   }
 
-  /** GET all realestates. Will 404 if id not found */
   getRealestates(): Observable<Realestate[]> {
-    const url = `${this.url}`;
-    return this.http.get<Realestate[]>(url).pipe(
+    return this.http.get<Realestate[]>(this.url).pipe(
       catchError(this.handleError<Realestate[]>(`getRealestates`))
     );
   }
 
-  /** POST: add a new hero to the database */
   addRealestate(realestate: Realestate): Observable<Realestate> {
-    return this.http.post<Realestate>(this.url, realestate, httpOptions)
-      .pipe(
-        catchError(this.handleError<Realestate>('addRealestate', realestate))
-      );
+    return this.http.post<Realestate>(this.url, realestate, httpOptions).pipe(
+      catchError(this.handleError<Realestate>('addRealestate', realestate))
+    );
+  }
+
+  updateRealestate(realestate: Realestate, id: string): Observable<Realestate> {
+    return this.http.put<Realestate>(`${this.url}/${id}`, realestate, httpOptions).pipe(
+      catchError(this.handleError<Realestate>('updateRealestate', realestate))
+    );
   }
 
   /**
