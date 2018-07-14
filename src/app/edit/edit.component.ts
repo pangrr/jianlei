@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Realestate, Redpocket, VisitingServices, Consultant } from '../realestate';
 import { RealestateService } from '../realestate.service';
+import { MatTableDataSource } from '../../../node_modules/@angular/material';
 
 
 @Component({
@@ -17,15 +18,19 @@ export class EditComponent implements OnInit {
     theme: 'dragNDrop'
   };
 
-  realestate = {} as Realestate;
+  realestate: Realestate;
+  realestateDataSource;
+  realestateDisplayedColumns: string[] = ['select', 'name'];
 
   constructor(
     private realestateService: RealestateService,
     private route: ActivatedRoute
   ) {
+    this.realestate = {} as Realestate;
     this.realestate.redpocket = {} as Redpocket;
-    this.realestate.visitServices = {} as VisitingServices;
     this.realestate.consultant = {} as Consultant;
+    this.realestate.visitServices = {} as VisitingServices;
+    this.realestate.comments = [];
   }
 
   ngOnInit(): void {
@@ -33,6 +38,8 @@ export class EditComponent implements OnInit {
     if (id) {
       this.getRealestate(id);
     }
+
+    this.getRealestates();
   }
 
   private getRealestate(id: string): void {
@@ -40,16 +47,21 @@ export class EditComponent implements OnInit {
       .subscribe(r => this.realestate = r);
   }
 
-  onImagesUploaded(event): void {
+  addImages(event): void {
     this.realestate.images = JSON.parse(event.response);
   }
 
-  onSubmit(): void {
-    if (!this.realestate._id) {
-      this.realestateService.addRealestate(this.realestate)
-        .subscribe(savedRealestate => this.realestate._id = savedRealestate._id);
-    } else {
-      this.realestateService.updateRealestate(this.realestate, this.realestate._id);
-    }
+  addRealestate(): void {
+    this.realestateService.addRealestate(this.realestate)
+    .subscribe(savedRealestate => this.realestate._id = savedRealestate._id);
+  }
+
+  updateRealestate(): void {
+    this.realestateService.updateRealestate(this.realestate, this.realestate._id);
+  }
+
+  getRealestates(): void {
+    this.realestateService.getRealestates()
+      .subscribe(rs => this.realestateDataSource = new MatTableDataSource(rs));
   }
 }
