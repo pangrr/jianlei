@@ -1,0 +1,72 @@
+<angular-file-uploader [config]="afuConfig" (ApiResponse)="onImagesUploaded($event)"></angular-file-uploader>
+
+<form (ngSubmit)="onSubmit()" #realestateForm="ngForm">
+  <mat-form-field>
+    <input matInput placeholder="名称" type="text" name="name" [(ngModel)]="realestate.name" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-chip-list #chipList>
+      <mat-chip *ngFor="let image of realestate.images" [removable]="true" (removed)="removeImage(image)">
+        {{image}}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+      <input placeholder="图片"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        [matChipInputAddOnBlur]="addOnBlur"
+        (matChipInputTokenEnd)="addImage($event)" required>
+    </mat-chip-list>
+  </mat-form-field>
+    
+
+  <mat-form-field>
+    <input matInput type="text" placeholder="地址" name="address" [(ngModel)]="realestate.address" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="均价" min="0" name="price" [(ngModel)]="realestate.price" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="红包金额" min="0" name="redpocket-amount" [(ngModel)]="realestate.redpocket.amount" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="text" placeholder="红包开始日期" name="redpocket-startdate" [(ngModel)]="realestate.redpocket.startDate" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="text" placeholder="红包截止日期" name="redpocket-enddate" [(ngModel)]="realestate.redpocket.endDate" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="text" placeholder="团购价" name="group-price" [(ngModel)]="realestate.groupPrice" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="tel" placeholder="售楼电话" name="phone" [(ngModel)]="realestate.phone" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="text" placeholder="置业顾问名称" name="consultant-title" [(ngModel)]="realestate.consultant.title" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="text" placeholder="置业顾问电话" name="consultant-phone" [(ngModel)]="realestate.consultant.phone" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="text" placeholder="置业顾问简介" name="consultant-description" [(ngModel)]="realestate.consultant.description" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="楼盘信息" name="description" [(ngModel)]="realestate.description" required></textarea>
+  </mat-form-field>
+
+  <button type="submit" [disabled]="!realestateForm.form.valid" color="primary">提交</button>
+</form>
+
+<a href="http://localhost:4200/realestate/{{realestate._id}}" *ngIf="realestate._id">已保存房产 {{realestate._id}}</a>
+
+

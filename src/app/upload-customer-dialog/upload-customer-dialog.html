@@ -2,5 +2,5 @@
   <mat-form-field>
     <input matInput placeholder="电话号码" type="tel" name="phone" [(ngModel)]="customer.phone" required>
   </mat-form-field>
-  <button mat-button color="primary" type="submit" [disabled]="!customerForm.form.valid">{{customer.action}}</button>
+  <button mat-button color="primary" type="submit" [disabled]="!customerForm.form.valid">{{customer.request}}</button>
 </form>

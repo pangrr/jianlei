@@ -9,7 +9,7 @@ export interface Realestate {
   consultant: Consultant;
   description: string;
   images: string[];
-  visitServices: VisitService[];
+  visitServices: VisitingServices;
   comments: Comment[];
   relatedRealestateIds: string[];
 }
@@ -26,15 +26,15 @@ export interface Consultant {
   description: string;
 }
 
-export interface VisitService {
-  name: string;
-  description: string;
-}
-
 export interface Comment {
   account: string;
   text: string;
   date: string;
+}
+
+export interface VisitingServices {
+  taxi: string;
+  reimburse: string;
 }
 
 

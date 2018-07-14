@@ -1,14 +1,15 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Realestate } from '../realestate';
 import { RealestateService } from '../realestate.service';
 
 
 @Component({
   selector: 'app-upload',
-  templateUrl: './upload-realestate.component.html',
-  styleUrls: ['./upload-realestate.component.css']
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.css']
 })
-export class UploadRealestateComponent {
+export class EditComponent implements OnInit {
   @Input() afuConfig = {
     formatsAllowed: '.jpg,.png',
     uploadAPI: { url: 'http://localhost:3000/realestate/images' },
@@ -19,8 +20,21 @@ export class UploadRealestateComponent {
   realestate = {} as Realestate;
 
   constructor(
-    private realestateService: RealestateService
+    private realestateService: RealestateService,
+    private route: ActivatedRoute
   ) {}
+
+  ngOnInit(): void {
+    const id: string = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.getRealestate(id);
+    }
+  }
+
+  private getRealestate(id: string): void {
+    this.realestateService.getRealestate(id)
+      .subscribe(r => this.realestate = r);
+  }
 
   onImagesUploaded(event): void {
     this.realestate.images = JSON.parse(event.response);
@@ -30,5 +44,4 @@ export class UploadRealestateComponent {
     this.realestateService.addRealestate(this.realestate)
       .subscribe(savedRealestate => this.realestate._id = savedRealestate._id);
   }
-
 }

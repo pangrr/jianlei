@@ -22,6 +22,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
+import { MatChipsModule } from '@angular/material/chips';
 
 // 3rd party
 import { SlideshowModule } from 'ng-simple-slideshow';
@@ -31,7 +32,7 @@ import { AngularFileUploaderModule } from 'angular-file-uploader';
 import { RealestateComponent } from './realestate/realestate.component';
 import { AdminComponent } from './admin/admin.component';
 import { SearchComponent } from './search/search.component';
-import { UploadRealestateComponent } from './upload-realestate/upload-realestate.component';
+import { EditComponent } from './edit/edit.component';
 import { RealestateService } from './realestate.service';
 import { CustomerService } from './customer.service';
 import { UploadCustomerDialogComponent } from './upload-customer-dialog/upload-customer-dialog.component';
@@ -45,7 +46,7 @@ import { UploadCustomerDialogComponent } from './upload-customer-dialog/upload-c
     RealestateComponent,
     AdminComponent,
     SearchComponent,
-    UploadRealestateComponent,
+    EditComponent,
     UploadCustomerDialogComponent
   ],
   entryComponents: [
@@ -72,6 +73,7 @@ import { UploadCustomerDialogComponent } from './upload-customer-dialog/upload-c
     MatListModule,
     MatTabsModule,
     MatTableModule,
+    MatChipsModule,
 
     // 3rd party
     SlideshowModule,
