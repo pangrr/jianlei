@@ -5,10 +5,10 @@ import { RealestateService } from '../realestate.service';
 
 @Component({
   selector: 'app-upload',
-  templateUrl: './upload.component.html',
-  styleUrls: ['./upload.component.css']
+  templateUrl: './upload-realestate.component.html',
+  styleUrls: ['./upload-realestate.component.css']
 })
-export class UploadComponent {
+export class UploadRealestateComponent {
   @Input() afuConfig = {
     formatsAllowed: '.jpg,.png',
     uploadAPI: { url: 'http://localhost:3000/realestate/images' },

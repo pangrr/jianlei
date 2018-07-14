@@ -2,42 +2,33 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Realestate } from './realestate';
+import { Customer } from './customer';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
 @Injectable()
-export class RealestateService {
+export class CustomerService {
 
-  private url = 'http://localhost:3000/realestate';
+  private url = 'http://localhost:3000/customer';
 
   constructor(
     private http: HttpClient
   ) {}
 
   /** GET realestate by id. Will 404 if id not found */
-  getRealestate(id: string): Observable<Realestate> {
-    const url = `${this.url}/${id}`;
-    return this.http.get<Realestate>(url).pipe(
-      catchError(this.handleError<Realestate>(`getRealestate id=${id}`))
-    );
-  }
-
-  /** GET all realestates. Will 404 if id not found */
-  getRealestates(): Observable<Realestate[]> {
-    const url = `${this.url}`;
-    return this.http.get<Realestate[]>(url).pipe(
-      catchError(this.handleError<Realestate[]>(`getRealestates`))
+  getCustomers(): Observable<Customer[]> {
+    return this.http.get<Customer[]>(this.url).pipe(
+      catchError(this.handleError<Customer[]>(`getAllCustomers`))
     );
   }
 
   /** POST: add a new hero to the database */
-  addRealestate(realestate: Realestate): Observable<Realestate> {
-    return this.http.post<Realestate>(this.url, realestate, httpOptions)
+  addCustomer(customer: Customer): Observable<Customer> {
+    return this.http.post<Customer>(this.url, customer, httpOptions)
       .pipe(
-        catchError(this.handleError<Realestate>('addRealestate', realestate))
+        catchError(this.handleError<Customer>('addCustomer', customer))
       );
   }
 

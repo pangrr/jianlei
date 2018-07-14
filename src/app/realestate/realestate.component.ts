@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material';
 
 import { Realestate } from '../realestate';
 import { RealestateService } from '../realestate.service';
-import { CustomerDialogComponent } from '../customer-info-dialog/customer-info-dialog.component';
+import { UploadCustomerDialogComponent } from '../upload-customer-dialog/upload-customer-dialog.component';
 
 @Component({
   selector: 'app-realestate',
@@ -14,17 +14,15 @@ import { CustomerDialogComponent } from '../customer-info-dialog/customer-info-d
   styleUrls: ['./realestate.component.css']
 })
 export class RealestateComponent implements OnInit {
-  private imagesDir = 'http://localhost:3000/realestate/image/';
-
-  realestate: Realestate;
-  description: string[];
-  relatedRealestates: Realestate[] = [];
+  public realestate: Realestate;
+  public description: string[];
+  public relatedRealestates: Realestate[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private realestateService: RealestateService,
-    iconRegistry: MatIconRegistry,
-    sanitizer: DomSanitizer,
+    public iconRegistry: MatIconRegistry,
+    public sanitizer: DomSanitizer,
     public dialog: MatDialog,
     private router: Router
   ) {
@@ -44,13 +42,13 @@ export class RealestateComponent implements OnInit {
     const id: string = this.route.snapshot.paramMap.get('id');
     this.realestateService.getRealestate(id)
       .subscribe(realestate => {
-        realestate.images = realestate.images.map(i => `${this.imagesDir}${i}`);
+        realestate.images = this.replaceImageNamesWithUrls(realestate.images);
 
         this.description = realestate.description.split(/\r?\n/);
 
         realestate.relatedRealestateIds.forEach(_id => {
           this.realestateService.getRealestate(_id).subscribe(r => {
-            r.images = r.images.map(_i => `${this.imagesDir}${_i}`);
+            r.images = this.replaceImageNamesWithUrls(r.images);
             this.relatedRealestates.push(r);
           });
         });
@@ -59,15 +57,20 @@ export class RealestateComponent implements OnInit {
       });
   }
 
-  openDialog(action: string): void {
-    this.dialog.open(CustomerDialogComponent, {
+  openDialog(request: string): void {
+    this.dialog.open(UploadCustomerDialogComponent, {
       width: '250px',
-      data: { phone: '', action }
+      data: { phone: '', request, realestateId: this.realestate._id }
     });
   }
 
   gotoRealestate(id: string): void {
     this.router.navigateByUrl(`/realestate/${id}`);
+  }
+
+  private replaceImageNamesWithUrls(names: string[]): string[] {
+    const imagesDir = 'http://localhost:3000/realestate/image/';
+    return names.map(n => `${imagesDir}${n}`);
   }
 
 }

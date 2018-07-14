@@ -20,6 +20,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatListModule } from '@angular/material/list';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatTableModule } from '@angular/material/table';
 
 // 3rd party
 import { SlideshowModule } from 'ng-simple-slideshow';
@@ -27,10 +29,12 @@ import { AngularFileUploaderModule } from 'angular-file-uploader';
 
 // custom
 import { RealestateComponent } from './realestate/realestate.component';
+import { AdminComponent } from './admin/admin.component';
 import { SearchComponent } from './search/search.component';
-import { UploadComponent } from './upload/upload.component';
+import { UploadRealestateComponent } from './upload-realestate/upload-realestate.component';
 import { RealestateService } from './realestate.service';
-import { CustomerDialogComponent } from './customer-info-dialog/customer-info-dialog.component';
+import { CustomerService } from './customer.service';
+import { UploadCustomerDialogComponent } from './upload-customer-dialog/upload-customer-dialog.component';
 
 
 @NgModule({
@@ -39,12 +43,13 @@ import { CustomerDialogComponent } from './customer-info-dialog/customer-info-di
     MapComponent,
 
     RealestateComponent,
+    AdminComponent,
     SearchComponent,
-    UploadComponent,
-    CustomerDialogComponent
+    UploadRealestateComponent,
+    UploadCustomerDialogComponent
   ],
   entryComponents: [
-    CustomerDialogComponent
+    UploadCustomerDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -65,12 +70,14 @@ import { CustomerDialogComponent } from './customer-info-dialog/customer-info-di
     MatDialogModule,
     MatGridListModule,
     MatListModule,
+    MatTabsModule,
+    MatTableModule,
 
     // 3rd party
     SlideshowModule,
     AngularFileUploaderModule
   ],
-  providers: [RealestateService],
+  providers: [RealestateService, CustomerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

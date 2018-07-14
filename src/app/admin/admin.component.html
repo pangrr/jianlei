@@ -1,0 +1,50 @@
+<mat-tab-group dynamicHeight>
+  <mat-tab label="房产">
+    <mat-form-field>
+      <input matInput (keyup)="applyRealestateFilter($event.target.value)" placeholder="搜索">
+    </mat-form-field>
+    
+    <table mat-table [dataSource]="realestateDataSource" class="mat-elevation-z8">
+    
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>名称</th>
+        <td mat-cell *matCellDef="let realestate">{{realestate.name}}</td>
+      </ng-container>
+    
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>id</th>
+        <td mat-cell *matCellDef="let realestate">{{realestate._id}}</td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="realestateDisplayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: realestateDisplayedColumns;"></tr>
+    </table>   
+  </mat-tab>
+
+  <mat-tab label="客户">
+    <mat-form-field>
+      <input matInput (keyup)="applyCustomerFilter($event.target.value)" placeholder="搜索">
+    </mat-form-field>
+    
+    <table mat-table [dataSource]="customerDataSource" class="mat-elevation-z8">
+    
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef>电话</th>
+        <td mat-cell *matCellDef="let customer">{{customer.phone}}</td>
+      </ng-container>
+    
+      <ng-container matColumnDef="realestate">
+        <th mat-header-cell *matHeaderCellDef>房产</th>
+        <td mat-cell *matCellDef="let customer">{{customer.realestateName}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="request">
+        <th mat-header-cell *matHeaderCellDef>需求</th>
+        <td mat-cell *matCellDef="let customer">{{customer.request}}</td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="customerDisplayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: customerDisplayedColumns;"></tr>
+    </table>   
+  </mat-tab>
+</mat-tab-group>
