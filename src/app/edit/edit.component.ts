@@ -67,7 +67,8 @@ export class EditComponent implements OnInit {
   }
 
   updateRealestate(): void {
-    this.realestateService.updateRealestate(this.realestate);
+    this.realestateService.updateRealestate(this.realestate)
+      .subscribe();
   }
 
   removeRelatedRealestate(id: string): void {
