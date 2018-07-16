@@ -1,8 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MatIconRegistry } from '@angular/material';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { DomSanitizer } from '@angular/platform-browser';
+
 import { Realestate, Redpocket, VisitingServices, Consultant } from '../realestate';
 import { RealestateService } from '../realestate.service';
-import { MatTableDataSource } from '../../../node_modules/@angular/material';
+import { MatChipInputEvent } from '@angular/material';
+
 
 
 @Component({
@@ -19,18 +24,25 @@ export class EditComponent implements OnInit {
   };
 
   realestate: Realestate;
-  realestateDataSource;
-  realestateDisplayedColumns: string[] = ['select', 'name'];
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
   constructor(
     private realestateService: RealestateService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public iconRegistry: MatIconRegistry,
+    public sanitizer: DomSanitizer
   ) {
     this.realestate = {} as Realestate;
     this.realestate.redpocket = {} as Redpocket;
     this.realestate.consultant = {} as Consultant;
     this.realestate.visitServices = {} as VisitingServices;
     this.realestate.comments = [];
+    this.realestate.images = [];
+    this.realestate.relatedRealestateIds = [];
+
+    iconRegistry.addSvgIcon(
+      'cancel',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/cancel.svg'));
   }
 
   ngOnInit(): void {
@@ -38,8 +50,6 @@ export class EditComponent implements OnInit {
     if (id) {
       this.getRealestate(id);
     }
-
-    this.getRealestates();
   }
 
   private getRealestate(id: string): void {
@@ -47,8 +57,8 @@ export class EditComponent implements OnInit {
       .subscribe(r => this.realestate = r);
   }
 
-  addImages(event): void {
-    this.realestate.images = JSON.parse(event.response);
+  addImageFromUpload(event): void {
+    this.realestate.images.push(JSON.parse(event.response));
   }
 
   addRealestate(): void {
@@ -57,11 +67,50 @@ export class EditComponent implements OnInit {
   }
 
   updateRealestate(): void {
-    this.realestateService.updateRealestate(this.realestate, this.realestate._id);
+    this.realestateService.updateRealestate(this.realestate);
   }
 
-  getRealestates(): void {
-    this.realestateService.getRealestates()
-      .subscribe(rs => this.realestateDataSource = new MatTableDataSource(rs));
+  removeRelatedRealestate(id: string): void {
+    const index = this.realestate.relatedRealestateIds.indexOf(id);
+
+    if (index >= 0) {
+      this.realestate.relatedRealestateIds.splice(index, 1);
+    }
+  }
+
+  addRelatedRealestate(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    if ((value || '').trim()) {
+      this.realestate.relatedRealestateIds.push(value);
+    }
+
+    // Reset the input value
+    if (input) {
+      input.value = '';
+    }
+  }
+
+  addImage(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    if ((value || '').trim()) {
+      this.realestate.images.push(value);
+    }
+
+    // Reset the input value
+    if (input) {
+      input.value = '';
+    }
+  }
+
+  removeImage(image: string): void {
+    const index = this.realestate.images.indexOf(image);
+
+    if (index >= 0) {
+      this.realestate.images.splice(index, 1);
+    }
   }
 }

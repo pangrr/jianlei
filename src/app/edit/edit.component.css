@@ -3,3 +3,8 @@ form {
   display: flex;
   flex-direction: column;
 }
+
+.flex-container {
+  display: flex;
+  justify-content: space-evenly;
+}

@@ -35,8 +35,8 @@ export class RealestateService {
     );
   }
 
-  updateRealestate(realestate: Realestate, id: string): Observable<Realestate> {
-    return this.http.put<Realestate>(`${this.url}/${id}`, realestate, httpOptions).pipe(
+  updateRealestate(realestate: Realestate): Observable<Realestate> {
+    return this.http.put<Realestate>(`${this.url}/${realestate._id}`, realestate, httpOptions).pipe(
       catchError(this.handleError<Realestate>('updateRealestate', realestate))
     );
   }
