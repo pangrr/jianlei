@@ -3,10 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { MatIconRegistry } from '@angular/material';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { DomSanitizer } from '@angular/platform-browser';
+import { MatChipInputEvent } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 
 import { Realestate, Redpocket, VisitingServices, Consultant } from '../realestate';
 import { RealestateService } from '../realestate.service';
-import { MatChipInputEvent } from '@angular/material';
 
 
 
@@ -30,7 +31,8 @@ export class EditComponent implements OnInit {
     private realestateService: RealestateService,
     private route: ActivatedRoute,
     public iconRegistry: MatIconRegistry,
-    public sanitizer: DomSanitizer
+    public sanitizer: DomSanitizer,
+    public snackBar: MatSnackBar
   ) {
     this.realestate = {} as Realestate;
     this.realestate.redpocket = {} as Redpocket;
@@ -54,7 +56,9 @@ export class EditComponent implements OnInit {
 
   private getRealestate(id: string): void {
     this.realestateService.getRealestate(id)
-      .subscribe(r => this.realestate = r);
+      .subscribe(r => {
+        this.realestate = r;
+      });
   }
 
   addImageFromUpload(event): void {
@@ -63,12 +67,15 @@ export class EditComponent implements OnInit {
 
   addRealestate(): void {
     this.realestateService.addRealestate(this.realestate)
-    .subscribe(savedRealestate => this.realestate._id = savedRealestate._id);
+    .subscribe(savedRealestate => {
+      this.realestate._id = savedRealestate._id;
+      this.openSnackBar('房产已保存');
+    });
   }
 
   updateRealestate(): void {
     this.realestateService.updateRealestate(this.realestate)
-      .subscribe();
+      .subscribe(_ => this.openSnackBar('房产已更新'));
   }
 
   removeRelatedRealestate(id: string): void {
@@ -113,5 +120,23 @@ export class EditComponent implements OnInit {
     if (index >= 0) {
       this.realestate.images.splice(index, 1);
     }
+  }
+
+  private openSnackBar(message: string): void {
+    this.snackBar.open(message, '', {
+      duration: 1000,
+    });
+  }
+
+  removeComment(index: number): void {
+    this.realestate.comments.splice(index, 1);
+  }
+
+  addEmptyComment(): void {
+    this.realestate.comments.push({
+      account: '',
+      text: '',
+      date: ''
+    });
   }
 }

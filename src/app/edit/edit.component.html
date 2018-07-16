@@ -15,8 +15,8 @@
         (matChipInputTokenEnd)="addImage($event)" required>
     </mat-chip-list>
   </mat-form-field>
-    
-  <table cellspacing="0">
+      
+  <table>
     <tr>
       <td>
         <mat-form-field>
@@ -113,12 +113,36 @@
     <textarea matInput placeholder="楼盘信息" name="description" [(ngModel)]="realestate.description" required></textarea>
   </mat-form-field>
 
+  <table>
+    <tr *ngFor="let comment of realestate.comments; index as i">
+      <td>
+        <mat-form-field>
+          <input matInput placeholder="用户名" name="account_{{i}}" [(ngModel)]="comment.account" required>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <input matInput placeholder="评论" name="text_{{i}}" [(ngModel)]="comment.text" required>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <input matInput placeholder="日期" name="date_{{i}}" [(ngModel)]="comment.date" required>
+        </mat-form-field>
+      </td>
+      <td>
+        <button mat-button color="warn" (click)="removeComment(i)">删除评论</button>
+      </td>        
+    </tr>
+  </table>
+
+  <button mat-button color="primary" (click)="addEmptyComment()">添加用户评论</button>
+
+
+  <mat-divider></mat-divider>
+
   <div class="flex-container">
     <button mat-button type="submit" (click)="addRealestate()" [disabled]="!realestateForm.form.valid" color="primary">新建房产</button>
     <button *ngIf="realestate._id" mat-button type="submit" (click)="updateRealestate()" [disabled]="!realestateForm.form.valid" color="primary">更新房产</button>
   </div>
 </form>
-
-<a href="http://localhost:4200/realestate/{{realestate._id}}" *ngIf="realestate._id">已保存房产 {{realestate._id}}</a>
-
-

@@ -24,6 +24,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 // 3rd party
 import { SlideshowModule } from 'ng-simple-slideshow';
@@ -76,6 +77,7 @@ import { UploadCustomerDialogComponent } from './upload-customer-dialog/upload-c
     MatTableModule,
     MatChipsModule,
     MatCheckboxModule,
+    MatSnackBarModule,
 
     // 3rd party
     SlideshowModule,

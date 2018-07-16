@@ -9,8 +9,8 @@ mat-toolbar.fixed {
 
 mat-toolbar-row {
   padding: 0;
-  justify-content: space-evenly;
   height: 36px;
+  justify-content: space-between;
 }
 
 .mat-toolbar-multiple-rows {
