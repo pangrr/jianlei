@@ -45,13 +45,13 @@
 
 
   <mat-card-content>
-    <mat-card-subtitle class="black">{{realestate.name}}售楼处：{{realestate.phone}}<mat-icon svgIcon="phone"></mat-icon></mat-card-subtitle>
+    <mat-card-subtitle class="black">{{realestate.name}}售楼处：{{realestate.phone}}<a href="tel:{{realestate.phone}}"><mat-icon svgIcon="phone"></mat-icon></a></mat-card-subtitle>
     <mat-card-subtitle>最新政策，更多优惠详情，请致电售楼处[120人拨打]</mat-card-subtitle>
   </mat-card-content>
 
   <mat-card-content *ngIf="realestate.consultant; let consultant">
     <mat-card-subtitle class="font-big">置业顾问</mat-card-subtitle>
-    <mat-card-subtitle class="black">{{consultant.title}}：{{consultant.phone}}<mat-icon class="black" svgIcon="phone"></mat-icon></mat-card-subtitle>
+    <mat-card-subtitle class="black">{{consultant.title}}：{{consultant.phone}}<a href="tel:{{consultant.phone}}"><mat-icon class="black" svgIcon="phone"></mat-icon></a></mat-card-subtitle>
     <mat-card-subtitle>{{consultant.description}}</mat-card-subtitle>
   </mat-card-content>
     
@@ -108,6 +108,6 @@
     <button color="warn" mat-button (click)="openDialog('预约看房')">预约看房</button>
     <button color="warn" mat-button (click)="openDialog('领取红包')">新房红包</button>
     <button color="warn" mat-button (click)="openDialog('预约团购看房')">团购看房</button>
-    <button color="warn" mat-button>售楼热线</button>
+    <a href="tel:{{realestate.phone}}"><button color="warn" mat-button>售楼热线</button></a>
   </mat-toolbar-row>
 </mat-toolbar>
