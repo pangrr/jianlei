@@ -34,7 +34,6 @@ import { AngularFileUploaderModule } from 'angular-file-uploader';
 import { RealestateComponent } from './realestate/realestate.component';
 import { AdminComponent } from './admin/admin.component';
 import { SearchComponent } from './search/search.component';
-import { EditComponent } from './edit/edit.component';
 import { RealestateService } from './realestate.service';
 import { CustomerService } from './customer.service';
 import { UploadCustomerDialogComponent } from './upload-customer-dialog/upload-customer-dialog.component';
@@ -48,7 +47,6 @@ import { UploadCustomerDialogComponent } from './upload-customer-dialog/upload-c
     RealestateComponent,
     AdminComponent,
     SearchComponent,
-    EditComponent,
     UploadCustomerDialogComponent
   ],
   entryComponents: [
