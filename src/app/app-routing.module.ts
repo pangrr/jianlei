@@ -12,8 +12,6 @@ const routes: Routes = [
   { path: 'realestate/:id', component: RealestateComponent },
   { path: 'map', component: MapComponent },
   { path: 'search', component: SearchComponent },
-  { path: 'edit/:id', component: EditComponent },
-  { path: 'edit', component: EditComponent },
   { path: 'admin', component: AdminComponent }
 ];
 

@@ -41,6 +41,12 @@ export class RealestateService {
     );
   }
 
+  deleteRealestate(id: string): Observable<Realestate> {
+    return this.http.delete<Realestate>(`${this.url}/${id}`, httpOptions).pipe(
+      catchError(this.handleError<Realestate>('deleteRealestate'))
+    );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.
