@@ -11,7 +11,7 @@ const httpOptions = {
 @Injectable()
 export class CustomerService {
 
-  private url = '/api/customer';
+  private url = 'http://localhost:4200/api/customer';
 
   constructor(
     private http: HttpClient
