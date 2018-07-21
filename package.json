@@ -1,7 +1,6 @@
 {
-  "name": "realestate-frontend",
+  "name": "realestate-client",
   "author": "Ran Pang",
-  "description": "works with realestate-backend",
   "repository": {
     "type": "git",
     "url": "https://github.com/pangrr/realestate-client.git"
