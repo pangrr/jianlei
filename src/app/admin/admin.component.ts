@@ -29,7 +29,7 @@ export class AdminComponent implements OnInit {
   // tab 1
   @Input() afuConfig = {
     formatsAllowed: '.jpg,.png',
-    uploadAPI: { url: 'http://localhost:3000/realestate/images' },
+    uploadAPI: { url: '/api/realestate/images' },
     multiple: true
   };
   realestate: Realestate;
