@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.config.json --disable-host-check --public-host fangzhuwang.com.cn --host 0.0.0.0 ",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
