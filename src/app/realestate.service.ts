@@ -11,7 +11,7 @@ const httpOptions = {
 @Injectable()
 export class RealestateService {
 
-  private url = 'http://localhost:3000/realestate';
+  private url = 'realestate';
 
   constructor(
     private http: HttpClient
