@@ -9,7 +9,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "sudo ng serve --proxy-config proxy.config.json --disable-host-check --public-host fangzhuwang.com.cn --host 0.0.0.0 --port 80 --prod --aot",
+    "start": "sudo ng serve",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
