@@ -4,7 +4,6 @@
     { "source": "/realestate/:id", "destination": "index.html" }
   ],
   "redirects": [
-    { "source": "/api/realestate", "destination": "http://182.254.161.202:3000/api/realestate" },
-    { "source": "/api/customer", "destination": "http://182.254.161.202:3000/api/customer" }
+    { "source": "api/**", "destination": "http://182.254.161.202:3000/api" }
   ]
 }
