@@ -69,7 +69,7 @@ export class RealestateComponent implements OnInit {
   }
 
   private replaceImageNamesWithUrls(names: string[]): string[] {
-    const imagesDir = '/api/realestate/image/';
+    const imagesDir = 'http://182.254.161.202:3000/api/realestate/image/';
     return names.map(n => `${imagesDir}${n}`);
   }
 
