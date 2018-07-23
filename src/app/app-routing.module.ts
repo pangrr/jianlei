@@ -9,9 +9,9 @@ import { AdminComponent } from './admin/admin.component';
 const routes: Routes = [
   { path: '', redirectTo: '/admin', pathMatch: 'full' },
   { path: 'realestate/:id', component: RealestateComponent },
+  { path: 'admin', component: AdminComponent },
   { path: 'map', component: MapComponent },
-  { path: 'search', component: SearchComponent },
-  { path: 'admin', component: AdminComponent }
+  { path: 'search', component: SearchComponent }
 ];
 
 @NgModule({
