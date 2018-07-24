@@ -10,7 +10,7 @@ import { RealestateService } from '../realestate.service';
 import { CustomerService } from '../customer.service';
 import { Customer } from '../customer';
 import { Realestate, Redpocket, VisitingServices, Consultant } from '../realestate';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 
 
 @Component({

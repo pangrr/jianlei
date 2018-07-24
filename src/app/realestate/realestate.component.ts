@@ -7,7 +7,7 @@ import { MatDialog } from '@angular/material';
 import { Realestate } from '../realestate';
 import { RealestateService } from '../realestate.service';
 import { UploadCustomerDialogComponent } from '../upload-customer-dialog/upload-customer-dialog.component';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-realestate',
