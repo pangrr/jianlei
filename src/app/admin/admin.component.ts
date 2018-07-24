@@ -67,7 +67,7 @@ export class AdminComponent implements OnInit {
 
 
   addImageFromUpload(event): void {
-    this.realestate.images.push(JSON.parse(event.response));
+    this.realestate.images = this.realestate.images.concat(JSON.parse(event.response));
   }
 
   saveNewRealestate(): void {
