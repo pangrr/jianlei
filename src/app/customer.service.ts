@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Customer } from './customer';
+import { environment } from '../environments/environment.prod';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -10,8 +11,7 @@ const httpOptions = {
 
 @Injectable()
 export class CustomerService {
-
-  private url = 'http://182.254.161.202:3000/api/customer';
+  private url = `${environment.server}/api/customer`;
 
   constructor(
     private http: HttpClient

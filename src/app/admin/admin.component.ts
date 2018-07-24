@@ -1,17 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
-import { RealestateService } from '../realestate.service';
-import { CustomerService } from '../customer.service';
-import { Customer } from '../customer';
-import { Realestate, Redpocket, VisitingServices, Consultant } from '../realestate';
-
 import { ActivatedRoute } from '@angular/router';
 import { MatIconRegistry } from '@angular/material';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatChipInputEvent } from '@angular/material';
 import { MatSnackBar } from '@angular/material';
-
+import { RealestateService } from '../realestate.service';
+import { CustomerService } from '../customer.service';
+import { Customer } from '../customer';
+import { Realestate, Redpocket, VisitingServices, Consultant } from '../realestate';
+import { environment } from '../../environments/environment.prod';
 
 
 @Component({
@@ -29,7 +28,7 @@ export class AdminComponent implements OnInit {
   // tab 1
   @Input() afuConfig = {
     formatsAllowed: '.jpg,.png',
-    uploadAPI: { url: 'http://182.254.161.202:3000/api/realestate/images' },
+    uploadAPI: { url: `${environment.server}/api/realestate/images` },
     multiple: true
   };
   realestate: Realestate;

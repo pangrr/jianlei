@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Realestate } from './realestate';
+import { environment } from '../environments/environment.prod';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -11,7 +12,7 @@ const httpOptions = {
 @Injectable()
 export class RealestateService {
 
-  private url = 'http://182.254.161.202:3000/api/realestate';
+  private url = `${environment.server}/api/realestate`;
 
   constructor(
     private http: HttpClient

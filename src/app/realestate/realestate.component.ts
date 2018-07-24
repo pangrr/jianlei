@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material';
 import { Realestate } from '../realestate';
 import { RealestateService } from '../realestate.service';
 import { UploadCustomerDialogComponent } from '../upload-customer-dialog/upload-customer-dialog.component';
+import { environment } from '../../environments/environment.prod';
 
 @Component({
   selector: 'app-realestate',
@@ -69,7 +70,7 @@ export class RealestateComponent implements OnInit {
   }
 
   private replaceImageNamesWithUrls(names: string[]): string[] {
-    const imagesDir = 'http://182.254.161.202:3000/api/realestate/image/';
+    const imagesDir = `${environment.server}/api/realestate/image/`;
     return names.map(n => `${imagesDir}${n}`);
   }
 
