@@ -172,8 +172,8 @@
       <mat-divider></mat-divider>
     
       <div class="flex-container form-submit">
-        <button mat-button type="submit" (click)="saveNewRealestate()" [disabled]="!realestateForm.form.valid" color="primary">创建新房产</button>
-        <button mat-button type="submit" (click)="updateRealestate()" [disabled]="!realestateForm.form.valid || !realestate._id" color="primary">更新房产信息</button>
+        <button mat-button type="submit" (click)="saveNewRealestate()" [disabled]="!realestateForm.form.valid || realestate.images.length === 0" color="primary">创建新房产</button>
+        <button mat-button type="submit" (click)="updateRealestate()" [disabled]="!realestateForm.form.valid || !realestate._id || realestate.images.length === 0" color="primary">更新房产信息</button>
         <button mat-button (click)="clearRealestateToEdit()" color="primary">清空表格</button>
       </div>
     </form>
