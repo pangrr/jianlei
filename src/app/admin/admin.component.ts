@@ -35,7 +35,7 @@ export class AdminComponent implements OnInit {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
   // tab 2
-  customerDisplayedColumns: string[] = ['phone', 'realestate', 'request'];
+  customerDisplayedColumns: string[] = ['phone', 'realestate', 'request', 'delete'];
   customerDataSource;
 
   constructor(
@@ -88,7 +88,13 @@ export class AdminComponent implements OnInit {
   }
 
   deleteRealestate(id: string): void {
-    this.realestateService.deleteRealestate(id).subscribe(_ => this.getRealestatesAndCustomers());
+    this.realestateService.deleteRealestate(id)
+      .subscribe(_ => this.getRealestatesAndCustomers());
+  }
+
+  deleteCustomer(id: string): void {
+    this.customerService.deleteCustomer(id)
+      .subscribe(_ => this.getRealestatesAndCustomers());
   }
 
   removeRelatedRealestate(id: string): void {
