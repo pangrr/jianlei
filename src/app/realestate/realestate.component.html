@@ -7,12 +7,11 @@
 </mat-toolbar>
 
 <mat-card class="horizontal-center" *ngIf="realestate">
-  <slideshow [imageUrls]="realestate.images" [minHeight]="'500px'" [autoPlay]="true" [showDots]="true" [arrowSize]="'20px'"></slideshow>
+  <slideshow [imageUrls]="realestate.images" [minHeight]="'350px'" [autoPlay]="true" [showDots]="true" [arrowSize]="'20px'"></slideshow>
 
   <mat-grid-list *ngIf="realestate.redpocket; let redpocket" cols="2" rowHeight="200px">
     <mat-grid-tile>
       <mat-card-content>
-        <mat-card-subtitle class="black">{{realestate.name}}</mat-card-subtitle>
         <mat-card-subtitle>均价：<span class="red">{{realestate.price}}</span>元/平米</mat-card-subtitle>
         <mat-card-subtitle>开盘：<span class="black">在售中</span></mat-card-subtitle>
         <mat-card-subtitle>优惠折扣：<span class="black">新房红包</span></mat-card-subtitle>
@@ -21,8 +20,8 @@
     </mat-grid-tile>
     <mat-grid-tile>
       <mat-card-content>
-        <img (click)="openDialog('领取红包')" src="assets/redpocket.png" class="redpocket clickable">
-        <mat-card-subtitle>￥<span class="red">{{redpocket.amount}}</span><span class="font-small">有效期：{{redpocket.startDate}} - {{redpocket.endDate}}</span></mat-card-subtitle>
+        <img (click)="openDialog('领取红包')" src="assets/redpocket.jpg" class="redpocket clickable">
+        <mat-card-subtitle><span class="red">￥{{redpocket.amount}}</span><span class="font-small">有效期：{{redpocket.startDate}} - {{redpocket.endDate}}</span></mat-card-subtitle>
       </mat-card-content>
     </mat-grid-tile>
   </mat-grid-list>

@@ -107,11 +107,6 @@ mat-icon {
   color: limegreen;
 }
 
-.redpocket {
-  width: 120px;
-  margin: 10px;
-}
-
 .background-red {
   background-color: rgb(228, 0, 0);
   color: white;
@@ -140,4 +135,8 @@ mat-grid-list.related-realestate {
 
 .clickable {
   cursor: pointer;
+}
+
+img.redpocket {
+  width: 100%;
 }
