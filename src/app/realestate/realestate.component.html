@@ -9,22 +9,22 @@
 <mat-card class="horizontal-center" *ngIf="realestate">
   <slideshow [imageUrls]="realestate.images" [minHeight]="'350px'" [autoPlay]="true" [showDots]="true" [arrowSize]="'20px'"></slideshow>
 
-  <mat-grid-list *ngIf="realestate.redpocket; let redpocket" cols="2" rowHeight="200px">
-    <mat-grid-tile>
-      <mat-card-content>
-        <mat-card-subtitle>均价：<span class="red">{{realestate.price}}</span>元/平米</mat-card-subtitle>
-        <mat-card-subtitle>开盘：<span class="black">在售中</span></mat-card-subtitle>
-        <mat-card-subtitle>优惠折扣：<span class="black">新房红包</span></mat-card-subtitle>
-        <mat-card-subtitle>地址：<span class="black">{{realestate.address}}</span></mat-card-subtitle>
-      </mat-card-content>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <mat-card-content>
-        <img (click)="openDialog('领取红包')" src="assets/redpocket.jpg" class="redpocket clickable">
-        <mat-card-subtitle><span class="red">￥{{redpocket.amount}}</span><span class="font-small">有效期：{{redpocket.startDate}} - {{redpocket.endDate}}</span></mat-card-subtitle>
-      </mat-card-content>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <mat-card-content>
+    <mat-card-title class="title">{{realestate.name}}</mat-card-title>
+    <mat-card-subtitle>均价：<span class="red">{{realestate.price}}</span>元/平米</mat-card-subtitle>
+    <mat-card-subtitle>开盘：<span class="black">在售中</span></mat-card-subtitle>
+    <mat-card-subtitle>优惠折扣：<span class="black">新房红包</span></mat-card-subtitle>
+    <mat-card-subtitle>地址：<span class="black">{{realestate.address}}</span></mat-card-subtitle>
+  </mat-card-content>
+
+  <mat-card-content *ngIf="realestate.redpocket; let redpocket" >
+    <mat-card-subtitle class="redpocket"><span class="font-small">新房红包 抵扣房款</span>
+      <span>新房红包{{redpocket.amount}}元</span>
+      <button mat-button class="background-yellow" (click)="openDialog('领取红包')">立即领取</button>
+    </mat-card-subtitle>
+    <mat-card-subtitle class="font-small">签约有效期：{{redpocket.startDate}} - {{redpocket.endDate}}</mat-card-subtitle>
+    <mat-card-subtitle class="font-small">购房红包，数量有限，请尽快领取</mat-card-subtitle>
+  </mat-card-content>
 
   <mat-grid-list class="background-red" cols="2" rowHeight="100px">
     <mat-grid-tile>
@@ -44,35 +44,34 @@
 
 
   <mat-card-content>
-    <mat-card-subtitle class="black">{{realestate.name}}售楼处：{{realestate.phone}}<a href="tel:{{realestate.phone}}"><mat-icon svgIcon="phone"></mat-icon></a></mat-card-subtitle>
+    <mat-card-subtitle class="black">{{realestate.name}}售楼处：<span class="phone">{{realestate.phone}}</span><a href="tel:{{realestate.phone}}"><mat-icon svgIcon="phone"></mat-icon></a></mat-card-subtitle>
     <mat-card-subtitle>最新政策，更多优惠详情，请致电售楼处[120人拨打]</mat-card-subtitle>
   </mat-card-content>
 
   <mat-card-content *ngIf="realestate.consultant; let consultant">
-    <mat-card-subtitle class="font-big">置业顾问</mat-card-subtitle>
-    <mat-card-subtitle class="black">{{consultant.title}}：{{consultant.phone}}<a href="tel:{{consultant.phone}}"><mat-icon svgIcon="phone"></mat-icon></a></mat-card-subtitle>
+    <mat-card-subtitle class="black">置业顾问：{{consultant.title}}<span class="phone">{{consultant.phone}}</span><a href="tel:{{consultant.phone}}"><mat-icon svgIcon="phone"></mat-icon></a></mat-card-subtitle>
     <mat-card-subtitle>{{consultant.description}}</mat-card-subtitle>
   </mat-card-content>
     
   <mat-card-content>
-    <mat-card-subtitle class="font-big">楼盘信息</mat-card-subtitle>
+    <mat-card-subtitle class="title">楼盘信息</mat-card-subtitle>
     <p class="indent" *ngFor="let paragraph of description">
       {{paragraph}}
     </p>
   </mat-card-content>
 
   <mat-card-content *ngIf="realestate.visitServices; let services">
-    <mat-card-subtitle class="font-big">楼盘服务</mat-card-subtitle>
-    <mat-card-subtitle><button color="warn" (click)="openDialog('班车看房')" mat-button>班车看房</button>{{services.taxi}}</mat-card-subtitle>
-    <mat-card-subtitle><button color="warn" (click)="openDialog('自驾报销')" mat-button>自驾报销</button>{{services.reimburse}}</mat-card-subtitle>
+    <mat-card-subtitle class="title">楼盘服务</mat-card-subtitle>
+    <mat-card-subtitle><button class="service-button" color="warn" (click)="openDialog('班车看房')" mat-raised-button>班车看房</button>{{services.taxi}}</mat-card-subtitle>
+    <mat-card-subtitle><button class="service-button" color="warn" (click)="openDialog('自驾报销')" mat-raised-button>自驾报销</button>{{services.reimburse}}</mat-card-subtitle>
   </mat-card-content>
 
   <mat-card-content>
-    <mat-card-subtitle class="font-big">卫星地图</mat-card-subtitle>
+    <mat-card-subtitle class="title">卫星地图</mat-card-subtitle>
   </mat-card-content>
 
   <mat-card-content>
-    <mat-card-subtitle class="font-big">用户点评(232)</mat-card-subtitle>
+    <mat-card-subtitle class="title">用户点评(232)</mat-card-subtitle>
   </mat-card-content>
 
   <mat-card-content *ngFor="let comment of realestate.comments">
@@ -82,21 +81,24 @@
   </mat-card-content>
 
   <mat-card-content>
-    <mat-card-subtitle class="font-big">周边楼盘</mat-card-subtitle>
+    <mat-card-subtitle class="title">周边楼盘</mat-card-subtitle>
   </mat-card-content>
 
-  <mat-grid-list *ngFor="let r of relatedRealestates" (click)="gotoRealestate(r._id)" class="related-realestate clickable" cols="2" rowHeight="100px">
-    <mat-grid-tile>
-      <img [src]="r.images[0]">
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <mat-card-content>
-        <mat-card-subtitle class="black">{{r.name}}</mat-card-subtitle>
-        <mat-card-subtitle>{{r.address}}</mat-card-subtitle>
-        <mat-card-subtitle class="red">均价{{r.price}}元/平米</mat-card-subtitle>
-      </mat-card-content>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <a *ngFor="let r of relatedRealestates" [routerLink]="['/realestate', r._id]" target="_blank">
+    <mat-grid-list class="related-realestate clickable" cols="3" rowHeight="100px">
+      <mat-grid-tile colspan="1">
+        <img class="thumbnail-image" [src]="r.images[0]">
+      </mat-grid-tile>
+      <mat-grid-tile colspan="2">
+        <mat-card-content>
+          <mat-card-subtitle class="black">{{r.name}}</mat-card-subtitle>
+          <mat-card-subtitle>{{r.address}}</mat-card-subtitle>
+          <mat-card-subtitle class="red">均价{{r.price}}元/平米</mat-card-subtitle>
+        </mat-card-content>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </a>
+  
 
   <mat-toolbar-row></mat-toolbar-row>
 </mat-card>

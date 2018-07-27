@@ -60,13 +60,9 @@ export class RealestateComponent implements OnInit {
 
   openDialog(request: string): void {
     this.dialog.open(UploadCustomerDialogComponent, {
-      width: '250px',
-      data: { phone: '', request, realestateId: this.realestate._id }
+      width: '300px',
+      data: { phone: '', name: '', request, realestateId: this.realestate._id }
     });
-  }
-
-  gotoRealestate(id: string): void {
-    this.router.navigateByUrl(`/realestate/${id}`);
   }
 
   private replaceImageNamesWithUrls(names: string[]): string[] {

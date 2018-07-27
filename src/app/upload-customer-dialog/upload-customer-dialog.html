@@ -1,5 +1,8 @@
 <form (ngSubmit)="onSubmit()" #customerForm="ngForm">
   <mat-form-field>
+    <input matInput placeholder="姓名" name="name" [(ngModel)]="customer.name" required>
+  </mat-form-field>
+  <mat-form-field>
     <input matInput placeholder="电话号码" type="number" name="phone" [(ngModel)]="customer.phone" required>
   </mat-form-field>
   <button mat-button color="primary" type="submit" [disabled]="!customerForm.form.valid">{{customer.request}}</button>

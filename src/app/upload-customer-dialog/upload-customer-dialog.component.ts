@@ -24,7 +24,7 @@ export class UploadCustomerDialogComponent {
 
   onSubmit(): void {
     this.customerService.addCustomer(this.customer).subscribe(_ => {
-      this.dialogRef.close(this.customer.request);
+      this.dialogRef.close();
     });
   }
 }

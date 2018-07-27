@@ -25,3 +25,7 @@ form {
 .form-submit {
   margin-top: 20px;
 }
+
+textarea {
+  height: 100px;
+}

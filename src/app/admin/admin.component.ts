@@ -35,7 +35,7 @@ export class AdminComponent implements OnInit {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
   // tab 2
-  customerDisplayedColumns: string[] = ['phone', 'realestate', 'request', 'delete'];
+  customerDisplayedColumns: string[] = ['name', 'phone', 'realestate', 'request', 'delete'];
   customerDataSource;
 
   constructor(
