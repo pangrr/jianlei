@@ -25,7 +25,7 @@ export class CustomerService {
   }
 
   /** POST: add a new hero to the database */
-  addCustomer(customer: Customer): Observable<Customer> {
+  addCustomerRequest(customer: Customer): Observable<Customer> {
     return this.http.post<Customer>(this.url, customer, httpOptions)
       .pipe(
         catchError(this.handleError<Customer>('addCustomer', customer))

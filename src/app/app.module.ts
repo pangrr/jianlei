@@ -36,7 +36,7 @@ import { AdminComponent } from './admin/admin.component';
 import { SearchComponent } from './search/search.component';
 import { RealestateService } from './realestate.service';
 import { CustomerService } from './customer.service';
-import { UploadCustomerDialogComponent } from './upload-customer-dialog/upload-customer-dialog.component';
+import { CustomerRequestDialogComponent } from './customer-request-dialog/customer-request-dialog.component';
 
 
 @NgModule({
@@ -47,10 +47,10 @@ import { UploadCustomerDialogComponent } from './upload-customer-dialog/upload-c
     RealestateComponent,
     AdminComponent,
     SearchComponent,
-    UploadCustomerDialogComponent
+    CustomerRequestDialogComponent
   ],
   entryComponents: [
-    UploadCustomerDialogComponent
+    CustomerRequestDialogComponent
   ],
   imports: [
     BrowserModule,

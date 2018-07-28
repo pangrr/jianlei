@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material';
 
 import { Realestate } from '../realestate';
 import { RealestateService } from '../realestate.service';
-import { UploadCustomerDialogComponent } from '../upload-customer-dialog/upload-customer-dialog.component';
+import { CustomerRequestDialogComponent } from '../customer-request-dialog/customer-request-dialog.component';
 import { environment } from '../../environments/environment';
 
 @Component({
@@ -17,15 +17,16 @@ import { environment } from '../../environments/environment';
 export class RealestateComponent implements OnInit {
   public realestate: Realestate;
   public description: string[];
-  public relatedRealestates: Realestate[] = [];
+  public relatedRealestates: Realestate[];
+  public imageUrls: string[];
+  public showFullscreenImages = false;
 
   constructor(
     private route: ActivatedRoute,
     private realestateService: RealestateService,
     public iconRegistry: MatIconRegistry,
     public sanitizer: DomSanitizer,
-    public dialog: MatDialog,
-    private router: Router
+    public customerRequestDialog: MatDialog
   ) {
     iconRegistry.addSvgIcon(
       'phone',
@@ -43,13 +44,14 @@ export class RealestateComponent implements OnInit {
     const id: string = this.route.snapshot.paramMap.get('id');
     this.realestateService.getRealestate(id)
       .subscribe(realestate => {
-        realestate.images = this.replaceImageNamesWithUrls(realestate.images);
+        this.imageUrls = this.getImageUrls(realestate.images);
 
         this.description = realestate.description.split(/\r?\n/);
 
+        this.relatedRealestates = [];
         realestate.relatedRealestateIds.forEach(_id => {
           this.realestateService.getRealestate(_id).subscribe(r => {
-            r.images = this.replaceImageNamesWithUrls(r.images);
+            r.images = this.getImageUrls(r.images);
             this.relatedRealestates.push(r);
           });
         });
@@ -58,16 +60,16 @@ export class RealestateComponent implements OnInit {
       });
   }
 
-  openDialog(request: string): void {
-    this.dialog.open(UploadCustomerDialogComponent, {
+  openCustomerRequestDialog(request: string): void {
+    this.customerRequestDialog.open(CustomerRequestDialogComponent, {
       width: '300px',
       data: { phone: '', name: '', request, realestateId: this.realestate._id }
     });
   }
 
-  private replaceImageNamesWithUrls(names: string[]): string[] {
+  private getImageUrls(imageNames: string[]): string[] {
     const imagesDir = `${environment.server}/api/realestate/image/`;
-    return names.map(n => `${imagesDir}${n}`);
+    return imageNames.map(n => `${imagesDir}${n}`);
   }
 
 }

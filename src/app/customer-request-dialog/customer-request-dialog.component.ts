@@ -6,14 +6,14 @@ import { CustomerService } from '../customer.service';
 
 
 @Component({
-  selector: 'app-upload-customer-dialog',
-  templateUrl: './upload-customer-dialog.html',
-  styleUrls: ['./upload-customer-dialog.css']
+  selector: 'app-customer-request-dialog',
+  templateUrl: './customer-request-dialog.component.html',
+  styleUrls: ['./customer-request-dialog.component.css']
 })
-export class UploadCustomerDialogComponent {
+export class CustomerRequestDialogComponent {
 
   constructor(
-    public dialogRef: MatDialogRef<UploadCustomerDialogComponent>,
+    public dialogRef: MatDialogRef<CustomerRequestDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public customer: Customer,
     private customerService: CustomerService
   ) {}
@@ -23,7 +23,7 @@ export class UploadCustomerDialogComponent {
   }
 
   onSubmit(): void {
-    this.customerService.addCustomer(this.customer).subscribe(_ => {
+    this.customerService.addCustomerRequest(this.customer).subscribe(_ => {
       this.dialogRef.close();
     });
   }

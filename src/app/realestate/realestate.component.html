@@ -1,3 +1,8 @@
+<div *ngIf="showFullscreenImages" class="always-top fullscreen">
+  <slideshow [imageUrls]="imageUrls" [minHeight]="'350px'" [autoPlay]="false" [showDots]="true" [arrowSize]="'20px'"></slideshow>
+  <button (click)="showFullscreenImages = false" style="position: fixed;top: 10px; right: 10px;" mat-raised-button>返回</button>
+</div>
+
 <mat-toolbar color="warn" class="fixed top font-normal" *ngIf="realestate">
   <mat-toolbar-row>
     <button mat-button>返回</button>
@@ -7,7 +12,7 @@
 </mat-toolbar>
 
 <mat-card class="horizontal-center" *ngIf="realestate">
-  <slideshow [imageUrls]="realestate.images" [minHeight]="'350px'" [autoPlay]="true" [showDots]="true" [arrowSize]="'20px'"></slideshow>
+  <slideshow (click)="showFullscreenImages = true" [imageUrls]="imageUrls" [minHeight]="'350px'" [autoPlay]="true" [showDots]="true" [arrowSize]="'20px'"></slideshow>
 
   <mat-card-content>
     <mat-card-title class="title">{{realestate.name}}</mat-card-title>
@@ -20,7 +25,7 @@
   <mat-card-content *ngIf="realestate.redpocket; let redpocket" >
     <mat-card-subtitle class="flex space-evenly background-red" style="height: 50px;"><span class="font-small">新房红包 抵扣房款</span>
       <span>新房红包{{redpocket.amount}}元</span>
-      <button mat-button class="background-yellow" (click)="openDialog('领取红包')">立即领取</button>
+      <button mat-button class="background-yellow" (click)="openCustomerRequestDialog('领取红包')">立即领取</button>
     </mat-card-subtitle>
     <mat-card-subtitle class="font-small">签约有效期：{{redpocket.startDate}} - {{redpocket.endDate}}</mat-card-subtitle>
     <mat-card-subtitle class="font-small">购房红包，数量有限，请尽快领取</mat-card-subtitle>
@@ -30,7 +35,7 @@
     <mat-grid-tile>
       <mat-card-content>
         <mat-card-subtitle class="white">￥<span class="font-big">{{realestate.groupPrice}}</span> 团购价</mat-card-subtitle>
-        <button class="background-yellow" mat-button (click)="openDialog('团购看房')">预约团购看房</button>
+        <button class="background-yellow" mat-button (click)="openCustomerRequestDialog('团购看房')">预约团购看房</button>
       </mat-card-content>
     </mat-grid-tile>
     <mat-grid-tile>
@@ -62,8 +67,8 @@
 
   <mat-card-content *ngIf="realestate.visitServices; let services">
     <mat-card-subtitle class="title">楼盘服务</mat-card-subtitle>
-    <mat-card-subtitle class="flex"><button class="service-button" color="warn" (click)="openDialog('班车看房')" mat-raised-button>班车看房</button><span>{{services.taxi}}</span></mat-card-subtitle>
-    <mat-card-subtitle class="flex"><button class="service-button" color="warn" (click)="openDialog('自驾报销')" mat-raised-button>自驾报销</button><span>{{services.reimburse}}</span></mat-card-subtitle>
+    <mat-card-subtitle class="flex"><button class="service-button" color="warn" (click)="openCustomerRequestDialog('班车看房')" mat-raised-button>班车看房</button><span>{{services.taxi}}</span></mat-card-subtitle>
+    <mat-card-subtitle class="flex"><button class="service-button" color="warn" (click)="openCustomerRequestDialog('自驾报销')" mat-raised-button>自驾报销</button><span>{{services.reimburse}}</span></mat-card-subtitle>
   </mat-card-content>
 
   <mat-card-content>
@@ -106,9 +111,9 @@
 
 <mat-toolbar class="fixed bottom" *ngIf="realestate">
   <mat-toolbar-row>
-    <button color="warn" mat-button (click)="openDialog('预约看房')">预约看房</button>
-    <button color="warn" mat-button (click)="openDialog('领取红包')">新房红包</button>
-    <button color="warn" mat-button (click)="openDialog('预约团购看房')">团购看房</button>
+    <button color="warn" mat-button (click)="openCustomerRequestDialog('预约看房')">预约看房</button>
+    <button color="warn" mat-button (click)="openCustomerRequestDialog('领取红包')">新房红包</button>
+    <button color="warn" mat-button (click)="openCustomerRequestDialog('预约团购看房')">团购看房</button>
     <a href="tel:{{realestate.phone}}"><button color="warn" mat-button>售楼热线</button></a>
   </mat-toolbar-row>
 </mat-toolbar>
