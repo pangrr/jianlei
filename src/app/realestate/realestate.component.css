@@ -138,13 +138,8 @@ mat-grid-list.related-realestate {
   cursor: pointer;
 }
 
-.redpocket {
-  height: 60px;
-  display: flex;
-  align-items: center;
+.space-evenly {
   justify-content: space-evenly;
-  background-color: rgb(228, 0, 0);
-  color: white;
 }
 
 .service-button {
@@ -168,4 +163,9 @@ mat-icon {
 .thumbnail-image {
   width: 100%;
   height: 100%;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
 }
