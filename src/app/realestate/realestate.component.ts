@@ -62,8 +62,8 @@ export class RealestateComponent implements OnInit {
 
   openCustomerRequestDialog(request: string): void {
     this.customerRequestDialog.open(CustomerRequestDialogComponent, {
-      width: '300px',
-      data: { phone: '', name: '', request, realestateId: this.realestate._id }
+      width: '250px',
+      data: { phone: '', name: '', request, realestateId: this.realestate._id, realestateName: this.realestate.name }
     });
   }
 

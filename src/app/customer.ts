@@ -4,4 +4,5 @@ export interface Customer {
   phone: string;
   request: string;
   realestateId: string;
+  realestateName: string;
 }

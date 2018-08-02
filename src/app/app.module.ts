@@ -32,11 +32,13 @@ import { AngularFileUploaderModule } from 'angular-file-uploader';
 
 // custom
 import { RealestateComponent } from './realestate/realestate.component';
-import { AdminComponent } from './admin/admin.component';
 import { SearchComponent } from './search/search.component';
 import { RealestateService } from './realestate.service';
 import { CustomerService } from './customer.service';
 import { CustomerRequestDialogComponent } from './customer-request-dialog/customer-request-dialog.component';
+import { CustomerRequestListComponent } from './customer-request-list/customer-request-list.component';
+import { RealestateEditorComponent } from './realestate-editor/realestate-editor.component';
+import { RealestateListComponent } from './realestate-list/realestate-list.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { CustomerRequestDialogComponent } from './customer-request-dialog/custom
     MapComponent,
 
     RealestateComponent,
-    AdminComponent,
+    CustomerRequestListComponent,
+    RealestateEditorComponent,
+    RealestateListComponent,
     SearchComponent,
     CustomerRequestDialogComponent
   ],

@@ -170,6 +170,13 @@ mat-icon {
   align-items: center;
 }
 
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 10px;
+}
+
 .always-top {
   z-index: 999;
 }

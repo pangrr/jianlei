@@ -17,24 +17,22 @@ export class CustomerService {
     private http: HttpClient
   ) {}
 
-  /** GET realestate by id. Will 404 if id not found */
-  getCustomers(): Observable<Customer[]> {
+  getCustomerRequests(): Observable<Customer[]> {
     return this.http.get<Customer[]>(this.url).pipe(
-      catchError(this.handleError<Customer[]>(`getAllCustomers`))
+      catchError(this.handleError<Customer[]>(`getAllCustomerRequests`))
     );
   }
 
-  /** POST: add a new hero to the database */
   addCustomerRequest(customer: Customer): Observable<Customer> {
     return this.http.post<Customer>(this.url, customer, httpOptions)
       .pipe(
-        catchError(this.handleError<Customer>('addCustomer', customer))
+        catchError(this.handleError<Customer>('addCustomerRequest', customer))
       );
   }
 
-  deleteCustomer(id: string): Observable<Customer> {
+  deleteCustomerRequest(id: string): Observable<Customer> {
     return this.http.delete<Customer>(`${this.url}/${id}`, httpOptions).pipe(
-      catchError(this.handleError<Customer>('deleteCustomer'))
+      catchError(this.handleError<Customer>('deleteCustomerRequest'))
     );
   }
 
