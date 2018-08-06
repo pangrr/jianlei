@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { MatDialog } from '@angular/material';
-
+import { IImage, ɵa as SlideshowComponent } from 'ng-simple-slideshow';
 import { Realestate } from '../realestate';
+import { RelatedRealestate} from '../related-realestate';
 import { RealestateService } from '../realestate.service';
 import { CustomerRequestDialogComponent } from '../customer-request-dialog/customer-request-dialog.component';
 import { environment } from '../../environments/environment';
@@ -15,10 +16,13 @@ import { environment } from '../../environments/environment';
   styleUrls: ['./realestate.component.css']
 })
 export class RealestateComponent implements OnInit {
+  @ViewChild('fullscreenSlideshow')
+  private fullscreenSlideshow: SlideshowComponent;
+
   public realestate: Realestate;
   public description: string[];
-  public relatedRealestates: Realestate[];
-  public imageUrls: string[];
+  public relatedRealestates: RelatedRealestate[];
+  public images: IImage[];
   public showFullscreenImages = false;
 
   constructor(
@@ -26,7 +30,8 @@ export class RealestateComponent implements OnInit {
     private realestateService: RealestateService,
     public iconRegistry: MatIconRegistry,
     public sanitizer: DomSanitizer,
-    public customerRequestDialog: MatDialog
+    public customerRequestDialog: MatDialog,
+    private changeDetector: ChangeDetectorRef
   ) {
     iconRegistry.addSvgIcon(
       'phone',
@@ -44,19 +49,17 @@ export class RealestateComponent implements OnInit {
     const id: string = this.route.snapshot.paramMap.get('id');
     this.realestateService.getRealestate(id)
       .subscribe(realestate => {
-        this.imageUrls = this.getImageUrls(realestate.images);
+        this.images = this.buildImages(realestate.images);
 
         this.description = realestate.description.split(/\r?\n/);
 
+        this.realestate = realestate;
+
         this.relatedRealestates = [];
         realestate.relatedRealestateIds.forEach(_id => {
-          this.realestateService.getRealestate(_id).subscribe(r => {
-            r.images = this.getImageUrls(r.images);
-            this.relatedRealestates.push(r);
-          });
+          this.realestateService.getRealestate(_id)
+            .subscribe(relatedRealestate => this.relatedRealestates.push(this.buildRelatedRealestate(relatedRealestate)));
         });
-
-        this.realestate = realestate;
       });
   }
 
@@ -67,9 +70,32 @@ export class RealestateComponent implements OnInit {
     });
   }
 
-  private getImageUrls(imageNames: string[]): string[] {
-    const imagesDir = `${environment.server}/api/realestate/image/`;
-    return imageNames.map(n => `${imagesDir}${n}`);
+  private buildImages(imageNames: string[]): IImage[] {
+    return imageNames.map((name, i) => {
+      return {
+        url: this.buildImageUrl(name),
+        clickAction: () => {
+          this.showFullscreenImages = true;
+          this.changeDetector.detectChanges();
+          // goToSlide(0) doesn't work as expected
+          if (i > 0) {
+            this.fullscreenSlideshow.goToSlide(i);
+          }
+        }
+      };
+    });
   }
 
+  private buildImageUrl(imageName: string): string {
+    return `${environment.server}/api/realestate/image/${imageName}`;
+  }
+
+  private buildRelatedRealestate(realestate: Realestate): RelatedRealestate {
+    return {
+      imageUrl: this.buildImageUrl(realestate.images[0]),
+      name: realestate.name,
+      address: realestate.address,
+      price: realestate.price
+    };
+  }
 }

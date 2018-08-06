@@ -22,7 +22,7 @@
 
   <div class="field-group">
     <mat-form-field>
-        <input matInput placeholder="名称" name="name" [(ngModel)]="realestate.name" required>
+      <input [disabled]="realestate._id" matInput placeholder="名称" name="name" [(ngModel)]="realestate.name" required>
     </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="地址" name="address" [(ngModel)]="realestate.address" required>
@@ -116,8 +116,8 @@
   <mat-divider></mat-divider>
 
   <div class="field-group">
-    <button mat-button (click)="saveNewRealestate()" [disabled]="!realestateForm.form.valid || realestate.images.length === 0" color="primary">创建新房产</button>
-    <button mat-button (click)="updateRealestate()" [disabled]="!realestateForm.form.valid || !realestate._id || realestate.images.length === 0" color="primary">更新房产信息</button>
+    <button *ngIf="!realestate._id" mat-button (click)="saveNewRealestate()" [disabled]="!realestateForm.form.valid || realestate.images.length === 0" color="primary">创建新房产</button>
+    <button *ngIf="realestate._id" mat-button (click)="updateRealestate()" [disabled]="!realestateForm.form.valid || !realestate._id || realestate.images.length === 0" color="primary">更新房产信息</button>
     <button mat-button (click)="clearRealestateToEdit()" color="primary">清空表格</button>
   </div>
 

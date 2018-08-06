@@ -1,8 +1,3 @@
-<!-- <div *ngIf="showFullscreenImages" class="always-top fullscreen">
-  <slideshow [imageUrls]="imageUrls" [minHeight]="'350px'" [autoPlay]="false" [showDots]="true" [arrowSize]="'20px'"></slideshow>
-  <button (click)="showFullscreenImages = false" style="position: fixed;top: 10px; right: 10px;" mat-raised-button>返回</button>
-</div> -->
-
 <mat-toolbar color="warn" class="fixed top font-normal" *ngIf="realestate">
   <mat-toolbar-row>
     <button mat-button>返回</button>
@@ -12,10 +7,7 @@
 </mat-toolbar>
 
 <mat-card class="horizontal-center" *ngIf="realestate">
-  <slideshow [imageUrls]="imageUrls" [minHeight]="'350px'" [autoPlay]="true" [showDots]="true" [arrowSize]="'20px'"></slideshow>
-  <!-- <div *ngFor="let url of imageUrls; let i = index" style="width: 100%">
-    <img mat-card-image *ngIf="showImageIndex === i" [src]="url">
-  </div> -->
+  <slideshow [imageUrls]="images" [minHeight]="'350px'" [autoPlay]="true" [showDots]="true" [arrowSize]="'20px'"></slideshow>
 
   <mat-grid-list cols="2">
     <mat-grid-tile>
@@ -101,7 +93,7 @@
   <a *ngFor="let r of relatedRealestates" [routerLink]="['/realestate', r._id]" target="_blank">
     <mat-grid-list class="related-realestate clickable" cols="3" rowHeight="100px">
       <mat-grid-tile colspan="1">
-        <img class="thumbnail-image" [src]="r.images[0]">
+        <img class="thumbnail-image" [src]="r.imageUrl">
       </mat-grid-tile>
       <mat-grid-tile colspan="2">
         <mat-card-content>
@@ -126,3 +118,10 @@
     <a href="tel:{{realestate.phone}}"><button color="warn" mat-button>售楼热线</button></a>
   </mat-toolbar-row>
 </mat-toolbar>
+
+<div *ngIf="showFullscreenImages" style="z-index: 999;position: fixed;top: 0;left: 0;width: 100%;height: 100%;background-color: black;">
+  <button mat-button style="color: white;position: fixed;right: 0;" (click)="showFullscreenImages = false">返回</button>
+  <div style="position: absolute;top: 50%;left: 50%;width: 100%;height: 500px;margin-top: -250px;margin-left: -50%;">
+    <slideshow #fullscreenSlideshow [imageUrls]="images" [autoPlay]="false" [showDots]="true" [arrowSize]="'20px'"></slideshow>
+  </div>
+</div>

@@ -30,6 +30,10 @@ export class RealestateEditorComponent implements OnInit {
     public sanitizer: DomSanitizer,
     public snackBar: MatSnackBar
   ) {
+    iconRegistry.addSvgIcon(
+      'cancel',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/cancel.svg'));
+
     this.clearRealestateToEdit();
   }
 
