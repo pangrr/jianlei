@@ -1,6 +1,9 @@
 {
   "rewrites": [
-    { "source": "/admin", "destination": "index.html" },
+    { "source": "/edit", "destination": "index.html" },
+    { "source": "/edit/:id", "destination": "index.html" },
+    { "source": "/customers", "destination": "index.html" },
+    { "source": "/realestates", "destination": "index.html" },
     { "source": "/realestate/:id", "destination": "index.html" }
   ]
 }
