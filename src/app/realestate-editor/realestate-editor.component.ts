@@ -15,13 +15,17 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./realestate-editor.component.css']
 })
 export class RealestateEditorComponent implements OnInit {
+
   @Input() afuConfig = {
     formatsAllowed: '.jpg,.png',
     uploadAPI: { url: `${environment.server}/api/realestate/images` },
     multiple: true
   };
-  realestate: Realestate;
+
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+
+  realestate: Realestate;
+  imageUrls: string[] = [];
 
   constructor(
     private realestateService: RealestateService,
@@ -40,16 +44,21 @@ export class RealestateEditorComponent implements OnInit {
   ngOnInit(): void {
     if (this.route.snapshot.url.length === 2) {
       this.realestateService.getRealestate(this.route.snapshot.url[1].path)
-        .subscribe(r => this.realestate = r);
+        .subscribe(realestate => {
+          this.realestate = realestate;
+          this.imageUrls = this.imageNamesToImageUrls(realestate.images);
+        });
     }
   }
 
-
-  addImageFromUpload(event): void {
-    this.realestate.images = this.realestate.images.concat(JSON.parse(event.response));
+  onImagesUploaded(event): void {
+    const uploadedImageNames = JSON.parse(event.response);
+    this.imageUrls = this.imageUrls.concat(this.imageNamesToImageUrls(uploadedImageNames));
   }
 
   saveNewRealestate(): void {
+    this.realestate.images = this.imageUrlsToImageNames(this.imageUrls);
+
     this.realestateService.addRealestate(this.realestate)
       .subscribe(savedRealestate => {
         this.realestate._id = savedRealestate._id;
@@ -58,6 +67,8 @@ export class RealestateEditorComponent implements OnInit {
   }
 
   updateRealestate(): void {
+    this.realestate.images = this.imageUrlsToImageNames(this.imageUrls);
+
     this.realestateService.updateRealestate(this.realestate)
       .subscribe(_ => {
         this.openSnackBar('房产已更新');
@@ -66,7 +77,6 @@ export class RealestateEditorComponent implements OnInit {
 
   removeRelatedRealestate(id: string): void {
     const index = this.realestate.relatedRealestateIds.indexOf(id);
-
     if (index >= 0) {
       this.realestate.relatedRealestateIds.splice(index, 1);
     }
@@ -86,25 +96,10 @@ export class RealestateEditorComponent implements OnInit {
     }
   }
 
-  addImage(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
-
-    if ((value || '').trim()) {
-      this.realestate.images.push(value);
-    }
-
-    // Reset the input value
-    if (input) {
-      input.value = '';
-    }
-  }
-
-  removeImage(image: string): void {
-    const index = this.realestate.images.indexOf(image);
-
+  removeImageUrl(url: string): void {
+    const index = this.imageUrls.indexOf(url);
     if (index >= 0) {
-      this.realestate.images.splice(index, 1);
+      this.imageUrls.splice(index, 1);
     }
   }
 
@@ -128,11 +123,28 @@ export class RealestateEditorComponent implements OnInit {
     this.realestate.comments = [];
     this.realestate.images = [];
     this.realestate.relatedRealestateIds = [];
+    this.imageUrls = [];
   }
 
   private openSnackBar(message: string): void {
     this.snackBar.open(message, '', {
       duration: 1000,
     });
+  }
+
+  private imageUrlsToImageNames(imageUrls: string[]): string[] {
+    return imageUrls.map(url => this.imageUrlToImageName(url));
+  }
+
+  private imageNamesToImageUrls(imageNames: string[]): string[] {
+    return imageNames.map(name => this.imageNameToImageUrl(name));
+  }
+
+  private imageNameToImageUrl(imageName: string): string {
+    return `${environment.server}/api/realestate/image/${imageName}`;
+  }
+
+  private imageUrlToImageName(imageUrl: string): string {
+    return imageUrl.split('/').reverse()[0];
   }
 }
