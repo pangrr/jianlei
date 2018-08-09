@@ -7,7 +7,7 @@
 </mat-toolbar>
 
 <mat-card class="horizontal-center" *ngIf="realestate">
-  <slideshow [imageUrls]="images" [height]="'300px'" [autoPlay]="true" [showDots]="true" [arrowSize]="'20px'"></slideshow>
+  <slideshow [imageUrls]="images" [backgroundSize]="'contain'" [height]="'300px'" [autoPlay]="true" [showDots]="true" [arrowSize]="'20px'"></slideshow>
 
   <mat-grid-list cols="2">
     <mat-grid-tile>
