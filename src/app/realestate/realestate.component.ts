@@ -23,6 +23,7 @@ export class RealestateComponent implements OnInit {
   public description: string[];
   public relatedRealestates: RelatedRealestate[];
   public images: IImage[];
+  public imageUrls: string[];
   public showFullscreenImages = false;
 
   constructor(
@@ -50,6 +51,7 @@ export class RealestateComponent implements OnInit {
     this.realestateService.getRealestate(id)
       .subscribe(realestate => {
         this.images = this.buildImages(realestate.images);
+        this.imageUrls = realestate.images.map(imageName => this.imageNameToImageUrl(imageName));
 
         this.description = realestate.description.split(/\r?\n/);
 
@@ -73,7 +75,7 @@ export class RealestateComponent implements OnInit {
   private buildImages(imageNames: string[]): IImage[] {
     return imageNames.map((name, i) => {
       return {
-        url: this.buildImageUrl(name),
+        url: this.imageNameToImageUrl(name),
         clickAction: () => {
           this.showFullscreenImages = true;
           this.changeDetector.detectChanges();
@@ -86,13 +88,13 @@ export class RealestateComponent implements OnInit {
     });
   }
 
-  private buildImageUrl(imageName: string): string {
+  private imageNameToImageUrl(imageName: string): string {
     return `${environment.server}/api/realestate/image/${imageName}`;
   }
 
   private buildRelatedRealestate(realestate: Realestate): RelatedRealestate {
     return {
-      imageUrl: this.buildImageUrl(realestate.images[0]),
+      imageUrl: this.imageNameToImageUrl(realestate.images[0]),
       name: realestate.name,
       address: realestate.address,
       price: realestate.price
