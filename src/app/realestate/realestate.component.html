@@ -9,7 +9,7 @@
 <mat-card class="horizontal-center" *ngIf="realestate">
   <slideshow [imageUrls]="images" [backgroundSize]="'contain'" [height]="'300px'" [autoPlay]="true" [showDots]="true" [arrowSize]="'20px'"></slideshow>
 
-  <mat-grid-list cols="2">
+  <mat-grid-list cols="2" rowHeight="250px">
     <mat-grid-tile>
       <mat-card-content>
         <mat-card-title class="title">{{realestate.name}}</mat-card-title>
@@ -21,7 +21,7 @@
     </mat-grid-tile>
     <mat-grid-tile>
       <mat-card-content>
-        <mat-card-subtitle class="flex-wrap space-evenly background-red">
+        <mat-card-subtitle class="flex-wrap space-evenly background-red" style="margin-right: -16px;">
           <span>新房红包 抵扣房款</span>
           <span>新房红包{{realestate.redpocket.amount}}元</span>
           <button mat-button class="background-yellow" style="margin-top: 10px;" (click)="openCustomerRequestDialog('领取红包')">立即领取</button>
