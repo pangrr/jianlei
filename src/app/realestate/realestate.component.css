@@ -118,6 +118,11 @@ mat-icon {
   color: black;
 }
 
+.background-green {
+  background-color: forestgreen;
+  color: white;
+}
+
 .text-center {
   text-align: center;
 }

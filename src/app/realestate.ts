@@ -21,7 +21,6 @@ export interface Redpocket {
 }
 
 export interface Consultant {
-  title: string;
   phone: number;
   description: string;
 }

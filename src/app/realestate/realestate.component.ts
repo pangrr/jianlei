@@ -94,6 +94,7 @@ export class RealestateComponent implements OnInit {
 
   private buildRelatedRealestate(realestate: Realestate): RelatedRealestate {
     return {
+      _id: realestate._id,
       imageUrl: this.imageNameToImageUrl(realestate.images[0]),
       name: realestate.name,
       address: realestate.address,

@@ -1,4 +1,4 @@
-<mat-toolbar color="warn" class="fixed top font-normal" *ngIf="realestate">
+<mat-toolbar class="fixed top font-normal background-red" *ngIf="realestate">
   <mat-toolbar-row>
     <button mat-button>返回</button>
     <span>{{realestate.name}}</span>
@@ -55,7 +55,7 @@
   </mat-card-content>
 
   <mat-card-content *ngIf="realestate.consultant; let consultant">
-    <mat-card-subtitle class="black">置业顾问：{{consultant.title}}<span class="phone">{{consultant.phone}}</span><a href="tel:{{consultant.phone}}"><mat-icon svgIcon="phone"></mat-icon></a></mat-card-subtitle>
+    <mat-card-subtitle class="black">置业顾问：<span class="phone">{{consultant.phone}}</span><a href="tel:{{consultant.phone}}"><mat-icon svgIcon="phone"></mat-icon></a></mat-card-subtitle>
     <mat-card-subtitle>{{consultant.description}}</mat-card-subtitle>
   </mat-card-content>
     
@@ -68,8 +68,8 @@
 
   <mat-card-content *ngIf="realestate.visitServices; let services">
     <mat-card-subtitle class="title">楼盘服务</mat-card-subtitle>
-    <mat-card-subtitle class="flex"><button class="service-button" color="warn" (click)="openCustomerRequestDialog('班车看房')" mat-raised-button>班车看房</button><span>{{services.taxi}}</span></mat-card-subtitle>
-    <mat-card-subtitle class="flex"><button class="service-button" color="warn" (click)="openCustomerRequestDialog('自驾报销')" mat-raised-button>自驾报销</button><span>{{services.reimburse}}</span></mat-card-subtitle>
+    <mat-card-subtitle class="flex"><button class="service-button background-green" (click)="openCustomerRequestDialog('免费班车')" mat-raised-button>免费班车</button><span>{{services.taxi}}</span></mat-card-subtitle>
+    <mat-card-subtitle class="flex"><button class="service-button background-green" (click)="openCustomerRequestDialog('自驾报销')" mat-raised-button>自驾报销</button><span>{{services.reimburse}}</span></mat-card-subtitle>
   </mat-card-content>
 
   <mat-card-content>
@@ -112,10 +112,10 @@
 
 <mat-toolbar class="fixed bottom" *ngIf="realestate">
   <mat-toolbar-row>
-    <button color="warn" mat-button (click)="openCustomerRequestDialog('预约看房')">预约看房</button>
+    <button color="warn" mat-button (click)="openCustomerRequestDialog('获取楼盘价格表')">获取楼盘价格表</button>
     <button color="warn" mat-button (click)="openCustomerRequestDialog('领取红包')">新房红包</button>
     <button color="warn" mat-button (click)="openCustomerRequestDialog('预约团购看房')">团购看房</button>
-    <a href="tel:{{realestate.phone}}"><button color="warn" mat-button>售楼热线</button></a>
+    <a href="tel:{{realestate.consultant.phone}}"><button color="warn" mat-button>电话咨询</button></a>
   </mat-toolbar-row>
 </mat-toolbar>
 
