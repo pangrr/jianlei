@@ -48,17 +48,22 @@
     </mat-grid-tile>
   </mat-grid-list>
 
-
   <mat-card-content>
-    <mat-card-subtitle class="black">售楼处：<span class="phone">{{realestate.phone}}</span><a href="tel:{{realestate.phone}}"><mat-icon svgIcon="phone"></mat-icon></a></mat-card-subtitle>
+    <mat-card-subtitle class="black">售楼处：<span class="phone">{{realestate.phone}}</span>
+      <a href="tel:{{realestate.phone}}"><mat-icon class="green" svgIcon="phone"></mat-icon></a>
+    </mat-card-subtitle>
     <mat-card-subtitle>最新政策，更多优惠详情，请致电售楼处[120人拨打]</mat-card-subtitle>
   </mat-card-content>
 
   <mat-card-content *ngIf="realestate.consultant; let consultant">
-    <mat-card-subtitle class="black">置业顾问：<span class="phone">{{consultant.phone}}</span><a href="tel:{{consultant.phone}}"><mat-icon svgIcon="phone"></mat-icon></a></mat-card-subtitle>
+    <mat-card-subtitle class="black">置业顾问：<span class="phone">{{consultant.phone}}</span>
+      <a href="tel:{{consultant.phone}}"><mat-icon class="green" svgIcon="phone"></mat-icon></a>
+    </mat-card-subtitle>
     <mat-card-subtitle>{{consultant.description}}</mat-card-subtitle>
   </mat-card-content>
-    
+
+  <div class="divider"></div>
+
   <mat-card-content>
     <mat-card-subtitle class="title">楼盘信息</mat-card-subtitle>
     <p class="indent" *ngFor="let paragraph of description">
@@ -66,15 +71,21 @@
     </p>
   </mat-card-content>
 
+  <div class="divider"></div>
+
   <mat-card-content *ngIf="realestate.visitServices; let services">
     <mat-card-subtitle class="title">楼盘服务</mat-card-subtitle>
     <mat-card-subtitle class="flex"><button class="service-button background-green" (click)="openCustomerRequestDialog('免费班车')" mat-raised-button>免费班车</button><span>{{services.taxi}}</span></mat-card-subtitle>
     <mat-card-subtitle class="flex"><button class="service-button background-green" (click)="openCustomerRequestDialog('自驾报销')" mat-raised-button>自驾报销</button><span>{{services.reimburse}}</span></mat-card-subtitle>
   </mat-card-content>
 
+  <div class="divider"></div>
+
   <mat-card-content>
     <mat-card-subtitle class="title">卫星地图</mat-card-subtitle>
   </mat-card-content>
+
+  <div class="divider"></div>
 
   <mat-card-content>
     <mat-card-subtitle class="title">用户点评(232)</mat-card-subtitle>
@@ -85,6 +96,8 @@
     <p class="comment">{{comment.text}}</p>
     <mat-card-subtitle class="comment">{{comment.date}}</mat-card-subtitle>
   </mat-card-content>
+
+  <div class="divider"></div>
 
   <mat-card-content>
     <mat-card-subtitle class="title">周边楼盘</mat-card-subtitle>

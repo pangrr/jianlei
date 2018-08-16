@@ -2,6 +2,12 @@ p.indent {
   text-indent: 2em;
 }
 
+div.divider {
+  width: 100%;
+  height: 10px;
+  background-color: #ededed;
+}
+
 mat-toolbar.fixed {
   position: fixed;
   z-index: 101;
@@ -119,8 +125,12 @@ mat-icon {
 }
 
 .background-green {
-  background-color: forestgreen;
+  background-color: rgb(51, 204, 51);
   color: white;
+}
+
+.green {
+  color: rgb(51, 204, 51);
 }
 
 .text-center {
