@@ -29,6 +29,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 // 3rd party
 import { SlideshowModule } from 'ng-simple-slideshow';
 import { AngularFileUploaderModule } from 'angular-file-uploader';
+import { AbmModule } from 'angular-baidu-maps';
 
 // custom
 import { RealestateComponent } from './realestate/realestate.component';
@@ -83,7 +84,8 @@ import { RealestateListComponent } from './realestate-list/realestate-list.compo
 
     // 3rd party
     SlideshowModule,
-    AngularFileUploaderModule
+    AngularFileUploaderModule,
+    AbmModule.forRoot({ apiKey: 'MC44rmBjXF8syrkMZXjsgowatzbgBogx' })
   ],
   providers: [RealestateService, CustomerService],
   bootstrap: [AppComponent]
