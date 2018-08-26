@@ -9,6 +9,11 @@ import { RelatedRealestate} from '../related-realestate';
 import { RealestateService } from '../realestate.service';
 import { CustomerRequestDialogComponent } from '../customer-request-dialog/customer-request-dialog.component';
 import { environment } from '../../environments/environment';
+import { AbmComponent } from 'angular-baidu-maps';
+
+
+declare const BMap: any;
+
 
 @Component({
   selector: 'app-realestate',
@@ -18,6 +23,8 @@ import { environment } from '../../environments/environment';
 export class RealestateComponent implements OnInit {
   @ViewChild('fullscreenSlideshow')
   private fullscreenSlideshow: SlideshowComponent;
+  @ViewChild('map') mapComp: AbmComponent;
+  private map: any;
 
   public realestate: Realestate;
   public description: string[];
@@ -25,6 +32,7 @@ export class RealestateComponent implements OnInit {
   public images: IImage[];
   public imageUrls: string[];
   public showFullscreenImages = false;
+  public mapOptions: any = {};
 
   constructor(
     private route: ActivatedRoute,
@@ -70,6 +78,20 @@ export class RealestateComponent implements OnInit {
       width: '250px',
       data: { phone: '', name: '', request, realestateId: this.realestate._id, realestateName: this.realestate.name }
     });
+  }
+
+  onMapReady(map: any) {
+    this.map = map;
+    const point = new BMap.Point(116, 39.915);
+    map.centerAndZoom(point, 15);
+    map.enableScrollWheelZoom(true);
+    const label = new BMap.Label(
+      `<a href="./realestate/${this.realestate._id}" target="_blank" style="color: white;background: rgb(228, 0, 0);">
+      ${this.realestate.name}
+      </a>`,
+      { position: point, offset: new BMap.Size(-30, -30) }
+    );
+    map.addOverlay(label);
   }
 
   private buildImages(imageNames: string[]): IImage[] {

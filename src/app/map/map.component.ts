@@ -17,12 +17,21 @@ export class MapComponent implements OnInit, OnDestroy {
 
   ngOnInit() {}
 
-  onReady(map: any) {
+  onMapReady(map: any) {
     this.map = map;
-    map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
-    map.addControl(new BMap.MapTypeControl());
-    map.setCurrentCity('北京');
+
+    const point = new BMap.Point(116, 39.915);
+
+    map.centerAndZoom(point, 15);
     map.enableScrollWheelZoom(true);
+
+    const label = new BMap.Label(
+      `<a href="http://localhost:4200/realestates" target="_blank" style="color: white;background: rgb(228, 0, 0);">
+      重庆市外国语学校
+      </a>`,
+      { position: point, offset: new BMap.Size(-30, -30) }
+    );
+    map.addOverlay(label);
   }
 
   ngOnDestroy() {}
