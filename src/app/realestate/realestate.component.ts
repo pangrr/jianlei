@@ -24,7 +24,7 @@ export class RealestateComponent implements OnInit {
   @ViewChild('fullscreenSlideshow')
   private fullscreenSlideshow: SlideshowComponent;
   @ViewChild('map') mapComp: AbmComponent;
-  private map: any;
+
 
   public realestate: Realestate;
   public description: string[];
@@ -54,24 +54,6 @@ export class RealestateComponent implements OnInit {
     this.getRealestate();
   }
 
-  getRealestate(): void {
-    const id: string = this.route.snapshot.paramMap.get('id');
-    this.realestateService.getRealestate(id)
-      .subscribe(realestate => {
-        this.images = this.buildImages(realestate.images);
-        this.imageUrls = realestate.images.map(imageName => this.imageNameToImageUrl(imageName));
-
-        this.description = realestate.description.split(/\r?\n/);
-
-        this.realestate = realestate;
-
-        this.relatedRealestates = [];
-        realestate.relatedRealestateIds.forEach(_id => {
-          this.realestateService.getRealestate(_id)
-            .subscribe(relatedRealestate => this.relatedRealestates.push(this.buildRelatedRealestate(relatedRealestate)));
-        });
-      });
-  }
 
   openCustomerRequestDialog(request: string): void {
     this.customerRequestDialog.open(CustomerRequestDialogComponent, {
@@ -80,9 +62,8 @@ export class RealestateComponent implements OnInit {
     });
   }
 
-  onMapReady(map: any) {
-    this.map = map;
-    const point = new BMap.Point(116, 39.915);
+  markRealestateInMap(map: any): void {
+    const point = new BMap.Point(this.realestate.coordinate.longitude, this.realestate.coordinate.latitude);
     map.centerAndZoom(point, 15);
     map.enableScrollWheelZoom(true);
     const label = new BMap.Label(
@@ -92,6 +73,30 @@ export class RealestateComponent implements OnInit {
       { position: point, offset: new BMap.Size(-30, -30) }
     );
     map.addOverlay(label);
+  }
+
+
+  private getRealestate(): void {
+    const id: string = this.route.snapshot.paramMap.get('id');
+    this.realestateService.getRealestate(id)
+      .subscribe(realestate => {
+        this.images = this.buildImages(realestate.images);
+        this.imageUrls = realestate.images.map(imageName => this.imageNameToImageUrl(imageName));
+
+        this.populateRelatedRealestates(realestate);
+
+        this.description = realestate.description.split(/\r?\n/);
+
+        this.realestate = realestate;
+      });
+  }
+
+  private populateRelatedRealestates(realestate: Realestate): void {
+    this.relatedRealestates = [];
+    realestate.relatedRealestateIds.forEach(_id => {
+      this.realestateService.getRealestate(_id)
+        .subscribe(relatedRealestate => this.relatedRealestates.push(this.buildRelatedRealestate(relatedRealestate)));
+    });
   }
 
   private buildImages(imageNames: string[]): IImage[] {

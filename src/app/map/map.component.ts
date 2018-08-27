@@ -29,7 +29,7 @@ export class MapComponent implements OnInit, OnDestroy {
       `<a href="http://localhost:4200/realestates" target="_blank" style="color: white;background: rgb(228, 0, 0);">
       重庆市外国语学校
       </a>`,
-      { position: point, offset: new BMap.Size(-30, -30) }
+      { position: point }
     );
     map.addOverlay(label);
   }

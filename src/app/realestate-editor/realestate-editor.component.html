@@ -20,10 +20,19 @@
       <input matInput placeholder="名称" name="name" [(ngModel)]="realestate.name" required>
     </mat-form-field>
     <mat-form-field>
+      <input matInput type="number" placeholder="售楼电话" name="phone" [(ngModel)]="realestate.phone" required>
+    </mat-form-field>
+  </div>
+
+  <div class="field-group">
+    <mat-form-field>
       <input matInput placeholder="地址" name="address" [(ngModel)]="realestate.address" required>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="number" placeholder="售楼电话" name="phone" [(ngModel)]="realestate.phone" required>
+      <input matInput type="number" placeholder="经度" name="longitude" [(ngModel)]="realestate.coordinate.longitude" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="number" placeholder="纬度" name="latitude" [(ngModel)]="realestate.coordinate.latitude" required>
     </mat-form-field>
   </div>
 

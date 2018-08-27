@@ -5,7 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatChipInputEvent } from '@angular/material';
 import { MatSnackBar } from '@angular/material';
 import { RealestateService } from '../realestate.service';
-import { Realestate, Redpocket, VisitingServices, Consultant } from '../realestate';
+import { Realestate, Redpocket, VisitingServices, Consultant, Coordinate } from '../realestate';
 import { environment } from '../../environments/environment';
 import { ActivatedRoute } from '@angular/router';
 
@@ -123,6 +123,7 @@ export class RealestateEditorComponent implements OnInit {
     this.realestate.comments = [];
     this.realestate.images = [];
     this.realestate.relatedRealestateIds = [];
+    this.realestate.coordinate = {} as Coordinate;
     this.imageUrls = [];
   }
 

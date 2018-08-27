@@ -2,6 +2,7 @@ export interface Realestate {
   _id: string;
   name: string;
   address: string;
+  coordinate: Coordinate;
   price: number;
   redpocket: Redpocket;
   groupPrice: number;
@@ -12,6 +13,11 @@ export interface Realestate {
   visitServices: VisitingServices;
   comments: Comment[];
   relatedRealestateIds: string[];
+}
+
+export interface Coordinate {
+  longitude: number;
+  latitude: number;
 }
 
 export interface Redpocket {

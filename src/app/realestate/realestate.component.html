@@ -85,7 +85,7 @@
     <mat-card-subtitle class="title">卫星地图</mat-card-subtitle>
   </mat-card-content>
   <div style="width: 100%;height: 300px;">
-    <abm-map #map [options]="mapOptions" (ready)="onMapReady($event)"></abm-map>
+    <abm-map #map [options]="mapOptions" (ready)="markRealestateInMap($event)"></abm-map>
   </div>
 
   <mat-card-content>
