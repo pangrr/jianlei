@@ -43,8 +43,13 @@ export class RealestateEditorComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.route.snapshot.url.length === 2) {
-      this.realestateService.getRealestate(this.route.snapshot.url[1].path)
+      this.realestateService.getRealestate(this.getRealestateIdFromCurrentUrl())
         .subscribe(realestate => {
+          // TODO remove after all realestates have coordinates
+          if (!realestate.consultant) {
+            realestate.coordinate = {} as Coordinate;
+          }
+
           this.realestate = realestate;
           this.imageUrls = this.imageNamesToImageUrls(realestate.images);
         });
@@ -125,6 +130,10 @@ export class RealestateEditorComponent implements OnInit {
     this.realestate.relatedRealestateIds = [];
     this.realestate.coordinate = {} as Coordinate;
     this.imageUrls = [];
+  }
+
+  private getRealestateIdFromCurrentUrl(): string {
+    return this.route.snapshot.url[1].path;
   }
 
   private openSnackBar(message: string): void {
