@@ -46,7 +46,7 @@ export class RealestateEditorComponent implements OnInit {
       this.realestateService.getRealestate(this.getRealestateIdFromCurrentUrl())
         .subscribe(realestate => {
           // TODO remove after all realestates have coordinates
-          if (!realestate.consultant) {
+          if (!realestate.coordinate) {
             realestate.coordinate = {
               longitude: 116, latitude: 39
             };
