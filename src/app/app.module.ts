@@ -1,7 +1,7 @@
 // angular
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +25,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 // 3rd party
 import { SlideshowModule } from 'ng-simple-slideshow';
@@ -33,7 +35,7 @@ import { AbmModule } from 'angular-baidu-maps';
 
 // custom
 import { RealestateComponent } from './realestate/realestate.component';
-import { SearchComponent } from './search/search.component';
+import { HomeComponent } from './home/home.component';
 import { RealestateService } from './realestate.service';
 import { CustomerService } from './customer.service';
 import { CustomerRequestDialogComponent } from './customer-request-dialog/customer-request-dialog.component';
@@ -46,12 +48,11 @@ import { RealestateListComponent } from './realestate-list/realestate-list.compo
   declarations: [
     AppComponent,
     MapComponent,
-
     RealestateComponent,
     CustomerRequestListComponent,
     RealestateEditorComponent,
     RealestateListComponent,
-    SearchComponent,
+    HomeComponent,
     CustomerRequestDialogComponent
   ],
   entryComponents: [
@@ -62,6 +63,7 @@ import { RealestateListComponent } from './realestate-list/realestate-list.compo
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
 
     // material
     BrowserAnimationsModule,
@@ -81,6 +83,8 @@ import { RealestateListComponent } from './realestate-list/realestate-list.compo
     MatChipsModule,
     MatCheckboxModule,
     MatSnackBarModule,
+    MatSelectModule,
+    MatAutocompleteModule,
 
     // 3rd party
     SlideshowModule,

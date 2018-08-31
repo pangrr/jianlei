@@ -1,4 +1,4 @@
-.field-group {
+div.field-group {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
