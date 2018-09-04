@@ -76,3 +76,22 @@ div.cities {
   display: flex;
   flex-wrap: wrap;
 }
+
+div.menu {
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  background: rgb(228, 0, 0);
+  color: white;
+  z-index: 9;
+}
+
+div.registry {
+  position: fixed;
+  bottom: 0;
+  height: 20px;
+  right: 0;
+  background: white;
+}
