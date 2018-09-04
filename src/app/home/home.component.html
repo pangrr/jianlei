@@ -5,17 +5,17 @@
     </div>
     <div class="flex-row">
       <div class="flex-row">
-        <mat-form-field>
-          <input type="text" placeholder="城市" aria-label="city" matInput [formControl]="cityControl" [matAutocomplete]="cities">
-          <mat-autocomplete autoActiveFirstOption #cities="matAutocomplete">
+        <mat-form-field *ngIf="filteredCities">
+          <input type="text" placeholder="城市" aria-label="city" matInput [formControl]="cityControl" [matAutocomplete]="cityAutocomplete">
+          <mat-autocomplete autoActiveFirstOption #cityAutocomplete="matAutocomplete">
             <mat-option *ngFor="let city of filteredCities | async" [value]="city">
               {{city}}
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
-        <mat-form-field>
-          <input type="text" placeholder="楼盘名称" aria-label="realestate" matInput [formControl]="realestateControl" [matAutocomplete]="realestates">
-          <mat-autocomplete autoActiveFirstOption #realestates="matAutocomplete" [displayWith]="displayRealestate">
+        <mat-form-field *ngIf="filteredRealestates">
+          <input type="text" placeholder="楼盘名称" aria-label="realestate" matInput [formControl]="realestateControl" [matAutocomplete]="realestateAutocomplete">
+          <mat-autocomplete autoActiveFirstOption #realestateAutocomplete="matAutocomplete" [displayWith]="displayRealestate">
             <mat-option *ngFor="let realestate of filteredRealestates | async" [value]="realestate">
               {{realestate.name}}
             </mat-option>
@@ -44,23 +44,50 @@
 
 
   <div class="section">
-    <mat-card-subtitle class="section-title">最火新盘</mat-card-subtitle>
+    <div class="section-title">最火新盘</div>
+    <div *ngFor="let realestate of realestates" class="realestate-thumbnail">
+      <img [src]="realestate.images[0]" class="thumbnail-image">
+      <div class="thumbnail-description">
+        <div>{{realestate.name}}</div>
+        <div class="address">{{realestate.address}}</div>
+        <div class="price">￥{{realestate.price}}</div>
+      </div>
+    </div>
   </div>
 
   <div class="section">
-    <mat-card-subtitle class="section-title">性价比二手房</mat-card-subtitle>
+    <div class="section-title">性价比二手房</div>
+    <div *ngFor="let realestate of realestates" class="realestate-thumbnail">
+      <img [src]="realestate.images[0]" class="thumbnail-image">
+      <div class="thumbnail-description">
+        <div>{{realestate.name}}</div>
+        <div class="address">{{realestate.address}}</div>
+        <div class="price">￥{{realestate.price}}</div>
+      </div>
+    </div>
   </div>
 
   <div class="section">
-    <mat-card-subtitle class="section-title">推荐出租房</mat-card-subtitle>
+    <div class="section-title">推荐出租房</div>
+    <div *ngFor="let realestate of realestates" class="realestate-thumbnail">
+      <img [src]="realestate.images[0]" class="thumbnail-image">
+      <div class="thumbnail-description">
+        <div>{{realestate.name}}</div>
+        <div class="address">{{realestate.address}}</div>
+        <div class="price">￥{{realestate.price}}</div>
+      </div>
+    </div>
   </div>
 
   <div class="section">
-    <mat-card-subtitle class="section-title">楼市动态</mat-card-subtitle>
+    <div class="section-title">楼市动态</div>
   </div>
 
   <div class="section">
-    <mat-card-subtitle class="section-title">热门城市</mat-card-subtitle>
+    <div class="section-title">热门城市</div>
+    <div class="cities">
+      <button *ngFor='let city of cities' mat-button>{{city}}</button>
+    </div>
   </div>
 
 </div>

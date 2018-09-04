@@ -48,6 +48,10 @@ export class RealestateService {
     );
   }
 
+  replaceImageNamesWithImageUrls(realestate: Realestate): void {
+    realestate.images = realestate.images.map(imageName => `${this.url}/image/${imageName}`);
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.
