@@ -1,3 +1,106 @@
+.toolbar {
+  position: fixed;
+  width: 100%;
+  height: 37px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9999;
+}
+
+.top {
+  top: 0;
+}
+
+.bottom {
+  bottom: 0;
+}
+
+div.content {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  background: transparent;
+}
+
+div.section {
+  padding: 20px;
+  width: 100%;
+  margin-bottom: 8px;
+  background: white;
+}
+
+div.flex-row {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
+.title {
+  font-size: 1.7em;
+  margin: 50px;
+}
+
+.flex-row>mat-form-field, .flex-row>button {
+  flex-grow: 1;
+}
+
+.flex-row>mat-form-field {
+  margin-left: 10px;
+  margin-right: 10px;
+  min-width: 0;
+}
+
+div.realestate-thumbnail {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+}
+
+img.thumbnail-image {
+  height: 100%;
+  width: 100px;
+}
+
+div.thumbnail-description {
+  height: 100%;
+  margin-left: 30px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.section-title {
+  font-size: 1.2em;
+}
+
+.address {
+  color: #cccccc;
+}
+
+.price {
+  color: red;
+}
+
+div.cities {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.disclaim {
+  color: #ddd;
+  font-size: 0.9em;
+  margin-top: 30px;
+  text-align: right;
+}
+
+
+
+
 p.indent {
   text-indent: 2em;
 }
