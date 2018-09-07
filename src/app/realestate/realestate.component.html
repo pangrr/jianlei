@@ -1,4 +1,4 @@
-<div class="toolbar top background-red" *ngIf="realestate">
+<div class="toolbar top" *ngIf="realestate">
   <button mat-button>返回</button>
   <span>{{realestate.name}}</span>
   <button mat-button>地图找房</button>
@@ -118,15 +118,15 @@
   </a>
   
 
-  <mat-toolbar-row></mat-toolbar-row>
+  <div class="toolbar"></div>
 </mat-card>
 
 
-<div class="toolbar bottom background-yellow" *ngIf="realestate">
-  <button color="warn" mat-button (click)="openCustomerRequestDialog('获取楼盘价格表')">获取楼盘价格表</button>
-  <button color="warn" mat-button (click)="openCustomerRequestDialog('领取红包')">新房红包</button>
-  <button color="warn" mat-button (click)="openCustomerRequestDialog('预约团购看房')">团购看房</button>
-  <a href="tel:{{realestate.consultant.phone}}"><button color="warn" mat-button>电话咨询</button></a>
+<div class="toolbar bottom" *ngIf="realestate">
+  <button mat-button (click)="openCustomerRequestDialog('获取楼盘价格表')">获取楼盘价格表</button>
+  <button mat-button (click)="openCustomerRequestDialog('领取红包')">新房红包</button>
+  <button mat-button (click)="openCustomerRequestDialog('预约团购看房')">团购看房</button>
+  <a href="tel:{{realestate.consultant.phone}}" class="red"><button mat-button>电话咨询</button></a>
 </div>
 
 <div *ngIf="images && showFullscreenImages" style="z-index: 999;position: fixed;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(0,0,0,0.8);opacity: 1;">

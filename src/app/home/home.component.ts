@@ -20,6 +20,17 @@ export class HomeComponent implements OnInit {
   realestates: Realestate[];
   filteredRealestates: Observable<string[] | Realestate[]>;
 
+  buttons = [
+    { image: 'new', name: '新房' },
+    { image: 'used', name: '二手房' },
+    { image: 'rent', name: '租房' },
+    { image: 'sale', name: '卖房' },
+    { image: 'search', name: '求购房源' },
+    { image: 'paint', name: '装修' },
+    { image: 'calculator', name: '计算器' },
+    { image: 'map', name: '地图找房' }
+  ];
+
   constructor(
     private realestateService: RealestateService
   ) { }

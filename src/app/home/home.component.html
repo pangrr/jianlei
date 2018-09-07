@@ -28,18 +28,17 @@
 
 
   <div class="section">
-    <div class="flex-row">
-      <button mat-button>新房</button>
-      <button mat-button>二手房</button>
-      <button mat-button>租房</button>
-      <button mat-button>卖房</button>
-    </div>
-    <div class="flex-row">
-      <button mat-button>求购房源</button>
-      <button mat-button>装修</button>
-      <button mat-button>计算器</button>
-      <button mat-button>地图找房</button>
-    </div>
+    <mat-grid-list cols="4" rowHeight="100px">
+      <mat-grid-tile
+        *ngFor="let button of buttons"
+        [colspan]="1"
+        [rowspan]="1">
+        <div class="flex-column">
+          <img [src]="'assets/' + button.image + '.svg'">
+          <div>{{button.name}}</div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
   </div>
 
 
