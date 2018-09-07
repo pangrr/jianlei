@@ -1,18 +1,18 @@
 <div class="content">
   <div class="section">
     <div class="flex-row">
-      <span class="title">房住网 房住不炒</span>
+      <span class="title">房住网 有房住</span>
     </div>
     <div class="flex-row">
       <div class="flex-row">
-        <mat-form-field>
+        <mat-form-field class="select-city">
           <mat-select [(value)]="cities[0]">
             <mat-option *ngFor="let city of cities" [value]="city">
               {{city}}
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field *ngIf="filteredRealestates">
+        <mat-form-field class="select-realestate" *ngIf="filteredRealestates">
           <input type="text" placeholder="楼盘名称" aria-label="realestate" matInput [formControl]="realestateControl" [matAutocomplete]="realestateAutocomplete">
           <mat-autocomplete autoActiveFirstOption #realestateAutocomplete="matAutocomplete" [displayWith]="displayRealestate">
             <mat-option *ngFor="let realestate of filteredRealestates | async" [value]="realestate">

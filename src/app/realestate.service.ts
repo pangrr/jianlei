@@ -52,6 +52,10 @@ export class RealestateService {
     realestate.images = realestate.images.map(imageName => `${this.url}/image/${imageName}`);
   }
 
+  collectCitiesFromRealestates(realestates: Realestate[]): string[] {
+    return realestates.map(realestate => realestate.city);
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

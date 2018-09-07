@@ -24,14 +24,18 @@ div.flex-row {
   margin: 50px;
 }
 
-.flex-row>mat-form-field, .flex-row>button {
+mat-form-field.select-realestate {
   flex-grow: 1;
+}
+
+mat-form-field.select-city {
+  max-width: 40px;
 }
 
 .flex-row>mat-form-field {
   margin-left: 10px;
   margin-right: 10px;
-  min-width: 0;
+  min-width: 50px;
 }
 
 div.realestate-thumbnail {

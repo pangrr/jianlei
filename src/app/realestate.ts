@@ -1,6 +1,7 @@
 export interface Realestate {
   _id: string;
   name: string;
+  city: string;
   address: string;
   coordinate: Coordinate;
   price: number;

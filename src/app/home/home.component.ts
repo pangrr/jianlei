@@ -12,7 +12,7 @@ import { Realestate } from '../realestate';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  cities: string[] = ['杭州', '苏州', '上海', '嘉兴', '湖州', '南宁', '昆山', '南京', '平湖'];
+  cities: string[] = [];
 
   realestateControl = new FormControl();
   realestates: Realestate[];
@@ -57,6 +57,8 @@ export class HomeComponent implements OnInit {
 
       this.realestates = realestates;
 
+      this.cities = this.realestateService.collectCitiesFromRealestates(this.realestates);
+
       this.filteredRealestates = this.realestateControl.valueChanges
         .pipe(
           startWith<string | Realestate>(''),
@@ -65,5 +67,4 @@ export class HomeComponent implements OnInit {
         );
     });
   }
-
 }
