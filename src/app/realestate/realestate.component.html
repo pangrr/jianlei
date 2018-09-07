@@ -6,7 +6,7 @@
 
 <div class="content" *ngIf="realestate">
 
-  <div class="section no-padding no-margin-bottom">
+  <div class="section no-padding">
     <slideshow [imageUrls]="images" [backgroundSize]="'contain'" [height]="'300px'" [autoPlay]="true" [showDots]="true" [arrowSize]="'20px'"></slideshow>
   </div>
 
@@ -33,25 +33,25 @@
       </table>
     </div>
     <div>
-      <div class="flex-wrap space-evenly background-red">
+      <div class="flex-row flex-wrap padding space-evenly background-red">
         <span>新房红包 抵扣房款</span>
         <span>新房红包{{realestate.redpocket.amount}}元</span>
         <button mat-button class="background-yellow" (click)="openCustomerRequestDialog('领取红包')">立即领取</button>
       </div>
-      <div class="font-small">签约有效期：{{realestate.redpocket.startDate}} - {{realestate.redpocket.endDate}}</div>
-      <div class="font-small">购房红包，数量有限，请尽快领取</div>
+      <div class="note">签约有效期：{{realestate.redpocket.startDate}} - {{realestate.redpocket.endDate}}</div>
+      <div class="note">购房红包，数量有限，请尽快领取</div>
     </div>
   </div>
   
   <div class="section side-by-side background-red no-margin-bottom">
     <div class="content-horizontal-center">
-      <div>￥<span class="font-big">{{realestate.groupPrice}}</span> 团购价</div>
+      <div>团购价 ￥{{realestate.groupPrice}}</div>
       <button class="background-yellow" mat-button (click)="openCustomerRequestDialog('团购看房')">预约团购看房</button>
     </div>
     <div class="content-horizontal-center">
-      <div class="white">团购看房前参加有效</div>
-      <div class="white">10天 12时 12分</div>
-      <div class="white">120人参加</div>
+      <div>团购看房前参加有效</div>
+      <div>10天 12时 12分</div>
+      <div>120人参加</div>
     </div>
   </div>
  
@@ -99,7 +99,7 @@
   </div>
 
   <div class="section" *ngFor="let comment of realestate.comments">
-    <div class="black"><mat-icon svgIcon="account"></mat-icon><span class="blue">{{comment.account}}</span></div>
+    <div><mat-icon svgIcon="account"></mat-icon><span class="blue">{{comment.account}}</span></div>
     <p class="comment">{{comment.text}}</p>
     <div class="comment">{{comment.date}}</div>
   </div>
@@ -130,7 +130,7 @@
   <a href="tel:{{realestate.consultant.phone}}" class="red"><button mat-button>电话咨询</button></a>
 </div>
 
-<div *ngIf="images && showFullscreenImages" style="z-index: 999;position: fixed;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(0,0,0,0.8);opacity: 1;">
+<div *ngIf="images && showFullscreenImages" class="dialog">
   <div (click)="showFullscreenImages = false" style="width: 100%;height: 100px;"></div>
   <div style="width: 100%;height: calc(100% - 200px);background-color: black;">
     <slideshow #fullscreenSlideshow [backgroundSize]="'contain'" [imageUrls]="imageUrls" [autoPlay]="false" [showDots]="true" [arrowSize]="'20px'"></slideshow>

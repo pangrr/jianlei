@@ -5,7 +5,6 @@ import { MatIconRegistry } from '@angular/material';
 import { MatDialog } from '@angular/material';
 import { IImage, ɵa as SlideshowComponent } from 'ng-simple-slideshow';
 import { Realestate } from '../realestate';
-import { RelatedRealestate} from '../related-realestate';
 import { RealestateService } from '../realestate.service';
 import { CustomerRequestDialogComponent } from '../customer-request-dialog/customer-request-dialog.component';
 import { environment } from '../../environments/environment';
