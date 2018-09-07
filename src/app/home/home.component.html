@@ -43,38 +43,44 @@
 
   <div class="section">
     <div class="section-title">最火新盘</div>
-    <div *ngFor="let realestate of realestates" class="realestate-thumbnail">
-      <img [src]="realestate.images[0]" class="thumbnail-image">
-      <div class="thumbnail-description">
-        <div>{{realestate.name}}</div>
-        <div class="address">{{realestate.address}}</div>
-        <div class="price">￥{{realestate.price}}</div>
+    <a *ngFor="let realestate of realestates" [routerLink]="['/realestate', realestate._id]" target="_blank">
+      <div class="realestate-thumbnail">
+        <img [src]="realestate.images[0]" class="thumbnail-image">
+        <div class="thumbnail-description">
+          <div>{{realestate.name}}</div>
+          <div class="address">{{realestate.address}}</div>
+          <div class="price">￥{{realestate.price}}</div>
+        </div>
       </div>
-    </div>
+    </a>
   </div>
 
   <div class="section">
     <div class="section-title">性价比二手房</div>
-    <div *ngFor="let realestate of realestates" class="realestate-thumbnail">
-      <img [src]="realestate.images[0]" class="thumbnail-image">
-      <div class="thumbnail-description">
-        <div>{{realestate.name}}</div>
-        <div class="address">{{realestate.address}}</div>
-        <div class="price">￥{{realestate.price}}</div>
+    <a *ngFor="let realestate of realestates" [routerLink]="['/realestate', realestate._id]" target="_blank">
+      <div class="realestate-thumbnail">
+        <img [src]="realestate.images[0]" class="thumbnail-image">
+        <div class="thumbnail-description">
+          <div>{{realestate.name}}</div>
+          <div class="address">{{realestate.address}}</div>
+          <div class="price">￥{{realestate.price}}</div>
+        </div>
       </div>
-    </div>
+    </a>
   </div>
 
   <div class="section">
     <div class="section-title">推荐出租房</div>
-    <div *ngFor="let realestate of realestates" class="realestate-thumbnail">
-      <img [src]="realestate.images[0]" class="thumbnail-image">
-      <div class="thumbnail-description">
-        <div>{{realestate.name}}</div>
-        <div class="address">{{realestate.address}}</div>
-        <div class="price">￥{{realestate.price}}</div>
+    <a *ngFor="let realestate of realestates" [routerLink]="['/realestate', realestate._id]" target="_blank">
+      <div class="realestate-thumbnail">
+        <img [src]="realestate.images[0]" class="thumbnail-image">
+        <div class="thumbnail-description">
+          <div>{{realestate.name}}</div>
+          <div class="address">{{realestate.address}}</div>
+          <div class="price">￥{{realestate.price}}</div>
+        </div>
       </div>
-    </div>
+    </a>
   </div>
 
   <div class="section">

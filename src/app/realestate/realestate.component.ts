@@ -28,7 +28,7 @@ export class RealestateComponent implements OnInit {
 
   public realestate: Realestate;
   public description: string[];
-  public relatedRealestates: RelatedRealestate[];
+  public relatedRealestates: Realestate[] = [];
   public images: IImage[];
   public imageUrls: string[];
   public showFullscreenImages = false;
@@ -92,10 +92,11 @@ export class RealestateComponent implements OnInit {
   }
 
   private populateRelatedRealestates(realestate: Realestate): void {
-    this.relatedRealestates = [];
     realestate.relatedRealestateIds.forEach(_id => {
       this.realestateService.getRealestate(_id)
-        .subscribe(relatedRealestate => this.relatedRealestates.push(this.buildRelatedRealestate(relatedRealestate)));
+        .subscribe(
+          relatedRealestate => this.relatedRealestates.push(this.realestateService.replaceImageNamesWithImageUrls(relatedRealestate))
+        );
     });
   }
 
@@ -117,15 +118,5 @@ export class RealestateComponent implements OnInit {
 
   private imageNameToImageUrl(imageName: string): string {
     return `${environment.server}/api/realestate/image/${imageName}`;
-  }
-
-  private buildRelatedRealestate(realestate: Realestate): RelatedRealestate {
-    return {
-      _id: realestate._id,
-      imageUrl: this.imageNameToImageUrl(realestate.images[0]),
-      name: realestate.name,
-      address: realestate.address,
-      price: realestate.price
-    };
   }
 }

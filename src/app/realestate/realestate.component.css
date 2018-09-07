@@ -23,40 +23,65 @@
   color: rgb(228, 0, 0);
 }
 
-div.content {
+.content {
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
   background: transparent;
 }
 
-div.section {
+.section {
   padding: 20px;
   width: 100%;
   margin-bottom: 8px;
   background: white;
 }
 
-div.flex-row {
+.section.no-margin-bottom {
+  margin-bottom: 0;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.padding {
+  padding: 20px;
+}
+
+.flex-row {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
+  margin-bottom: 10px;
 }
 
-.title {
-  font-size: 1.7em;
-  margin: 50px;
+.no-justify-content {
+  justify-content: initial;
 }
 
-.flex-row>mat-form-field, .flex-row>button {
+.side-by-side {
+  display: flex;
+  align-items: center;
+}
+
+.side-by-side>div {
   flex-grow: 1;
 }
 
-.flex-row>mat-form-field {
-  margin-left: 10px;
-  margin-right: 10px;
-  min-width: 0;
+.content-horizontal-center {
+  text-align: center;
+}
+
+.table-row-name {
+  color: rgba(0,0,0,.54);
+}
+
+.title {
+  font-size: 1.8em;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 div.realestate-thumbnail {
@@ -82,7 +107,8 @@ div.thumbnail-description {
 }
 
 .section-title {
-  font-size: 1.2em;
+  font-size: 1.3em;
+  margin-bottom: 20px;
 }
 
 .address {
@@ -105,7 +131,10 @@ div.disclaim {
   text-align: right;
 }
 
-
+div.map-container {
+  width: 100%;
+  height: 300px;
+}
 
 
 p.indent {
@@ -118,64 +147,10 @@ div.divider {
   background-color: #eee;
 }
 
-mat-toolbar.fixed {
-  position: fixed;
-  z-index: 101;
-}
-
-mat-toolbar-row {
-  padding: 0;
-  height: 36px;
-  justify-content: space-between;
-}
-
-.mat-toolbar-multiple-rows {
-  min-height: 0px;
-}
-
-mat-toolbar.top {
-  top: 0;
-  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
-}
-
-mat-toolbar.bottom {
-  bottom: 0;
-  box-shadow: 0 -3px 5px -1px rgba(0,0,0,.2), 0 -6px 10px 0 rgba(0,0,0,.14), 0 -1px 18px 0 rgba(0,0,0,.12);
-}
-
-mat-card {
-  top: 37px;
-  max-width: 650px;
-  padding: 0;
-  bottom: 37px;
-}
-
-.mat-card:not([class*=mat-elevation-z]) {
-  box-shadow: none;
-}
-
-mat-card-header {
-  margin: 24px;
-}
-
-mat-card-content {
-  margin: 24px 16px 24px 16px;
-}
-
-mat-card-actions {
-  margin-left: 24px;
-  margin-right: 24px;
-}
-
 mat-icon {
   vertical-align: bottom;
   margin-left: 10px;
   margin-right: 10px;
-}
-
-.horizontal-center {
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .full-width {
@@ -274,11 +249,6 @@ mat-grid-list.related-realestate {
 .service-button {
   margin-left: 20px;
   margin-right: 20px;
-}
-
-.title {
-  color: black;
-  font-size: 1.5em;
 }
 
 .phone {

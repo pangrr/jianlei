@@ -48,8 +48,9 @@ export class RealestateService {
     );
   }
 
-  replaceImageNamesWithImageUrls(realestate: Realestate): void {
+  replaceImageNamesWithImageUrls(realestate: Realestate): Realestate {
     realestate.images = realestate.images.map(imageName => `${this.url}/image/${imageName}`);
+    return realestate;
   }
 
   collectCitiesFromRealestates(realestates: Realestate[]): string[] {
