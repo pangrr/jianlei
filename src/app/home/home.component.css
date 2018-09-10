@@ -1,18 +1,23 @@
-div.content {
+.content {
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
   background: transparent;
 }
 
-div.section {
+.section {
   padding: 20px;
   width: 100%;
   margin-bottom: 8px;
   background: white;
 }
 
-div.flex-row {
+.section.title-container {
+  background-size: cover;
+  background-image: url('../../assets/background.jpg');
+}
+
+.flex-row {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -20,8 +25,12 @@ div.flex-row {
 }
 
 .title {
-  font-size: 1.7em;
-  margin: 50px;
+  font-size: 2.1em;
+  color: white;
+  font-weight: bold;
+  margin: 70px;
+  font-family: monospace;
+  font-style: italic;
 }
 
 mat-form-field.select-realestate {
@@ -38,7 +47,7 @@ mat-form-field.select-city {
   min-width: 50px;
 }
 
-div.realestate-thumbnail {
+.realestate-thumbnail {
   display: flex;
   align-items: center;
   width: 100%;
@@ -46,12 +55,12 @@ div.realestate-thumbnail {
   padding: 10px;
 }
 
-img.thumbnail-image {
+.thumbnail-image {
   height: 100%;
   width: 100px;
 }
 
-div.thumbnail-description {
+.thumbnail-description {
   height: 100%;
   margin-left: 30px;
   flex-grow: 1;
@@ -72,12 +81,12 @@ div.thumbnail-description {
   color: red;
 }
 
-div.cities {
+.cities {
   display: flex;
   flex-wrap: wrap;
 }
 
-div.disclaim {
+.disclaim {
   color: #ddd;
   font-size: 0.9em;
   margin-top: 30px;
@@ -87,4 +96,9 @@ div.disclaim {
 .flex-column {
   display: flex;
   flex-direction: column;
+}
+
+.search {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 6px;
 }

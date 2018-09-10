@@ -1,27 +1,25 @@
 <div class="content">
-  <div class="section">
+  <div class="section title-container">
     <div class="flex-row">
       <span class="title">房住网 有房住</span>
     </div>
-    <div class="flex-row">
-      <div class="flex-row">
-        <mat-form-field class="select-city">
-          <mat-select [(value)]="cities[0]">
-            <mat-option *ngFor="let city of cities" [value]="city">
-              {{city}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field class="select-realestate" *ngIf="filteredRealestates">
-          <input type="text" placeholder="楼盘名称" aria-label="realestate" matInput [formControl]="realestateControl" [matAutocomplete]="realestateAutocomplete">
-          <mat-autocomplete autoActiveFirstOption #realestateAutocomplete="matAutocomplete" [displayWith]="displayRealestate">
-            <mat-option *ngFor="let realestate of filteredRealestates | async" [value]="realestate">
-              {{realestate.name}}
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field>
-        <button mat-button>地图</button>
-      </div>
+    <div class="flex-row search">
+      <mat-form-field class="select-city">
+        <mat-select [(value)]="cities[0]">
+          <mat-option *ngFor="let city of cities" [value]="city">
+            {{city}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="select-realestate" *ngIf="filteredRealestates">
+        <input type="text" placeholder="楼盘名称" aria-label="realestate" matInput [formControl]="realestateControl" [matAutocomplete]="realestateAutocomplete">
+        <mat-autocomplete autoActiveFirstOption #realestateAutocomplete="matAutocomplete" [displayWith]="displayRealestate">
+          <mat-option *ngFor="let realestate of filteredRealestates | async" [value]="realestate">
+            {{realestate.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <button mat-button>地图</button>
     </div>
   </div>
 
