@@ -48,8 +48,13 @@ export class RealestateEditorComponent implements OnInit {
           // TODO remove after all realestates have coordinates
           if (!realestate.coordinate) {
             realestate.coordinate = {
-              longitude: 116, latitude: 39
+              longitude: undefined, latitude: undefined
             };
+          }
+
+          // TODO remove after all realestates have news
+          if (!realestate.news) {
+            realestate.news = [];
           }
 
           this.realestate = realestate;
@@ -116,9 +121,20 @@ export class RealestateEditorComponent implements OnInit {
 
   addEmptyComment(): void {
     this.realestate.comments.push({
-      account: '',
-      text: '',
-      date: ''
+      account: undefined,
+      text: undefined,
+      date: undefined
+    });
+  }
+
+  removeNews(index: number): void {
+    this.realestate.news.splice(index, 1);
+  }
+
+  addNews(): void {
+    this.realestate.news.push({
+      title: undefined,
+      url: undefined
     });
   }
 

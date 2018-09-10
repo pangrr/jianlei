@@ -53,9 +53,6 @@ export class RealestateService {
     return realestate;
   }
 
-  collectCitiesFromRealestates(realestates: Realestate[]): string[] {
-    return realestates.map(realestate => realestate.city);
-  }
 
   /**
    * Handle Http operation that failed.

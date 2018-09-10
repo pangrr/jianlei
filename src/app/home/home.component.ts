@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { RealestateService } from '../realestate.service';
-import { Realestate } from '../realestate';
+import { Realestate, News } from '../realestate';
 
 
 @Component({
@@ -13,6 +13,7 @@ import { Realestate } from '../realestate';
 })
 export class HomeComponent implements OnInit {
   cities: string[] = [];
+  news: News[] = [];
 
   realestateControl = new FormControl();
   realestates: Realestate[];
@@ -55,9 +56,8 @@ export class HomeComponent implements OnInit {
     this.realestateService.getRealestates().subscribe(realestates => {
       realestates.forEach(realestate => this.realestateService.replaceImageNamesWithImageUrls(realestate));
 
-      this.realestates = realestates;
-
-      this.cities = this.realestateService.collectCitiesFromRealestates(this.realestates);
+      this.cities = this.collectCitiesFromRealestates(realestates);
+      this.news = this.collectNewsFromRealestates(realestates);
 
       this.filteredRealestates = this.realestateControl.valueChanges
         .pipe(
@@ -65,6 +65,18 @@ export class HomeComponent implements OnInit {
           map(value => typeof value === 'string' ? value : value.name),
           map(name => name ? this.filterRealestates(name) : this.realestates.slice())
         );
+
+      this.realestates = realestates;
     });
+  }
+
+  private collectCitiesFromRealestates(realestates: Realestate[]): string[] {
+    return realestates.map(realestate => realestate.city);
+  }
+
+  private collectNewsFromRealestates(realestates: Realestate[]): News[] {
+    let news: News[] = [];
+    realestates.forEach(realestate => news = news.concat(realestate.news));
+    return news;
   }
 }

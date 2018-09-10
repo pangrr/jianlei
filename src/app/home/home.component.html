@@ -83,6 +83,7 @@
 
   <div class="section">
     <div class="section-title">楼市动态</div>
+    <div *ngFor="let line of news" class="news"><a [href]="line.url" target="_blank">{{line.title}}</a></div>
   </div>
 
   <div class="section">

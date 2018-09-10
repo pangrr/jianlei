@@ -94,6 +94,16 @@
     </mat-form-field>
   </div>
 
+  <div class="field-group">
+    <mat-form-field>
+      <textarea style="height: 150px" matInput placeholder="楼盘信息" name="description" [(ngModel)]="realestate.description" required></textarea>
+    </mat-form-field>
+  </div>
+
+  
+  <mat-divider></mat-divider>
+
+
   <div *ngFor="let comment of realestate.comments; index as i" class="field-group">
     <mat-form-field>
       <input matInput placeholder="用户名" name="account_{{i}}" [(ngModel)]="comment.account" required>
@@ -111,11 +121,25 @@
     <button mat-button color="primary" (click)="addEmptyComment()">添加用户评论</button>
   </div>
 
-  <div class="field-group">
+
+  <mat-divider></mat-divider>
+
+
+  <div *ngFor="let news of realestate.news; index as i" class="field-group">
     <mat-form-field>
-      <textarea style="height: 150px" matInput placeholder="楼盘信息" name="description" [(ngModel)]="realestate.description" required></textarea>
+      <input matInput placeholder="标题" name="title_{{i}}" [(ngModel)]="news.title" required>
     </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="网址" name="url_{{i}}" [(ngModel)]="news.url" required>
+    </mat-form-field>
+    <button mat-button color="warn" (click)="removeNews(i)">删除新闻</button>
   </div>
+
+  <div class="field-group">
+    <button mat-button color="primary" (click)="addNews()">添加新闻</button>
+  </div>
+
+
   
   <mat-divider></mat-divider>
 

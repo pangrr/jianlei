@@ -14,6 +14,7 @@ export interface Realestate {
   visitServices: VisitingServices;
   comments: Comment[];
   relatedRealestateIds: string[];
+  news: News[];
 }
 
 export interface Coordinate {
@@ -41,6 +42,11 @@ export interface Comment {
 export interface VisitingServices {
   taxi: string;
   reimburse: string;
+}
+
+export interface News {
+  title: string;
+  url: string;
 }
 
 
