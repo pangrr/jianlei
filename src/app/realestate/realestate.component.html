@@ -119,6 +119,11 @@
     </a>
   </div>
 
+  <div class="section">
+    <div class="section-title">楼市动态</div>
+    <a *ngFor="let news of realestate.news" [href]="news.url" target="_blank">{{news.title}}</a>
+  </div>
+
   <div class="toolbar"></div>
 </div>
 
