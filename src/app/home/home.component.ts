@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { MatDialog } from '@angular/material';
 import { RealestateService } from '../realestate.service';
 import { Realestate, News } from '../realestate';
+import { AboutDialogComponent } from '../about-dialog/about-dialog.component';
 
 
 @Component({
@@ -31,7 +33,8 @@ export class HomeComponent implements OnInit {
   ];
 
   constructor(
-    private realestateService: RealestateService
+    private realestateService: RealestateService,
+    public aboutDialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -40,6 +43,12 @@ export class HomeComponent implements OnInit {
 
   displayRealestate(realestate?: Realestate): string | undefined {
     return realestate ? realestate.name : undefined;
+  }
+
+  openAboutDialog(): void {
+    this.aboutDialog.open(AboutDialogComponent, {
+      width: '500px'
+    });
   }
 
   private filterCities(value: string): string[] {

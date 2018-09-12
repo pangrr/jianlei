@@ -33,29 +33,36 @@ import { SlideshowModule } from 'ng-simple-slideshow';
 import { AngularFileUploaderModule } from 'angular-file-uploader';
 import { AbmModule } from 'angular-baidu-maps';
 
-// custom
+// components
 import { RealestateComponent } from './realestate/realestate.component';
 import { HomeComponent } from './home/home.component';
-import { RealestateService } from './realestate.service';
-import { CustomerService } from './customer.service';
+import { AboutDialogComponent } from './about-dialog/about-dialog.component';
 import { CustomerRequestDialogComponent } from './customer-request-dialog/customer-request-dialog.component';
 import { CustomerRequestListComponent } from './customer-request-list/customer-request-list.component';
 import { RealestateEditorComponent } from './realestate-editor/realestate-editor.component';
 import { RealestateListComponent } from './realestate-list/realestate-list.component';
 
+// services
+import { RealestateService } from './realestate.service';
+import { CustomerService } from './customer.service';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    // custom components
     MapComponent,
     RealestateComponent,
     CustomerRequestListComponent,
     RealestateEditorComponent,
     RealestateListComponent,
     HomeComponent,
+    AboutDialogComponent,
     CustomerRequestDialogComponent
   ],
   entryComponents: [
+    AboutDialogComponent,
     CustomerRequestDialogComponent
   ],
   imports: [

@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'edit', component: RealestateEditorComponent },
   { path: 'edit/:id', component: RealestateEditorComponent },
   { path: 'map', component: MapComponent },
-  { path: 'home', component: HomeComponent }
+  { path: 'home', component: HomeComponent },
 ];
 
 @NgModule({
