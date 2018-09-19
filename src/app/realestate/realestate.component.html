@@ -50,7 +50,7 @@
     </div>
     <div class="content-horizontal-center">
       <div>团购看房前参加有效</div>
-      <div>10天 12时 12分</div>
+      <div>{{groupPriceTimer.days}}天 {{groupPriceTimer.hours}}时 {{groupPriceTimer.minutes}}分 {{groupPriceTimer.seconds}}秒</div>
       <div>120人参加</div>
     </div>
   </div>
@@ -78,6 +78,10 @@
     </p>
   </div>
 
+  <div class="section">
+    <div class="section-title">楼盘动态</div>
+    <a *ngFor="let news of realestate.news" [href]="news.url" target="_blank">{{news.title}}</a>
+  </div>
 
   <div class="section">
     <div class="section-title">楼盘服务</div>
@@ -119,10 +123,6 @@
     </a>
   </div>
 
-  <div class="section">
-    <div class="section-title">楼市动态</div>
-    <a *ngFor="let news of realestate.news" [href]="news.url" target="_blank">{{news.title}}</a>
-  </div>
 
   <div class="toolbar"></div>
 </div>

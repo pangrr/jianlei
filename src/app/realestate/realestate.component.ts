@@ -9,6 +9,7 @@ import { RealestateService } from '../realestate.service';
 import { CustomerRequestDialogComponent } from '../customer-request-dialog/customer-request-dialog.component';
 import { environment } from '../../environments/environment';
 import { AbmComponent } from 'angular-baidu-maps';
+import { Timer } from '../timer';
 
 
 declare const BMap: any;
@@ -32,6 +33,7 @@ export class RealestateComponent implements OnInit {
   public imageUrls: string[];
   public showFullscreenImages = false;
   public mapOptions: any = {};
+  public groupPriceTimer: Timer;
 
   constructor(
     private route: ActivatedRoute,
@@ -51,6 +53,8 @@ export class RealestateComponent implements OnInit {
 
   ngOnInit(): void {
     this.getRealestate();
+
+    this.groupPriceTimer = new Timer(123456);
   }
 
 
