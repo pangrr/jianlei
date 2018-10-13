@@ -86,11 +86,10 @@ mat-form-field.select-city {
   flex-wrap: wrap;
 }
 
-.disclaim {
-  color: #ddd;
+.footnote {
   font-size: 0.9em;
   margin-top: 30px;
-  text-align: right;
+  text-align: center;
 }
 
 .flex-column {
