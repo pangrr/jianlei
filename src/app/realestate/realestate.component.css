@@ -137,6 +137,8 @@ mat-icon {
 .note {
   font-size: 0.8em;
   color: rgba(0,0,0,.54);
+  text-align: right;
+  padding-right: 10px;
 }
 
 .red {

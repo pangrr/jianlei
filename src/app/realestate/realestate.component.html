@@ -10,37 +10,26 @@
     <slideshow [imageUrls]="images" [backgroundSize]="'contain'" [height]="'300px'" [autoPlay]="true" [showDots]="true" [arrowSize]="'20px'"></slideshow>
   </div>
 
-  <div class="section side-by-side no-padding no-margin-bottom">
-    <div class="padding">
-      <div class="title">{{realestate.name}}</div>
-      <table>
-        <tr>
-          <td class='table-row-name'>均价：</td>
-          <td><span class="red">{{realestate.price}}</span>元/平米</td>
-        </tr>
-        <tr>
-          <td class='table-row-name'>开盘：</td>
-          <td>在售中</td>
-        </tr>
-        <tr>
-          <td class='table-row-name'>折扣：</td>
-          <td>新房红包</td>
-        </tr>
-        <tr>
-          <td class='table-row-name'>地址：</td>
-          <td>{{realestate.address}}</td>
-        </tr>
-      </table>
-    </div>
-    <div>
-      <div class="flex-row flex-wrap padding space-evenly background-red">
-        <span>新房红包 抵扣房款</span>
-        <span>新房红包{{realestate.redpocket.amount}}元</span>
-        <button mat-button class="background-yellow" (click)="openCustomerRequestDialog('领取红包')">立即领取</button>
-      </div>
-      <div class="note">签约有效期：{{realestate.redpocket.startDate}} - {{realestate.redpocket.endDate}}</div>
-      <div class="note">购房红包，数量有限，请尽快领取</div>
-    </div>
+  <div class="section no-margin-bottom">
+    <div class="title">{{realestate.name}}</div>
+    <table>
+      <tr>
+        <td class='table-row-name'>均价：</td>
+        <td><span class="red">{{realestate.price}}</span>元/平米</td>
+      </tr>
+      <tr>
+        <td class='table-row-name'>开盘：</td>
+        <td>在售中</td>
+      </tr>
+      <tr>
+        <td class='table-row-name'>折扣：</td>
+        <td>新房红包</td>
+      </tr>
+      <tr>
+        <td class='table-row-name'>地址：</td>
+        <td>{{realestate.address}}</td>
+      </tr>
+    </table>
   </div>
   
   <div class="section side-by-side background-red no-margin-bottom">
@@ -63,11 +52,22 @@
     <div>最新政策，更多优惠详情，请致电售楼处[120人拨打]</div>
   </div>
 
-  <div class="section">
+  <div class="section no-margin-bottom">
     <span class="section-title">置业顾问：</span>
     <span class="phone">{{realestate.consultant.phone}}</span>
     <a href="tel:{{realestate.consultant.phone}}"><mat-icon class="green" svgIcon="phone"></mat-icon></a>
     <div>{{realestate.consultant.description}}</div>
+  </div>
+
+
+  <div class="section no-margin-bottom no-padding">
+    <div class="flex-row flex-wrap padding space-evenly background-red">
+      <span>新房红包 抵扣房款</span>
+      <span>新房红包{{realestate.redpocket.amount}}元</span>
+      <button mat-button class="background-yellow" (click)="openCustomerRequestDialog('领取红包')">立即领取</button>
+    </div>
+    <div class="note">签约有效期：{{realestate.redpocket.startDate}} - {{realestate.redpocket.endDate}}</div>
+    <div class="note">购房红包，数量有限，请尽快领取</div>
   </div>
 
 
