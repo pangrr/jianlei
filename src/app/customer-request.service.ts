@@ -28,6 +28,15 @@ export class CustomerRequestService {
       );
   }
 
+  updateCustomerRequest(customerRequest: CustomerRequest): Observable<CustomerRequest> {
+    return this.http.put<CustomerRequest>(`${this.url}/${customerRequest._id}`, customerRequest, httpOptions)
+      .pipe(
+        catchError(this.handleError<CustomerRequest>('updateCustomerRequest', customerRequest)
+      )
+    );
+  }
+
+
   deleteCustomerRequest(id: string): Observable<CustomerRequest> {
     return this.http.delete<CustomerRequest>(`${this.url}/${id}`, httpOptions).pipe(
       catchError(this.handleError<CustomerRequest>('deleteCustomerRequest'))

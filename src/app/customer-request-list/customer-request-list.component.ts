@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CustomerRequestService } from '../customer-request.service';
+import { CustomerRequest } from '../customer-request';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class CustomerRequestListComponent implements OnInit {
   dataSource;
 
   constructor(
-    private customerService: CustomerRequestService,
+    private customerRequestService: CustomerRequestService,
     public iconRegistry: MatIconRegistry,
     public sanitizer: DomSanitizer,
   ) {}
@@ -29,12 +30,17 @@ export class CustomerRequestListComponent implements OnInit {
   }
 
   deleteCustomerRequest(id: string): void {
-    this.customerService.deleteCustomerRequest(id)
+    this.customerRequestService.deleteCustomerRequest(id)
       .subscribe(_ => this.getCustomerRequests());
   }
 
+  updateCustomerRequest(customerRequest: CustomerRequest): void {
+    this.customerRequestService.updateCustomerRequest(customerRequest)
+      .subscribe(_ => {});
+  }
+
   private getCustomerRequests(): void {
-    this.customerService.getCustomerRequests()
+    this.customerRequestService.getCustomerRequests()
       .subscribe(customerRequests => {
         this.dataSource = new MatTableDataSource(customerRequests.map((customerRequest, i) => ({...customerRequest, index: i + 1})));
       });
