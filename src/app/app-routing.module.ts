@@ -11,7 +11,7 @@ import { RealestateListComponent } from './realestate-list/realestate-list.compo
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'realestate/:id', component: RealestateComponent },
-  { path: 'customers', component: CustomerRequestListComponent },
+  { path: 'customer-requests', component: CustomerRequestListComponent },
   { path: 'realestates', component: RealestateListComponent },
   { path: 'edit', component: RealestateEditorComponent },
   { path: 'edit/:id', component: RealestateEditorComponent },
