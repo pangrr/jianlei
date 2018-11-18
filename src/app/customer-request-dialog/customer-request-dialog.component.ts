@@ -1,8 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
-import { Customer } from '../customer';
-import { CustomerService } from '../customer.service';
+import { CustomerRequest } from '../customer-request';
+import { CustomerRequestService } from '../customer-request.service';
 
 
 @Component({
@@ -14,8 +14,8 @@ export class CustomerRequestDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<CustomerRequestDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public customer: Customer,
-    private customerService: CustomerService
+    @Inject(MAT_DIALOG_DATA) public customerRequest: CustomerRequest,
+    private customerService: CustomerRequestService
   ) {}
 
   onNoClick(): void {
@@ -23,7 +23,8 @@ export class CustomerRequestDialogComponent {
   }
 
   onSubmit(): void {
-    this.customerService.addCustomerRequest(this.customer).subscribe(_ => {
+    this.customerRequest.requestTime = new Date().toLocaleDateString();
+    this.customerService.addCustomerRequest(this.customerRequest).subscribe(_ => {
       this.dialogRef.close();
     });
   }

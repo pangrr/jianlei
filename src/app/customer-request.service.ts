@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Customer } from './customer';
+import { CustomerRequest } from './customer-request';
 import { environment } from '../environments/environment';
 
 const httpOptions = {
@@ -10,29 +10,27 @@ const httpOptions = {
 };
 
 @Injectable()
-export class CustomerService {
-  private url = `${environment.server}/api/customer`;
+export class CustomerRequestService {
+  private url = `${environment.server}/api/customerRequest`;
 
-  constructor(
-    private http: HttpClient
-  ) {}
+  constructor(private http: HttpClient) {}
 
-  getCustomerRequests(): Observable<Customer[]> {
-    return this.http.get<Customer[]>(this.url).pipe(
-      catchError(this.handleError<Customer[]>(`getAllCustomerRequests`))
+  getCustomerRequests(): Observable<CustomerRequest[]> {
+    return this.http.get<CustomerRequest[]>(this.url).pipe(
+      catchError(this.handleError<CustomerRequest[]>(`getAllCustomerRequests`))
     );
   }
 
-  addCustomerRequest(customer: Customer): Observable<Customer> {
-    return this.http.post<Customer>(this.url, customer, httpOptions)
+  addCustomerRequest(customer: CustomerRequest): Observable<CustomerRequest> {
+    return this.http.post<CustomerRequest>(this.url, customer, httpOptions)
       .pipe(
-        catchError(this.handleError<Customer>('addCustomerRequest', customer))
+        catchError(this.handleError<CustomerRequest>('addCustomerRequest', customer))
       );
   }
 
-  deleteCustomerRequest(id: string): Observable<Customer> {
-    return this.http.delete<Customer>(`${this.url}/${id}`, httpOptions).pipe(
-      catchError(this.handleError<Customer>('deleteCustomerRequest'))
+  deleteCustomerRequest(id: string): Observable<CustomerRequest> {
+    return this.http.delete<CustomerRequest>(`${this.url}/${id}`, httpOptions).pipe(
+      catchError(this.handleError<CustomerRequest>('deleteCustomerRequest'))
     );
   }
 

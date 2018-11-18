@@ -3,14 +3,19 @@
 </mat-form-field>
 
 <table mat-table [dataSource]="dataSource">
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>姓名</th>
-    <td mat-cell *matCellDef="let customerRequest">{{customerRequest.name}}</td>
+  <ng-container matColumnDef="index">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let customerRequest">{{customerRequest.index}}</td>
   </ng-container>
 
-  <ng-container matColumnDef="phone">
+  <ng-container matColumnDef="customerName">
+    <th mat-header-cell *matHeaderCellDef>姓名</th>
+    <td mat-cell *matCellDef="let customerRequest">{{customerRequest.customerName}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="customerPhone">
     <th mat-header-cell *matHeaderCellDef>电话</th>
-    <td mat-cell *matCellDef="let customerRequest">{{customerRequest.phone}}</td>
+    <td mat-cell *matCellDef="let customerRequest">{{customerRequest.customerPhone}}</td>
   </ng-container>
 
   <ng-container matColumnDef="realestate">
@@ -21,6 +26,16 @@
   <ng-container matColumnDef="request">
     <th mat-header-cell *matHeaderCellDef>需求</th>
     <td mat-cell *matCellDef="let customerRequest">{{customerRequest.request}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="requestTime">
+    <th mat-header-cell *matHeaderCellDef>时间</th>
+    <td mat-cell *matCellDef="let customerRequest">{{customerRequest.requestTime}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="note">
+    <th mat-header-cell *matHeaderCellDef>备注</th>
+    <td mat-cell *matCellDef="let customerRequest">{{customerRequest.note}}</td>
   </ng-container>
 
   <ng-container matColumnDef="delete">

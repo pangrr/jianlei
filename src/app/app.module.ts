@@ -44,7 +44,7 @@ import { RealestateListComponent } from './realestate-list/realestate-list.compo
 
 // services
 import { RealestateService } from './realestate.service';
-import { CustomerService } from './customer.service';
+import { CustomerRequestService } from './customer-request.service';
 
 
 
@@ -98,7 +98,7 @@ import { CustomerService } from './customer.service';
     AngularFileUploaderModule,
     AbmModule.forRoot({ apiKey: 'MC44rmBjXF8syrkMZXjsgowatzbgBogx' })
   ],
-  providers: [RealestateService, CustomerService],
+  providers: [RealestateService, CustomerRequestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

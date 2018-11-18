@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
-import { CustomerService } from '../customer.service';
+import { CustomerRequestService } from '../customer-request.service';
 
 
 @Component({
@@ -11,11 +11,11 @@ import { CustomerService } from '../customer.service';
   styleUrls: ['./customer-request-list.component.css']
 })
 export class CustomerRequestListComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'phone', 'realestate', 'request', 'delete'];
+  displayedColumns: string[] = ['index', 'customerName', 'customerPhone', 'realestate', 'request', 'requestTime', 'note', 'delete'];
   dataSource;
 
   constructor(
-    private customerService: CustomerService,
+    private customerService: CustomerRequestService,
     public iconRegistry: MatIconRegistry,
     public sanitizer: DomSanitizer,
   ) {}
@@ -35,8 +35,8 @@ export class CustomerRequestListComponent implements OnInit {
 
   private getCustomerRequests(): void {
     this.customerService.getCustomerRequests()
-      .subscribe(requests => {
-        this.dataSource = new MatTableDataSource(requests);
+      .subscribe(customerRequests => {
+        this.dataSource = new MatTableDataSource(customerRequests.map((customerRequest, i) => ({...customerRequest, index: i + 1})));
       });
   }
 }
