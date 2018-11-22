@@ -7,7 +7,8 @@
 <div class="content" *ngIf="realestate">
 
   <div class="section no-padding">
-    <slideshow [imageUrls]="images" [backgroundSize]="'contain'" [height]="'300px'" [autoPlay]="true" [showDots]="true" [arrowSize]="'20px'"></slideshow>
+    <slideshow [imageUrls]="images" [backgroundSize]="'contain'" [height]="'300px'" [autoPlay]="true" [showDots]="true"
+      [arrowSize]="'20px'"></slideshow>
   </div>
 
   <div class="section no-margin-bottom">
@@ -31,7 +32,7 @@
       </tr>
     </table>
   </div>
-  
+
   <div class="section side-by-side background-red no-margin-bottom">
     <div class="content-horizontal-center">
       <div>团购价 ￥{{realestate.groupPrice}}</div>
@@ -39,28 +40,35 @@
     </div>
     <div class="content-horizontal-center">
       <div>团购看房前参加有效</div>
-      <div>{{groupPriceTimer.days}}天 {{groupPriceTimer.hours}}时 {{groupPriceTimer.minutes}}分 {{groupPriceTimer.seconds}}秒</div>
+      <div>{{groupPriceTimer.days}}天 {{groupPriceTimer.hours}}时 {{groupPriceTimer.minutes}}分
+        {{groupPriceTimer.seconds}}秒</div>
       <div>120人参加</div>
     </div>
   </div>
- 
+
 
   <div class="section no-margin-bottom">
     <span class="section-title">售楼处：</span>
     <span class="phone">{{realestate.phone}}</span>
-    <a href="tel:{{realestate.phone}}"><mat-icon class="green" svgIcon="phone"></mat-icon></a>
+    <a href="tel:{{realestate.phone}}">
+      <mat-icon class="green" svgIcon="phone"></mat-icon>
+    </a>
     <div>最新政策，更多优惠详情，请致电售楼处[120人拨打]</div>
-  </div>
-
-  <div class="section no-margin-bottom">
+    <div style="height:15px"></div>
     <span class="section-title">置业顾问：</span>
     <span class="phone">{{realestate.consultant.phone}}</span>
-    <a href="tel:{{realestate.consultant.phone}}"><mat-icon class="green" svgIcon="phone"></mat-icon></a>
+    <a href="tel:{{realestate.consultant.phone}}">
+      <mat-icon class="green" svgIcon="phone"></mat-icon>
+    </a>
     <div>{{realestate.consultant.description}}</div>
   </div>
 
+  <!-- <div class="section no-margin-bottom">
+    
+  </div> -->
 
-  <div class="section no-margin-bottom no-padding">
+
+  <div class="section no-padding">
     <div class="flex-row flex-wrap padding space-evenly background-red">
       <span>新房红包 抵扣房款</span>
       <span>新房红包{{realestate.redpocket.amount}}元</span>
@@ -85,8 +93,10 @@
 
   <div class="section">
     <div class="section-title">楼盘服务</div>
-    <div class="flex-row no-justify-content margin-bottom"><button class="service-button background-green" (click)="openCustomerRequestDialog('免费班车')" mat-raised-button>免费班车</button><span>{{realestate.visitServices.taxi}}</span></div>
-    <div class="flex-row no-justify-content margin-bottom"><button class="service-button background-green" (click)="openCustomerRequestDialog('自驾报销')" mat-raised-button>自驾报销</button><span>{{realestate.visitServices.reimburse}}</span></div>
+    <div class="flex-row no-justify-content margin-bottom"><button class="service-button background-green" (click)="openCustomerRequestDialog('免费班车')"
+        mat-raised-button>免费班车</button><span>{{realestate.visitServices.taxi}}</span></div>
+    <div class="flex-row no-justify-content margin-bottom"><button class="service-button background-green" (click)="openCustomerRequestDialog('自驾报销')"
+        mat-raised-button>自驾报销</button><span>{{realestate.visitServices.reimburse}}</span></div>
   </div>
 
 
@@ -96,16 +106,18 @@
       <abm-map #map [options]="mapOptions" (ready)="markRealestateInMap($event)"></abm-map>
     </div>
   </div>
- 
+
 
   <div class="section">
     <div class="section-title">用户点评(232)</div>
-  </div>
-
-  <div class="section" *ngFor="let comment of realestate.comments">
-    <div><mat-icon svgIcon="account"></mat-icon><span class="blue">{{comment.account}}</span></div>
-    <p class="comment">{{comment.text}}</p>
-    <div class="comment">{{comment.date}}</div>
+    <div *ngFor="let comment of realestate.comments">
+      <div class="comment-meta">
+        <div><mat-icon svgIcon="account"></mat-icon><span class="blue">{{comment.account}}</span></div>
+        <div class="grey">{{comment.date}}</div>
+      </div>
+      <p class="comment">{{comment.text}}</p>
+      <div style="height:10px"></div>
+    </div>
   </div>
 
 
@@ -138,7 +150,8 @@
 <div *ngIf="images && showFullscreenImages" class="dialog">
   <div (click)="showFullscreenImages = false" style="width: 100%;height: 100px;"></div>
   <div style="width: 100%;height: calc(100% - 200px);background-color: black;">
-    <slideshow #fullscreenSlideshow [backgroundSize]="'contain'" [imageUrls]="imageUrls" [autoPlay]="false" [showDots]="true" [arrowSize]="'20px'"></slideshow>
+    <slideshow #fullscreenSlideshow [backgroundSize]="'contain'" [imageUrls]="imageUrls" [autoPlay]="false" [showDots]="true"
+      [arrowSize]="'20px'"></slideshow>
   </div>
   <div (click)="showFullscreenImages = false" style="width: 100%;height: 100px;"></div>
 </div>
