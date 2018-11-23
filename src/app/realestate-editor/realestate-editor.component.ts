@@ -16,16 +16,24 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class RealestateEditorComponent implements OnInit {
 
-  @Input() afuConfig = {
+  @Input() imagesUploadConfig = {
     formatsAllowed: '.jpg,.png',
     uploadAPI: { url: `${environment.server}/api/realestate/images` },
     multiple: true
+  };
+
+  @Input() descriptionImageUploadConfig = {
+    formatsAllowed: '.jpg,.png',
+    uploadAPI: { url: `${environment.server}/api/realestate/images` },
+    multiple: false
   };
 
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
   realestate: Realestate;
   imageUrls: string[] = [];
+  descriptionImageUrl: string;
+
 
   constructor(
     private realestateService: RealestateService,
@@ -68,8 +76,14 @@ export class RealestateEditorComponent implements OnInit {
     this.imageUrls = this.imageUrls.concat(this.imageNamesToImageUrls(uploadedImageNames));
   }
 
+  onDescriptionImageUploaded(event): void {
+    const uploadedImageName = JSON.parse(event.response)[0];
+    this.descriptionImageUrl = this.imageNameToImageUrl(uploadedImageName);
+  }
+
   saveNewRealestate(): void {
     this.realestate.images = this.imageUrlsToImageNames(this.imageUrls);
+    this.realestate.descriptionImage = this.imageUrlToImageName(this.descriptionImageUrl);
 
     this.realestateService.addRealestate(this.realestate)
       .subscribe(savedRealestate => {
@@ -80,6 +94,7 @@ export class RealestateEditorComponent implements OnInit {
 
   updateRealestate(): void {
     this.realestate.images = this.imageUrlsToImageNames(this.imageUrls);
+    this.realestate.descriptionImage = this.imageUrlToImageName(this.descriptionImageUrl);
 
     this.realestateService.updateRealestate(this.realestate)
       .subscribe(_ => {
@@ -106,6 +121,10 @@ export class RealestateEditorComponent implements OnInit {
     if (input) {
       input.value = '';
     }
+  }
+
+  removeDescriptionImageUrl(): void {
+    this.descriptionImageUrl = undefined;
   }
 
   removeImageUrl(url: string): void {

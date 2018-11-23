@@ -27,7 +27,7 @@ export class RealestateComponent implements OnInit {
 
 
   public realestate: Realestate;
-  public description: string[];
+  public descriptionImageUrl: string;
   public relatedRealestates: Realestate[] = [];
   public images: IImage[];
   public imageUrls: string[];
@@ -88,7 +88,7 @@ export class RealestateComponent implements OnInit {
 
         this.populateRelatedRealestates(realestate);
 
-        this.description = realestate.description.split(/\r?\n/);
+        this.descriptionImageUrl = this.imageNameToImageUrl(realestate.descriptionImage);
 
         this.realestate = realestate;
       });

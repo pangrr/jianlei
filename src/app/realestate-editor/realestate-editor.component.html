@@ -1,5 +1,6 @@
+上传楼盘图片
 <div style="width: 750px;margin: 10px;">
-  <angular-file-uploader [config]="afuConfig" (ApiResponse)="onImagesUploaded($event)"></angular-file-uploader>
+  <angular-file-uploader [config]="imagesUploadConfig" (ApiResponse)="onImagesUploaded($event)"></angular-file-uploader>
 </div>
 
 <div style="display: flex;flex-wrap: wrap;width: 100%;">
@@ -94,10 +95,20 @@
     </mat-form-field>
   </div>
 
-  <div class="field-group">
-    <mat-form-field>
-      <textarea style="height: 150px" matInput placeholder="楼盘信息" name="description" [(ngModel)]="realestate.description" required></textarea>
-    </mat-form-field>
+
+  <mat-divider></mat-divider>
+
+  上传楼盘信息图片
+  <div style="width: 750px;margin: 10px;">
+    <angular-file-uploader [config]="descriptionImageUploadConfig" (ApiResponse)="onDescriptionImageUploaded($event)"></angular-file-uploader>
+  </div>
+  
+
+  <div *ngIf="descriptionImageUrl" style="max-width: 700px;max-height: 700px;overflow: auto;position: relative;">
+    <img style="width: 100%;" [src]="descriptionImageUrl">
+    <button mat-icon-button (click)="removeDescriptionImageUrl()" style="position: absolute;top: 0;right: 0;">
+      <mat-icon svgIcon="cancel"></mat-icon>
+    </button>
   </div>
 
   

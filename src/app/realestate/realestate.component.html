@@ -77,14 +77,16 @@
 
   <div class="section">
     <div class="section-title">楼盘信息</div>
-    <p class="indent" *ngFor="let paragraph of description">
-      {{paragraph}}
-    </p>
+    <div style="width: 100%;">
+      <img [src]="descriptionImageUrl">
+    </div>
   </div>
 
   <div class="section">
     <div class="section-title">楼盘动态</div>
-    <a *ngFor="let news of realestate.news" [href]="news.url" target="_blank">{{news.title}}</a>
+    <div *ngFor="let news of realestate.news">
+      <a [href]="news.url" target="_blank">{{news.title}}</a>
+    </div>
   </div>
 
   <div class="section">

@@ -9,7 +9,7 @@ export interface Realestate {
   groupPrice: number;
   phone: number;
   consultant: Consultant;
-  description: string;
+  descriptionImage: string;
   images: string[];
   visitServices: VisitingServices;
   comments: Comment[];
