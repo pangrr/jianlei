@@ -67,6 +67,7 @@ export class RealestateEditorComponent implements OnInit {
 
           this.realestate = realestate;
           this.imageUrls = this.imageNamesToImageUrls(realestate.images);
+          this.descriptionImageUrl = this.imageNameToImageUrl(realestate.descriptionImage);
         });
     }
   }
