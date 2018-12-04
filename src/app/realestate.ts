@@ -7,7 +7,7 @@ export interface Realestate {
   price: number;
   redpocket: Redpocket;
   groupPrice: number;
-  phone: number;
+  phone: string;
   consultant: Consultant;
   descriptionImage: string;
   images: string[];
@@ -29,7 +29,7 @@ export interface Redpocket {
 }
 
 export interface Consultant {
-  phone: number;
+  phone: string;
   description: string;
 }
 
